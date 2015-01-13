@@ -19,8 +19,7 @@ production = process.env.NODE_ENV is 'production'
 
 config =
   scripts:
-    source: './src/coffee/main.coffee'
-    extensions: ['.coffee']
+    source: './src/js/main.js'
     destination: './public/js/'
     filename: 'bundle.js'
   templates:
