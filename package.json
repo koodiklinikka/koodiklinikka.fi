@@ -9,7 +9,8 @@
     "prepublish": "bower install",
     "start": "gulp",
     "build": "gulp build",
-    "test": "karma start test/karma.conf.js"
+    "test": "karma start test/karma.conf.js",
+    "deploy": "bash deploy/deploy.sh"
   },
   "keywords": [
     "gulp",

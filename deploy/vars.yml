@@ -1,0 +1,9 @@
+---
+project_name: koodiklinikka.fi
+projects_path: /opt/web/koodiklinikka.fi
+repository_url: git@github.com:koodiklinikka/koodiklinikka.fi.git
+service_user: web
+nvm_path: /opt/web/nvm
+nvm_script: /opt/web/nvm/nvm.sh
+nodejs_version: v0.10.25
+public_hostname: koodiklinikka.fi
