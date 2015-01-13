@@ -34,7 +34,7 @@
       remote_user: "{{ service_user }}"
 
     - name: Setup nginx vhost
-      sudo: yes
+      remote_user: "{{ service_user }}"
       template: >
         src=templates/nginx.j2
         dest="/etc/nginx/sites-available/{{ public_hostname }}"
@@ -42,7 +42,7 @@
       notify: restart nginx
 
     - name: Enable nginx vhost
-      sudo: yes
+      remote_user: "{{ service_user }}"
       file: >
         state=link
         src=/etc/nginx/sites-available/{{ public_hostname }}
@@ -51,7 +51,7 @@
 
   handlers:
     - name: restart nginx
-      sudo: true
+      remote_user: "{{ service_user }}"
       service: >
         name=nginx
         state=restarted
