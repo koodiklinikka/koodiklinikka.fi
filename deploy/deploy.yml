@@ -37,20 +37,13 @@
       remote_user: "{{ service_user }}"
       template: >
         src=templates/nginx.j2
-        dest="/etc/nginx/sites-available/{{ public_hostname }}"
+        dest="/etc/nginx/sites-available/koodiklinikka/{{ public_hostname }}"
         mode=664
-      notify: restart nginx
-
-    - name: Enable nginx vhost
-      remote_user: "{{ service_user }}"
-      file: >
-        state=link
-        src=/etc/nginx/sites-available/{{ public_hostname }}
-        dest=/etc/nginx/sites-enabled/{{ public_hostname }}
       notify: restart nginx
 
   handlers:
     - name: restart nginx
+      sudo: true
       remote_user: "{{ service_user }}"
       service: >
         name=nginx
