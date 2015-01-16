@@ -1,8 +1,16 @@
 doctype html
 html
   head
-    title Koodiklinikka.fi
+    title koodiklinikka
     link(rel='stylesheet', href='css/style.css')
   body
-    h1 Hello world!
+    .jumbo
+      .form-container
+        p.
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          Sed posuere interdum sem. Sed augue orci, lacinia eu tincidunt.
+          Mauris varius diam vitae arcu. <br /> Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt.
+        form#invite.invite-form
+          input.input(type='text', name='email', placeholder='Email')
+          button.btn.btn__submit(type='submit', title='Lähetä') ⏎
     script(src='js/bundle.js')
