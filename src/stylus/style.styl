@@ -2,10 +2,16 @@
 
 body, html
   margin 0
-  font 14px 'Open Sans', sans-serif
+  font 16px 'Open Sans', sans-serif
   height 100%
   width 100%
-  font-weight 300
+  font-weight 400
+  color #333
+
+.container
+  width 100%
+  height 100%
+  box-sizing border-box
 
 .jumbo
   width 100%
@@ -56,11 +62,11 @@ body, html
 .invite-form
   margin auto
   position relative
-
+  max-width 500px
   .btn
     width 40px
     height 32px
-    background #1a99aa
+    background #3090de
     padding 0
     position absolute
     right 8px
@@ -68,14 +74,44 @@ body, html
     margin-top -15px
     border-bottom 2px solid #117280
     color rgba(255, 255, 255, 0.5)
-
-  p
-    text-align center
-    margin-bottom 2em
+    &:active
+      border-bottom 0
 
 .form-container
-  max-width 500px
+  width 100%
+  padding 0 2em
+  box-sizing border-box
+  max-width 800px
   position absolute
   top 50%
   left 50%
   transform translateY(-50%) translateX(-50%)
+  p
+    text-align center
+    margin-bottom 2em
+a
+  color #2080CF
+  text-decoration none
+  &:hover
+    text-decoration underline
+
+#logo
+  width 80px
+  height 80px
+  background url('../images/logo-js.png')
+  background-size 100% 100%
+  border 5px solid #fff
+  border-radius 50%
+  margin auto
+  position absolute
+  top 1.5em
+  left 1.5em
+  box-shadow 1px 1px 3px rgba(0, 0, 0, 0.1)
+
+.footer
+  font-size 0.8em
+  height 40px
+  line-height 40px
+  padding 0 1em
+  position absolute
+  bottom 0

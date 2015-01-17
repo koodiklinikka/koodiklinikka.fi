@@ -1,16 +1,21 @@
 doctype html
 html
   head
-    title koodiklinikka
+    title Koodiklinikka
     link(rel='stylesheet', href='css/style.css')
   body
-    .jumbo
-      .form-container
-        p.
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-          Sed posuere interdum sem. Sed augue orci, lacinia eu tincidunt.
-          Mauris varius diam vitae arcu. <br /> Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit. Sed augue orci, lacinia eu tincidunt.
-        form#invite.invite-form
-          input.input(type='text', name='email', placeholder='Email')
-          button.btn.btn__submit(type='submit', title='Lähetä') ⏎
+    .container
+      .jumbo
+        #logo
+        .form-container
+          p.
+            Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?<br />
+            Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle? Etsitkö tiimikavereita projektiisi?<br />
+            <br />
+            Koodiklinikka on <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille suomalaisille.
+          form#invite.invite-form
+            input.input(type='text', name='email', placeholder='Email')
+            button.btn.btn__submit(type='submit', title='Lähetä') ⏎
+      .footer
+        a(href='https://koodiklinikka.slack.com') koodiklinikka.slack.com
     script(src='js/bundle.js')
