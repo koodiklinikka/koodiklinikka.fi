@@ -1,7 +1,7 @@
 {
-  "name": "gulp-template",
+  "name": "koodiklinikka",
   "version": "1.0.0",
-  "description": "Project template for gulp.js",
+  "description": "Koodiklinikka homepage",
   "author": "Riku Rouvila <riku.rouvila@leonidasoy.fi>",
   "license": "MIT",
   "main": "gulpfile.js",
