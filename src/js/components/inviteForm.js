@@ -22,7 +22,7 @@ function render(props, state) {
         className={inputClasses}
         type='text'
         name='email'
-        placeholder='email'
+        placeholder='Email'
         value={state.email}
         onkeydown={props.onChange} />
       <button

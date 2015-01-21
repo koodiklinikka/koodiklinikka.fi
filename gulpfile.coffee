@@ -1,10 +1,13 @@
 browserify = require 'browserify'
 chalk      = require 'chalk'
+concat     = require 'gulp-concat'
 CSSmin     = require 'gulp-minify-css'
 ecstatic   = require 'ecstatic'
+es         = require 'event-stream'
 gulp       = require 'gulp'
 gutil      = require 'gulp-util'
 jade       = require 'gulp-jade'
+less       = require 'gulp-less'
 livereload = require 'gulp-livereload'
 path       = require 'path'
 prefix     = require 'gulp-autoprefixer'
@@ -27,11 +30,13 @@ config =
     watch: './src/jade/*.jade'
     destination: './public/'
   styles:
-    source: './src/stylus/style.styl'
-    watch: './src/stylus/*.styl'
+    source: './src/styles/style.styl'
+    icons: './src/styles/icons.less'
+    filename: 'style.css'
+    watch: './src/styles/*.*'
     destination: './public/css/'
   assets:
-    source: './src/assets/**/*.*'
+    source: ['./src/assets/**/*.*', './bower_components/font-awesome/fonts*/*.*']
     watch: './src/assets/**/*.*'
     destination: './public/'
 
@@ -68,11 +73,17 @@ gulp.task 'templates', ->
   pipeline
 
 gulp.task 'styles', ->
+
   styles = gulp
     .src config.styles.source
     .pipe stylus
       'include css': true
 
+  icons = gulp.src(config.styles.icons)
+    .pipe less()
+
+  styles = es.merge(styles, icons)
+    .pipe concat config.styles.filename
     .on 'error', handleError
     .pipe prefix 'last 2 versions', 'Chrome 34', 'Firefox 28', 'iOS 7'
 
