@@ -1,12 +1,16 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,700')
 
 body, html
   margin 0
-  font 16px 'Open Sans', sans-serif
+  font 16px 'proxima-nova', 'Helvetica Neue', helvetica, arial, sans-serif
   height 100%
   width 100%
   font-weight 400
-  color #333
+  color #444
+  font-smoothing antialiased
+
+h1, h2, h3
+  margin 0
+  margin-bottom 0.5em
 
 .container
   width 100%
@@ -30,6 +34,9 @@ body, html
   background transparent
   color rgba(0, 0, 0, 0.5)
   outline 0
+  &:focus
+    border 2px solid rgba(0, 0, 0, 0.4)
+    color rgba(0, 0, 0, 0.6)
 
 .input::-webkit-input-placeholder
   color rgba(0, 0, 0, 0.3)
@@ -45,9 +52,7 @@ body, html
 .input:-ms-input-placeholder
   color rgba(0, 0, 0, 0.3)
 
-
-.input.has-error,
-.invite-form.has-error .input
+.input.has-error
   border-color rgba(226, 33, 112, 0.6)
   color rgba(226, 33, 112, 0.6)
 
@@ -58,11 +63,15 @@ body, html
   font-size 14px
   outline 0
   cursor pointer
+  &:disabled
+    opacity 0.6
+
+#invite-form
+  max-width 500px
+  margin auto
 
 .invite-form
-  margin auto
   position relative
-  max-width 500px
   .btn
     width 40px
     height 32px
@@ -81,7 +90,7 @@ body, html
   width 100%
   padding 0 2em
   box-sizing border-box
-  max-width 800px
+  max-width 700px
   position absolute
   top 50%
   left 50%
@@ -89,6 +98,7 @@ body, html
   p
     text-align center
     margin-bottom 2em
+    line-height 1.7em
 a
   color #2080CF
   text-decoration none
@@ -109,7 +119,7 @@ a
   box-shadow 1px 1px 3px rgba(0, 0, 0, 0.1)
 
 .footer
-  font-size 0.8em
+  font-size 1em
   height 40px
   line-height 40px
   padding 0 1em
