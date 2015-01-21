@@ -29,7 +29,7 @@ var props = {
     });
 
     request.post('/api/invites', {
-      email: state.email.email
+      email: state.email
     }).then(function() {
       setState({submitted: true});
     }).catch(function(err) {
