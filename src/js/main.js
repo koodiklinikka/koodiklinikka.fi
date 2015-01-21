@@ -11,7 +11,7 @@ var {diff, patch, create} = require('virtual-dom');
 var state = {
   email: '',
   submitted: false,
-  error: false
+  error: null
 };
 
 function setState(newState) {
@@ -25,21 +25,25 @@ var props = {
 
     setState({
       submitted: false,
-      error: false
+      error: null
     });
 
     request.post('/api/invites', {
       email: state.email.email
     }).then(function() {
       setState({submitted: true});
-    }).catch(function() {
-      setState({error: true});
+    }).catch(function(err) {
+      setState({error: err});
     });
   },
   onChange: function(e) {
+    if(e.target.value === state.email) {
+      return;
+    }
+
     setState({
       email: e.target.value,
-      error: false,
+      error: null,
       submitted: false
     });
   },

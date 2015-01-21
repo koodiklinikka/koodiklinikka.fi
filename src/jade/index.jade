@@ -6,19 +6,23 @@ html
     meta(name='description', content='Koodiklinikka on suomalainen Slack-yhteisö ohjelmistoalan harrastajille ja ammattilaisille.')
     meta(name='keywords', content='ohjelmointi,frontend,open source,devaus,suomi,javascript,clojure,go,java,node.js,io.js,angular.js,web')
     meta(charset='utf-8')
+    script(src='//use.typekit.net/scb5xny.js')
+    script.
+      try{Typekit.load();}catch(e){};
 
   body
     .container
-      .jumbo
-        .form-container
-          p.
-            Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
-            Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?<br />
-            <br />
-            Koodiklinikka on <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
+      .jumbo-container
+        .jumbo
+      .form-container
+        p.
+          Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
+          Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?<br />
+          <br />
+          Koodiklinikka on <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
 
-          #invite-form
-            h3 Liity mukaan
+        #invite-form
+          h3 Liity mukaan
 
       .footer
 
@@ -32,6 +36,3 @@ html
         img(style='position: absolute; top: 0; right: 0; border: 0;', src='https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67', alt='Fork me on GitHub', data-canonical-src='https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png')
 
     script(src='js/bundle.js')
-    script(src='//use.typekit.net/scb5xny.js')
-    script.
-      try{Typekit.load();}catch(e){};

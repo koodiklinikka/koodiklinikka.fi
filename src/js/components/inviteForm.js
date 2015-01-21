@@ -16,6 +16,26 @@ function render(props, state) {
     'has-error': state.error
   });
 
+  var feedbackMessage;
+
+  if(state.error || state.submitted) {
+    let messageText;
+
+    if(state.submitted) {
+      messageText = 'Kutsu lähetetty antamaasi sähköpostiosoitteeseen.';
+    } else if(state.error.status === 400) {
+      messageText = 'Tarkasta syöttämäsi sähköpostiosoite';
+    } else {
+      messageText = 'Jotain meni pieleen. Yritä hetken päästä uudelleen.';
+    }
+
+    feedbackMessage = (
+      <div className='invite-form--message'>
+        {messageText}
+      </div>
+    );
+
+  }
   return (
     <form className={formClasses} onsubmit={props.onSubmit}>
       <input
@@ -32,6 +52,7 @@ function render(props, state) {
         disabled={state.error || state.submitted}>
         ⏎
       </button>
+      {feedbackMessage}
     </form>
     )
 }
