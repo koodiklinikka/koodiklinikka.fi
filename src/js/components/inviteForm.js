@@ -4,37 +4,36 @@ var {h} = require('virtual-dom');
 var classList = require('../util/classList');
 
 function render(props, state) {
-  var emailInput = h('input', {
-    className: classList({
-      'input': true,
-      'has-success': state.submitted,
-      'has-error': state.error
-    }),
-    type: 'text',
-    name: 'email',
-    placeholder: 'Email',
-    value: state.email,
-    onkeydown: props.onChange
+  var formClasses = classList({
+    'invite-form': true,
+    'has-success': state.submitted,
+    'has-error': state.error
   });
 
-  var submitButton = h('button', {
-    className: 'btn btn__submit',
-    type: 'submit',
-    title: 'Lähetä',
-    disabled: state.error || state.submitted
-  }, '⏎');
+  var inputClasses = classList({
+    'input': true,
+    'has-success': state.submitted,
+    'has-error': state.error
+  });
 
-  return h('form', {
-    className: classList({
-      'invite-form': true,
-      'has-success': state.submitted,
-      'has-error': state.error
-    }),
-    onsubmit: props.onSubmit
-  }, [
-    emailInput,
-    submitButton
-  ]);
+  return (
+    <form className={formClasses} onsubmit={props.onSubmit}>
+      <input
+        className={inputClasses}
+        type='text'
+        name='email'
+        placeholder='email'
+        value={state.email}
+        onkeydown={props.onChange} />
+      <button
+        className='btn btn__submit'
+        type='submit'
+        title='Lähetä'
+        disabled={state.error || state.submitted}>
+        ⏎
+      </button>
+    </form>
+    )
 }
 
 module.exports = render;
