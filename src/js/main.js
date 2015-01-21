@@ -1,5 +1,6 @@
 'use strict';
 
+require('./ga');
 var request = require('axios');
 var form = document.getElementById('invite');
 
