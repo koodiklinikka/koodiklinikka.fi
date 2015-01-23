@@ -1,3 +1,5 @@
+@require '_input'
+@require '_button'
 linkColor = #3090de
 textColor = #444
 
@@ -15,80 +17,32 @@ h1, h2, h3
   margin-bottom 0.5em
   text-shadow 1px 1px 0 rgba(255, 255, 255, 0.2)
 
-.container
-  width 100%
-  height 100%
-  box-sizing border-box
+a
+  color linkColor
+  text-decoration none
+  &:hover
+    text-decoration underline
 
-@keyframes blur
-  0%
-    filter blur(0px)
-  100%
-    filter blur(3px)
-
-.jumbo-container
-  width 100%
-  height 100%
-  position relative
-  overflow hidden
+section
+  max-width 800px
+  margin auto
+  padding 2em 0
 
 .jumbo
-  position absolute
-  top -10px
-  bottom -10px
-  left -10px
-  right -10px
+  width 100%
+  height 90%
   background url('../images/jumbo.jpg')
   background-size cover
-  animation blur 10s
-  filter blur(3px)
+  display table
 
-.input
-  width 100%
-  height 45px
-  padding 1em
-  box-sizing border-box
-  font-size inherit
-  border 2px solid rgba(0, 0, 0, 0.3)
-  border-radius 5px
-  background transparent
-  color rgba(0, 0, 0, 0.5)
-  outline 0
-  &:focus
-    border 2px solid rgba(0, 0, 0, 0.4)
-    color rgba(0, 0, 0, 0.6)
-
-.input::-webkit-input-placeholder
-  color rgba(0, 0, 0, 0.3)
-
-.input:-moz-placeholder
-  color rgba(0, 0, 0, 0.3)
-  opacity  1
-
-.input::-moz-placeholder
-  color rgba(0, 0, 0, 0.3)
-  opacity 1
-
-.input:-ms-input-placeholder
-  color rgba(0, 0, 0, 0.3)
-
-.input.has-error
-  border-color rgba(226, 33, 112, 0.6)
-  color rgb(226, 33, 112)
-
-.btn
-  border-radius 3px
-  border 0
-  padding 1em
-  font-size 14px
-  outline 0
-  cursor pointer
-  &:disabled
-    opacity 0.6
-
-#invite-form
-  max-width 500px
-  margin auto
+  div
+    display table-cell
+    vertical-align middle
+    text-align center
+    padding 0 1em
+    h1
+      max-width 800px
+      margin auto
 
 .invite-form
   position relative
@@ -134,33 +88,18 @@ h1, h2, h3
     background rgb(226, 33, 112)
 
 .form-container
-  width 100%
+  margin auto
   padding 0 2em
   box-sizing border-box
-  max-width 700px
-  position absolute
-  top 50%
-  left 50%
-  transform translateY(-50%) translateX(-50%)
   p
     text-align center
-    margin-bottom 2em
     line-height 1.7em
-a
-  color linkColor
-  text-decoration none
-  &:hover
-    text-decoration underline
 
-.footer
-  font-size 1em
+footer
+  font-size 1.5em
   padding 0.5em
-  position absolute
-  bottom 0
   i
-    margin 0 5px
+    margin 0 0.30em
     font-size 1.5em
     color textColor
-    &:hover
-      color #fff
 
