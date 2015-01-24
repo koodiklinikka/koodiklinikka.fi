@@ -15,7 +15,7 @@ body, html
 h1, h2, h3
   margin 0
   margin-bottom 0.5em
-  text-shadow 1px 1px 0 rgba(255, 255, 255, 0.2)
+  text-shadow 1px 1px 0 rgba(255, 255, 255, 0.15)
 
 a
   color linkColor
@@ -23,14 +23,10 @@ a
   &:hover
     text-decoration underline
 
-section
-  max-width 800px
-  margin auto
-  padding 2em 0
-
 .jumbo
   width 100%
-  height 90%
+  height 100%
+  padding-bottom 200px
   background url('../images/jumbo.jpg')
   background-size cover
   display table
@@ -43,6 +39,17 @@ section
     h1
       max-width 800px
       margin auto
+
+section
+  background #fff
+
+.jumbo + section
+  margin-top -200px
+
+.row
+  max-width 800px
+  padding 2em 0
+  margin auto
 
 .invite-form
   position relative
@@ -89,6 +96,7 @@ section
 
 .form-container
   margin auto
+  margin-top 1em
   padding 0 2em
   box-sizing border-box
   p
@@ -98,8 +106,18 @@ section
 footer
   font-size 1.5em
   padding 0.5em
+  background textColor
+
   i
     margin 0 0.30em
     font-size 1.5em
-    color textColor
+    color #fff
 
+.fader
+  position fixed
+  bottom 0
+  left 0
+  width 100%
+  height 50px
+  background linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 99%,rgba(0,0,0,0.2) 100%)
+  pointer-events none

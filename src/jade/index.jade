@@ -6,6 +6,8 @@ html
     meta(name='description', content='Koodiklinikka on suomalainen Slack-yhteisö ohjelmistoalan harrastajille ja ammattilaisille.')
     meta(name='keywords', content='ohjelmointi,frontend,open source,devaus,suomi,javascript,clojure,go,java,node.js,io.js,angular.js,web')
     meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='apple-mobile-web-app-capable', content='yes')
     script(src='//use.typekit.net/scb5xny.js')
     script.
       try{Typekit.load();}catch(e){};
@@ -14,23 +16,25 @@ html
     .jumbo
       div
         h1 <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
+
     section
-
-      .form-container
-        #invite-form
-          h3 Tule mukaan
-        p.
-          Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
-          Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?
-          Koodiklinikka on <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille avoin softakehitykseen keskittynyt yhteisö.
-
+      .row
+        .form-container
+          #invite-form
+            h3 Tule mukaan
+          p.
+            Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
+            Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?
+            Koodiklinikka on <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille avoin softakehitykseen keskittynyt yhteisö.
 
     footer
-
       a(href='https://koodiklinikka.slack.com')
         i.fa.fa-slack
 
       a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
         i.fa.fa-github
+
+    .fader
+
 
     script(src='js/bundle.js')
