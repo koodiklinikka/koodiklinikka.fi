@@ -31,7 +31,7 @@ a
   background-size cover
   display table
 
-  div
+  .jumbo__container
     display table-cell
     vertical-align middle
     text-align center
@@ -39,7 +39,20 @@ a
     h1
       max-width 800px
       margin auto
-
+      @media screen and (max-width: 600px)
+        font-size 1.5em
+        margin-top 1em
+#logo
+  width 80px
+  height 80px
+  position absolute
+  top 1em
+  left 1em
+  background url('../images/logo.png')
+  background-size 100% 100%
+  @media screen and (max-width: 600px)
+    width 60px
+    height 60px
 section
   background #fff
 
