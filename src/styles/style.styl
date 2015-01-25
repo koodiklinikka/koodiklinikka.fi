@@ -16,7 +16,8 @@ h1, h2, h3
   margin 0
   margin-bottom 0.5em
   text-shadow 1px 1px 0 rgba(255, 255, 255, 0.15)
-
+p
+  margin 0
 a
   color linkColor
   text-decoration none
@@ -39,7 +40,7 @@ a
     h1
       max-width 800px
       margin auto
-      @media screen and (max-width: 600px)
+      @media screen and (max-width: 600px), screen and (max-height: 580px)
         font-size 1.5em
         margin-top 1em
 #logo
@@ -50,19 +51,36 @@ a
   left 1em
   background url('../images/logo.png')
   background-size 100% 100%
-  @media screen and (max-width: 600px)
+  @media screen and (max-width: 600px), screen and (max-height: 580px)
     width 60px
     height 60px
+
 section
   background #fff
+  padding 2em 0
 
 .jumbo + section
   margin-top -200px
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
+
 .row
-  max-width 800px
-  padding 2em 0
+  max-width 700px
   margin auto
+  overflow auto
+  padding 0 1em
+
+.column
+  float left
+  @media screen and (max-width: 700px)
+    float none
+
+.column1-2
+  width 50%
+  @media screen and (max-width: 700px)
+    width 100%
+
+#invite-form
+  margin-bottom 1em
 
 .invite-form
   position relative
@@ -107,14 +125,11 @@ section
   .invite-form--message
     background rgb(226, 33, 112)
 
-.form-container
-  margin auto
-  margin-top 1em
-  padding 0 2em
-  box-sizing border-box
-  p
-    text-align center
-    line-height 1.7em
+.member
+  width 60px
+  vertical-align middle
+  margin 3px
+  border-radius 3px
 
 footer
   font-size 1.5em

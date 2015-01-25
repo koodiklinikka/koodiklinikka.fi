@@ -10,3 +10,8 @@ React.render(
 React.render(
   require('./components/fader')(),
   document.getElementById('fader'));
+
+
+React.render(
+  require('./components/members')(),
+  document.getElementById('members'));

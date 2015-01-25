@@ -2,7 +2,7 @@
 
 var request = require('axios');
 var React = require('React/addons');
-var classSet = React.addons.classSet
+var classSet = React.addons.classSet;
 
 module.exports = React.createClass({
   getInitialState() {
