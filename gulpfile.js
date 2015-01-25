@@ -26,7 +26,8 @@ var config = {
   scripts: {
     source: './src/js/main.js',
     destination: './public/js/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    extensions: ['.jsx']
   },
   templates: {
     source: './src/jade/*.jade',
