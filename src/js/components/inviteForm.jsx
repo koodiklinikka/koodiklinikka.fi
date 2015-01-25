@@ -1,7 +1,7 @@
 'use strict';
 
 var request = require('axios');
-var React = require('React/addons');
+var React = require('react/addons');
 var classSet = React.addons.classSet;
 
 module.exports = React.createClass({

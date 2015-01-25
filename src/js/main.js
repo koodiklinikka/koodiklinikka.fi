@@ -1,7 +1,7 @@
 'use strict';
 require('./ga');
 
-var React = require('React');
+var React = require('react');
 
 React.render(
   require('./components/inviteForm')(),

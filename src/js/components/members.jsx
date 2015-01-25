@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('React');
+var React = require('react');
 var request = require('axios');
 
 var API_URL = 'https://api.github.com/orgs/koodiklinikka/public_members';

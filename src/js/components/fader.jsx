@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('React');
+var React = require('react');
 
 function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
