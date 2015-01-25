@@ -37,30 +37,31 @@ html
       #logo
       .jumbo__container
         h1 <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
+    .content
+      section
+        .row
+          h3 Tule mukaan
+          #invite-form
 
-    section
-      .row
-        h3 Tule mukaan
-        #invite-form
+      section
+        .row
+          .column.column1-2
+            p.
+              Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
+              Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?<br />
+              Koodiklinikka on kaikille avoin softakehitykseen keskittynyt yhteisö.<br />
+              <br />
+              Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
+          .column.column1-2
+            #members
+      footer
+        a(href='https://koodiklinikka.slack.com')
+          i.fa.fa-slack
 
-      .row
-        .column.column1-2
-          p.
-            Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
-            Onko koodissasi bugi joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?<br />
-            Koodiklinikka on kaikille avoin softakehitykseen keskittynyt yhteisö.<br />
-            <br />
-            Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
-        .column.column1-2
-          #members
-    footer
-      a(href='https://koodiklinikka.slack.com')
-        i.fa.fa-slack
-
-      a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
-        i.fa.fa-github
+        a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
+          i.fa.fa-github
+        a(href='https://twitter.com/koodiklinikka')
+          i.fa.fa-twitter
 
     #fader
-
-
     script(src='js/bundle.js')

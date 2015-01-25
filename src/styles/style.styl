@@ -17,7 +17,8 @@ h1, h2, h3
   margin-bottom 0.5em
   text-shadow 1px 1px 0 rgba(255, 255, 255, 0.15)
 p
-  margin-top 2em
+  margin-top 1em
+  line-height 1.5em
 a
   color linkColor
   text-decoration none
@@ -59,9 +60,14 @@ section
   background #fff
   padding 2em 0
 
-.jumbo + section
+.content
   margin-top -200px
+
+section:first-child
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
+  border-bottom 1px solid #EEEEEE
+  background #FCFCFC
+
 
 .row
   max-width 700px
@@ -71,6 +77,8 @@ section
 
 .column
   float left
+  padding 0 1em
+  box-sizing border-box
   @media screen and (max-width: 700px)
     float none
 
@@ -122,13 +130,15 @@ section
   .invite-form--message
     background rgb(226, 33, 112)
 
+
+.members
+  margin-top 1em
 .member
-  width 60px
+  width 57px
   vertical-align middle
   margin 3px
   border-radius 3px
-.members
-  margin-top 2em
+
 footer
   font-size 1.5em
   padding 0.5em

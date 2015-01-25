@@ -23,14 +23,16 @@ module.exports = React.createClass({
     var members = this.state.members.map(function(member) {
       var src = `${member.avatar_url}&s=120`;
       return (
-        <a href={member.html_url} target="_blank">
-          <img className="member" src={src} />
-        </a>
+        <img className='member' src={src} />
       );
     });
 
     return (
-      <div className="members">{members}</div>
+      <div className='members'>
+        <a href='https://github.com/koodiklinikka' target='_blank'>
+          {members}
+        </a>
+      </div>
     )
   }
 });
