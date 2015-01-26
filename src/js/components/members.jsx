@@ -3,7 +3,7 @@
 var React = require('react');
 var request = require('axios');
 
-var API_URL = 'https://api.github.com/orgs/koodiklinikka/public_members';
+var API_URL = '/api/members';
 
 module.exports = React.createClass({
   getInitialState() {
