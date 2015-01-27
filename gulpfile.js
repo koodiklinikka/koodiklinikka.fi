@@ -18,6 +18,7 @@ var browserify = require('browserify'),
     streamify = require('gulp-streamify'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
+    httpProxy = require('http-proxy'),
     watchify = require('watchify');
 
 var production = process.env.NODE_ENV === 'production';
@@ -105,9 +106,25 @@ gulp.task('assets', function() {
 });
 
 gulp.task('server', function() {
-  return require('http').createServer(ecstatic({
-    root: path.join(__dirname, 'public')
-  })).listen(9001);
+  var staticHandler = ecstatic({root: path.join(__dirname, 'public')});
+
+  var proxy = httpProxy.createProxyServer({
+    changeOrigin: true,
+    target: process.env.SERVER || 'http://koodiklinikka.fi/api'
+  });
+
+  proxy.on('error', function(err) {
+    return console.error(err);
+  });
+
+  return require('http').createServer(function(req, res) {
+    if(req.url.indexOf('/api') > -1) {
+      req.url = req.url.replace('/api', '');
+      proxy.web(req, res);
+      return;
+    }
+    staticHandler.apply(this, arguments);
+  }).listen(9001);
 });
 
 gulp.task('watch', function() {

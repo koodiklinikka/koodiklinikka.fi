@@ -1,4 +1,4 @@
-# KOODIKLINIKKA
+# Koodiklinikka
 
 ## Getting things up and running
 - Install [Node.js](http://nodejs.org)
@@ -9,7 +9,8 @@
  npm install
  npm start
  open http://localhost:9001 in your browser
-````
+```
+
 ### Enable LiveReload
 Install [LiveReload for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
 
@@ -22,9 +23,14 @@ Install [LiveReload for Chrome](https://chrome.google.com/webstore/detail/livere
     * Builds everything
 
 Minification, uglification and other tasks you're expected to run before deploying your product can be made by running the build command with env variable NODE_ENV set to "production"
-
-    NODE_ENV=production npm run build
-
+```
+NODE_ENV=production npm run build
+```
+## API server
+API proxy can be defined with **SERVER** environment variable.
+```
+SERVER=http://localhost:9000 npm start
+```
 ## Development guidelines
 * **public** - directory should be dedicated only to compiled/copied files from **src** - directory.
   It should be possible to delete directory completely and after **npm start** or **npm run build** everything should be as they were before the deletion.
