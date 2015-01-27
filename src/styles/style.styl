@@ -1,7 +1,9 @@
-@require '_input'
-@require '_button'
 linkColor = #3090de
 textColor = #444
+feedWidth = 500px
+
+@require '_input'
+@require '_button'
 
 body, html
   margin 0
@@ -11,6 +13,7 @@ body, html
   font-weight 400
   color textColor
   font-smoothing antialiased
+  box-sizing border-box
 
 h1, h2, h3
   margin 0
@@ -19,6 +22,8 @@ h1, h2, h3
 p
   margin-top 1em
   line-height 1.5em
+  font-size 16px
+  font-weight 300
 a
   color linkColor
   text-decoration none
@@ -28,6 +33,7 @@ a
 .jumbo
   width 100%
   height 100%
+  position relative
   padding-bottom 200px
   background url('../images/jumbo.jpg')
   background-size cover
@@ -62,6 +68,9 @@ section
 
 .content
   margin-top -200px
+  z-index 2
+  position relative
+  padding-right feedWidth
 
 section:first-child
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
@@ -133,6 +142,7 @@ section:first-child
 
 .members
   margin-top 1em
+
 .member
   width 57px
   vertical-align middle
@@ -148,6 +158,59 @@ footer
     margin 0 0.30em
     font-size 1.5em
     color #fff
+.feed
+  width feedWidth
+  height 100%
+  overflow auto
+  position absolute
+  top 0
+  right 0
+  z-index 5
+  background #fff
+  border-left 1px solid #E5E5E5
+  &::-webkit-scrollbar
+      display none
+
+.message
+  padding 1em
+  padding-right 2em
+  padding-bottom 0.5em
+  padding-top 0.6em
+
+  border-top 1px solid #E5E5E5
+  position relative
+  overflow auto
+
+.message__body
+  font-weight 300
+  font-size 16px
+
+.message__image
+  margin-top 4px
+  margin-right 10px
+  float left
+  width 50px
+
+.message__icon
+  margin 6px
+  font-size 20px
+  position absolute
+  top 0
+  right 0
+  .fa-twitter
+    color #55ACEE
+  .fa-github
+    color #333333
+  .fa-slack
+    color #DC005D
+
+.message__details
+  font-size 0.8em
+  margin-top 5px
+
+
+.message__meta
+  margin-left 0.5em
 
 .fader
   position fixed
@@ -155,5 +218,6 @@ footer
   left 0
   width 100%
   height 50px
-  background linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 99%,rgba(0,0,0,0.2) 100%)
+  background linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.15) 99%,rgba(0,0,0,0.15) 100%)
   pointer-events none
+  z-index 2

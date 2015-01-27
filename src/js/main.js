@@ -15,3 +15,8 @@ React.render(
 React.render(
   require('./components/members')(),
   document.getElementById('members'));
+
+
+React.render(
+  require('./components/feed')(),
+  document.getElementById('feed'));
