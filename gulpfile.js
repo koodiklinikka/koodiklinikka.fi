@@ -1,7 +1,6 @@
 'use strict';
 
 var browserify = require('browserify'),
-    chalk = require('chalk'),
     concat = require('gulp-concat'),
     CSSmin = require('gulp-minify-css'),
     ecstatic = require('ecstatic'),
@@ -13,7 +12,6 @@ var browserify = require('browserify'),
     livereload = require('gulp-livereload'),
     path = require('path'),
     prefix = require('gulp-autoprefixer'),
-    prettyTime = require('pretty-hrtime'),
     source = require('vinyl-source-stream'),
     streamify = require('gulp-streamify'),
     stylus = require('gulp-stylus'),
@@ -56,49 +54,60 @@ function handleError(err) {
 };
 
 gulp.task('scripts', function() {
-  var build, bundle;
-  bundle = browserify({
+
+  var bundle = browserify({
     entries: [config.scripts.source],
     extensions: config.scripts.extensions,
     debug: !production
-  });
-  build = bundle.bundle().on('error', handleError).pipe(source(config.scripts.filename));
+  })
+  .bundle()
+  .on('error', handleError)
+  .pipe(source(config.scripts.filename));
+
   if (production) {
-    build.pipe(streamify(uglify()));
+    bundle.pipe(streamify(uglify()));
   }
-  return build.pipe(gulp.dest(config.scripts.destination));
+
+  return bundle
+    .pipe(gulp.dest(config.scripts.destination));
 });
 
 gulp.task('templates', function() {
-  var pipeline;
-  pipeline = gulp.src(config.templates.source).pipe(jade({
+  return gulp.src(config.templates.source)
+  .pipe(jade({
     pretty: !production
-  })).on('error', handleError).pipe(gulp.dest(config.templates.destination));
-  if (!production) {
-    pipeline = pipeline.pipe(livereload({
-      auto: false
-    }));
-  }
-  return pipeline;
+  }))
+  .on('error', handleError)
+  .pipe(gulp.dest(config.templates.destination))
+  .pipe(livereload({
+    auto: false
+  }));
 });
 
 gulp.task('styles', function() {
-  var icons, styles;
-  styles = gulp.src(config.styles.source).pipe(stylus({
+
+  var styles = gulp.src(config.styles.source)
+  .pipe(stylus({
     'include css': true
   }));
-  icons = gulp.src(config.styles.icons).pipe(less());
-  styles = es.merge(styles, icons).pipe(concat(config.styles.filename)).on('error', handleError).pipe(prefix('last 2 versions', 'Chrome 34', 'Firefox 28', 'iOS 7'));
+
+  var icons = gulp.src(config.styles.icons)
+  .pipe(less());
+
+  styles = es.merge(styles, icons)
+    .pipe(concat(config.styles.filename))
+    .on('error', handleError)
+    .pipe(prefix('last 2 versions', 'Chrome 34', 'Firefox 28', 'iOS 7'));
+
   if (production) {
     styles = styles.pipe(CSSmin());
   }
-  styles = styles.pipe(gulp.dest(config.styles.destination));
-  if (!production) {
-    styles = styles.pipe(livereload({
+
+  return styles
+    .pipe(gulp.dest(config.styles.destination))
+    .pipe(livereload({
       auto: false
     }));
-  }
-  return styles;
 });
 
 gulp.task('assets', function() {
@@ -128,12 +137,13 @@ gulp.task('server', function() {
 });
 
 gulp.task('watch', function() {
-  var bundle;
   livereload.listen();
+
   gulp.watch(config.templates.watch, ['templates']);
   gulp.watch(config.styles.watch, ['styles']);
   gulp.watch(config.assets.watch, ['assets']);
-  bundle = watchify(browserify({
+
+  var bundle = watchify(browserify({
     entries: [config.scripts.source],
     extensions: config.scripts.extensions,
     debug: !production,
@@ -141,18 +151,18 @@ gulp.task('watch', function() {
     packageCache: {},
     fullPaths: true
   }));
+
   return bundle.on('update', function() {
-    var build, start;
-    gutil.log("Starting '" + (chalk.cyan('rebundle')) + "'...");
-    start = process.hrtime();
-    build = bundle.bundle().on('error', handleError).pipe(source(config.scripts.filename));
-    build.pipe(gulp.dest(config.scripts.destination)).pipe(livereload());
-    return gutil.log("Finished '" + (chalk.cyan('rebundle')) + "' after " + (chalk.magenta(prettyTime(process.hrtime(start)))));
+    gutil.log('Starting',  ' \'' + (gutil.colors.cyan('rebundle')) + '\'', '...');
+
+    bundle.bundle()
+      .on('error', handleError).pipe(source(config.scripts.filename))
+      .pipe(gulp.dest(config.scripts.destination))
+      .pipe(livereload());
+
   }).emit('update');
 });
 
 gulp.task('no-js', ['templates', 'styles', 'assets']);
-
 gulp.task('build', ['scripts', 'no-js']);
-
 gulp.task('default', ['watch', 'no-js', 'server']);
