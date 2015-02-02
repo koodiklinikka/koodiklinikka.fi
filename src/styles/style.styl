@@ -86,6 +86,7 @@ section:first-child
 
 .column
   float left
+  overflow auto
   padding 0 1em
   box-sizing border-box
   @media screen and (max-width: 700px)
@@ -95,6 +96,9 @@ section:first-child
   width 50%
   @media screen and (max-width: 700px)
     width 100%
+    margin-top 1em
+    &:first-child
+      margin-top 0
 
 .invite-form
   position relative
@@ -142,7 +146,7 @@ section:first-child
 
 .members
   margin-top 1em
-
+  margin-bottom 1em
 .member
   width 57px
   vertical-align middle
@@ -158,6 +162,7 @@ footer
     margin 0 0.30em
     font-size 1.5em
     color #fff
+
 .feed
   width feedWidth
   height 100%
@@ -171,11 +176,16 @@ footer
   &::-webkit-scrollbar
       display none
 
+@media screen and (max-width: 980px)
+  .feed
+    width 0
+  .content
+    padding-right 0
+
 .message
-  padding 1em
+  padding 0.5em 1em
   padding-right 2em
-  padding-bottom 0.5em
-  padding-top 0.6em
+  padding-left 4.5em
 
   border-top 1px solid #E5E5E5
   position relative
@@ -186,10 +196,10 @@ footer
   font-size 16px
 
 .message__image
-  margin-top 4px
-  margin-right 10px
-  float left
-  width 50px
+  width 2.5em
+  position absolute
+  left 1em
+  top 0.8em
 
 .message__icon
   margin 6px
@@ -206,9 +216,7 @@ footer
 
 .message__details
   font-size 0.8em
-  margin-top 5px
-
-
+  margin-top 0.3em
 .message__meta
   margin-left 0.5em
 

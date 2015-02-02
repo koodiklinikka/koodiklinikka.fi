@@ -8,6 +8,7 @@ var transformers = require('../util');
 
 function throwError(err) {
   setTimeout(() => {
+    console.log(err.stack);
     throw err;
   });
 }
@@ -29,7 +30,7 @@ module.exports = React.createClass({
       }
 
       this.setState({
-        messages: messages
+        messages: _(messages).sortBy('timestamp').reverse().value()
       });
     }).catch(throwError);
   },
@@ -59,18 +60,3 @@ module.exports = React.createClass({
     )
   }
 });
-        // <div className="message">
-        //   <img className="message__image" src={message.image} />
-        //   <div className="message__content">
-        //     <div className="message__body">{message.body}</div>
-        //     <div className="message__icon">
-        //       <i className={`fa fa-${message.type}`}></i>
-        //     </div>
-        //     <div className="message__details">
-        //       <span className="message__timestamp">
-        //         {require('timeago')(message.timestamp)}
-        //       </span>
-        //       <span className="message__meta">{message.meta}</span>
-        //     </div>
-        //   </div>
-        // </div>
