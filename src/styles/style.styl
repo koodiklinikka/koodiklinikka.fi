@@ -79,7 +79,7 @@ section:first-child
 
 
 .row
-  max-width 700px
+  max-width 800px
   margin auto
   overflow auto
   padding 0 1em
@@ -90,15 +90,20 @@ section:first-child
   padding 0 1em
   box-sizing border-box
   @media screen and (max-width: 700px)
-    float none
-
-.column1-2
-  width 50%
-  @media screen and (max-width: 700px)
     width 100%
+    float none
     margin-top 1em
     &:first-child
       margin-top 0
+
+.column3-5
+  width (100/5*3)%
+
+.column2-5
+  width (100/5*2)%
+
+.column1-2
+  width 50%
 
 .invite-form
   position relative
@@ -143,10 +148,10 @@ section:first-child
   .invite-form--message
     background rgb(226, 33, 112)
 
-
 .members
   margin-top 1em
   margin-bottom 1em
+
 .member
   width 57px
   vertical-align middle
