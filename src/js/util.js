@@ -12,7 +12,6 @@ module.exports = {
     var template = _.template(githubEvent.parse(item).text);
 
     var repository = `https://github.com/${item.repo.name}`;
-
     var branch;
     if(item.payload.ref) {
       branch = item.payload.ref.replace('refs/heads/', '');
@@ -27,6 +26,7 @@ module.exports = {
 
     return {
       image: item.actor.avatar_url,
+      imageLink: `//githubEvent.com/${item.actor.login}`,
       body: `${item.actor.login} ${message}`,
       timestamp: new Date(item.created_at),
       url: message.url,
@@ -34,8 +34,14 @@ module.exports = {
     };
   },
   twitter(item) {
+
+    if(item.retweeted) {
+      item = item.retweeted_status;
+    }
+
     return {
       image: item.user.profile_image_url,
+      imageLink: `//twitter.com/${item.user.screen_name}`,
       body: twitterText.autoLink(item.text),
       timestamp: new Date(item.created_at),
       type: 'twitter'

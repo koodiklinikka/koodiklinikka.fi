@@ -36,9 +36,16 @@ module.exports = React.createClass({
   },
   render() {
     var messages = this.state.messages.map((message) => {
+
+      var image = <img className="message__image" src={message.image} />;
+
+      if(message.imageLink) {
+        image = <a target="_blank" href={message.imageLink}>{image}</a>;
+      }
+
       return (
         <div className="message">
-          <img className="message__image" src={message.image} />
+          {image}
           <div className="message__content">
             <div className="message__body" dangerouslySetInnerHTML={{__html:message.body}}></div>
             <div className="message__icon">
