@@ -89,12 +89,6 @@ section:first-child
   overflow auto
   padding 0 1em
   box-sizing border-box
-  @media screen and (max-width: 700px)
-    width 100%
-    float none
-    margin-top 1em
-    &:first-child
-      margin-top 0
 
 .column3-5
   width (100/5*3)%
@@ -105,6 +99,13 @@ section:first-child
 .column1-2
   width 50%
 
+.column
+  @media screen and (max-width: 700px)
+    width 100%
+    float none
+    margin-top 1em
+    &:first-child
+      margin-top 0
 .invite-form
   position relative
   .btn
