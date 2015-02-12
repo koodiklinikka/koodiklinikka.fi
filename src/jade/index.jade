@@ -33,36 +33,37 @@ html
       try{Typekit.load();}catch(e){};
 
   body
-    .jumbo
-      #logo
-      video(autoplay, loop, poster='images/poster.jpg')
-        source(src='videos/jumbo.mp4', type='video/mp4')
+    .site
+      .container 
+        .jumbo
+          #logo
+          video(autoplay, loop, poster='images/poster.jpg')
+            source(src='videos/jumbo.mp4', type='video/mp4')
 
-      .jumbo__container
-        h1 <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
+          .jumbo__container
+            h1 <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
 
-    .content
-      section
-        .row
-          h3 Tule mukaan
-          #invite-form
+        .content
+          section
+            .row
+              h3 Tule mukaan
+              #invite-form
 
-      section
-        .row
-          .column.column3-5
-            p.
-              Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
-              Onko koodissasi bugi, joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?
-              Koodiklinikka on kaikille avoin softakehitykseen keskittynyt yhteisö.<br />
-              <br />
-              Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
-          .column.column2-5
-            #members
+          section
+            .row
+              .column.column3-5
+                p.
+                  Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
+                  Onko koodissasi bugi, joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?
+                  Koodiklinikka on kaikille avoin softakehitykseen keskittynyt yhteisö.<br />
+                  <br />
+                  Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
+              .column.column2-5
+                #members
 
 
 
-      #feed
-
+          #feed
 
 
     footer
@@ -73,7 +74,7 @@ html
         i.fa.fa-github
       a(href='https://twitter.com/koodiklinikka')
         i.fa.fa-twitter
+      
     #fader
-
 
     script(src='js/bundle.js')
