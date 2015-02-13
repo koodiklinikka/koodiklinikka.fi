@@ -27,14 +27,14 @@ html
     link(rel='icon', href='icons/favicon.ico')
     meta(name='msapplication-TileColor', content='#10558c')
     meta(name='msapplication-TileImage', content='icons/mstile-144x144.png')
-
+    meta(property='og:image', content='images/logo.png')
     script(src='//use.typekit.net/scb5xny.js')
     script.
       try{Typekit.load();}catch(e){};
 
   body
     .site
-      .container 
+      .container
         .jumbo
           #logo
           video(autoplay, loop, poster='images/poster.jpg')
@@ -74,7 +74,7 @@ html
         i.fa.fa-github
       a(href='https://twitter.com/koodiklinikka')
         i.fa.fa-twitter
-      
+
     #fader
 
     script(src='js/bundle.js')
