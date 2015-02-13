@@ -8,7 +8,7 @@
 [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun 
 * toiminnallisuuteen
 * designiin 
-* [HTTP-rajapintaan](http://git@github.com:koodiklinikka/koodiklinikka.fi-api.git)
+* [HTTP-rajapintaan](https://github.com/koodiklinikka/koodiklinikka.fi-api)
 * projektin hallintaan liittyviin asioihin
 
 Tai koko Koodiklinikkaan yleisesti.
