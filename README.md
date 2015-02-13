@@ -1,4 +1,25 @@
-# Koodiklinikka
+# Koodiklinikka 
+![Codeship badge](https://codeship.com/projects/543e75b0-7d87-0132-42d6-0658b99f7d58/status?branch=master)
+
+<img align="right" src="https://raw.githubusercontent.com/koodiklinikka/koodiklinikka.fi/master/src/assets/images/logo.png">
+
+**Koodiklinikka.fi lähdekoodi**. [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) ja [Pull Requestejä](https://github.com/koodiklinikka/koodiklinikka.fi/pulls) otetaan lämpimästi vastaan. Yritämme pitää kynnyksen kontribuoida projektiin alhaisena, jotta mahdollisimman moni pääsisi jättämään siihen jälkensä. Kaikki koodi katselmoidaan läpi ja mergetään projektiin kun näyttää hyvälle. Muutamasta mergetystä Pull Requestista oikeudet ylläpitää projektia.
+
+[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun 
+* toiminnallisuuteen
+* designiin 
+* [HTTP-rajapintaan](https://github.com/koodiklinikka/koodiklinikka.fi-api)
+* projektin hallintaan liittyviin asioihin
+
+Tai koko Koodiklinikkaan yleisesti.
+
+
+
+-----------------------------
+# Contributing
+
+This repository is automatically deployed by [Codeship](https://codeship.com) to a [Digital Ocean](http://digitalocean.com) droplet hosting [http://koodiklinikka.fi](http://koodiklinikka.fi).
+
 
 ## Getting things up and running
 - Install [Node.js](http://nodejs.org)
