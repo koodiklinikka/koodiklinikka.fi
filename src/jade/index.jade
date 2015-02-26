@@ -51,16 +51,26 @@ html
 
           section
             .row
-              .column.column3-5
-                p.
-                  Etsitkö tiimikavereita projektiisi? Kiinnostaako koodaaminen, mutta et tiedä mistä lähtisi liikkeelle?
-                  Onko koodissasi bugi, joka ei pitkän googlettamisen jälkeen ole vieläkään ratkennut?
-                  Koodiklinikka on kaikille avoin softakehitykseen keskittynyt yhteisö.<br />
-                  <br />
-                  Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
-              .column.column2-5
-                #members
+              .bread
+                .column.column4-5
+                  h3 Yhteisö ohjelmoinnista kiinnostuneille
+                  p.
+                    Koodiklinikka on yhteisö, joka kokoaa Suomen ohjelmistoalan työntekijät, harrastajat ja vasta-alkajat yhteen.
+                    Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
+                  p.
+                    Mukaan liittyminen on ilmaista ja helppoa. Jätä sähköpostiosoitteesi ylläolevaan kenttään ja lähetämme sinulle kutsun Slack-yhteisöömme.
+                .column.column1-5
+                  #members
 
+            .row
+              .bread
+                .column.column2-5.octocat
+                  img(src='images/octocat.png')
+                .column.column3-5
+                  h3 Avoin lähdekoodi
+                  p
+                    |Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on vapaasti saatavilla ja hyödynnettävissä <a href="https://github.com/koodiklinikka">Github-organisaatiomme sivulta</a>.
+                    |Organisaation jäseneksi otamme kaikki Slack-yhteisömme jäsenet ja kontribuutio projekteihimme otetaan lämpimästi vastaan.
 
 
           #feed
@@ -72,8 +82,11 @@ html
 
       a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
         i.fa.fa-github
+
       a(href='https://twitter.com/koodiklinikka')
         i.fa.fa-twitter
+
+      span#email
 
     #fader
 

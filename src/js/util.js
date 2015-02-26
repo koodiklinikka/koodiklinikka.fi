@@ -24,10 +24,14 @@ module.exports = {
       ref_type: item.payload.ref
     });
 
+    var url = `https://github.com/${item.actor.login}`;
+
     return {
+      user: item.actor.login,
+      userLink: url,
       image: item.actor.avatar_url,
-      imageLink: `//githubEvent.com/${item.actor.login}`,
-      body: `${item.actor.login} ${message}`,
+      imageLink: url,
+      body: message,
       timestamp: new Date(item.created_at),
       url: message.url,
       type: 'github'
@@ -39,9 +43,13 @@ module.exports = {
       item = item.retweeted_status;
     }
 
+    var url = `https://twitter.com/${item.user.screen_name}`;
+
     return {
+      user: `@${item.user.screen_name}`,
+      userLink: url,
       image: item.user.profile_image_url,
-      imageLink: `//twitter.com/${item.user.screen_name}`,
+      imageLink: url,
       body: twitterText.autoLink(item.text),
       timestamp: new Date(item.created_at),
       type: 'twitter'

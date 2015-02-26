@@ -20,3 +20,7 @@ React.render(
 React.render(
   require('./components/feed')(),
   document.getElementById('feed'));
+
+React.render(
+  require('./components/email')(),
+  document.getElementById('email'));
