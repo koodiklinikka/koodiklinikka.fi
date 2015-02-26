@@ -30,14 +30,14 @@ module.exports = React.createClass({
       }
 
       this.setState({
-        messages: _(messages).sortBy('timestamp').reverse().value()
+        messages: _(messages).sortBy('timestamp').reverse().value().slice(0, 40)
       });
     }).catch(throwError);
   },
   render() {
     var messages = this.state.messages.map((message) => {
 
-      var image = <img className="message__image" src={message.image} />;
+      var image = <img src={message.image} />;
 
       if(message.imageLink) {
         image = <a target="_blank" href={message.imageLink}>{image}</a>;
@@ -45,8 +45,11 @@ module.exports = React.createClass({
 
       return (
         <div className="message">
-          {image}
+          <div className="message__image">{image}</div>
           <div className="message__content">
+            <div className="message__user">
+              <a href={message.userLink}>{message.user}</a>
+            </div>
             <div className="message__body" dangerouslySetInnerHTML={{__html:message.body}}></div>
             <div className="message__icon">
               <i className={`fa fa-${message.type}`}></i>
