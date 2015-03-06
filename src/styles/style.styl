@@ -98,8 +98,7 @@ section
   padding-right feedWidth
   min-height 50vh
   box-sizing border-box
-  h3
-    margin-top 2em
+
   @media screen and (max-width: 700px)
     h3
       margin-top 0
@@ -109,7 +108,7 @@ section:first-child
   background #FCFCFC
 
 .row
-  max-width 800px
+  max-width 850px
   margin auto
   overflow auto
   padding 0 2em
@@ -127,6 +126,9 @@ section:first-child
     padding-left 0
   &:last-child
     padding-right 0
+
+  img:first-child
+    max-width 100%
 
 .column3-5
   width (100/5*3)%
@@ -188,13 +190,11 @@ section:first-child
     background rgb(226, 33, 112)
 
 .members
-  width 200px
-  display inline-block
   a
     display inline-block
 
 .member
-  width 40px
+  width 30px
   vertical-align middle
   margin 3px
   border-radius 3px
@@ -291,11 +291,6 @@ footer
   pointer-events none
   z-index 2
 
-.octocat
-  text-align center
-  img
-    width 100%
-    max-width 300px
 .bread
   display table
   width 100%
