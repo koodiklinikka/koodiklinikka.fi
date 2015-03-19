@@ -35,13 +35,13 @@ html
   body
     .site
       .container
-        .jumbo
-          #logo
-          video(autoplay, loop, poster='images/poster.jpg')
+        .header
+          video(autoplay, loop, poster='images/poster.jpg', class='header__video-bg')
             source(src='videos/jumbo.mp4', type='video/mp4')
-
-          .jumbo__container
-            h1 <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille.
+          .header__container
+            .header__headline
+              .header__logo
+              h1.header__title <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja&nbsp;ammattilaisille.
 
         .content
           section
