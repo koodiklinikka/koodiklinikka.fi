@@ -21,7 +21,8 @@ module.exports = {
       repository: `<a target="_blank" href="${repository}">${item.repo.name}</a>`,
       branch: branch,
       number: item.payload.number,
-      ref_type: item.payload.ref
+      ref_type: item.payload.ref_type,
+      ref: item.payload.ref
     });
 
     var url = `https://github.com/${item.actor.login}`;
