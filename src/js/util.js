@@ -49,7 +49,7 @@ module.exports = {
     return {
       user: `@${item.user.screen_name}`,
       userLink: url,
-      image: item.user.profile_image_url,
+      image: item.user.profile_image_url_https,
       imageLink: url,
       body: twitterText.autoLink(item.text),
       timestamp: new Date(item.created_at),
