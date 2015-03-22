@@ -119,7 +119,7 @@ gulp.task('server', function() {
 
   var proxy = httpProxy.createProxyServer({
     changeOrigin: true,
-    target: process.env.SERVER || 'http://koodiklinikka.fi/api'
+    target: process.env.SERVER || 'https://koodiklinikka.fi/api'
   });
 
   proxy.on('error', function(err) {
