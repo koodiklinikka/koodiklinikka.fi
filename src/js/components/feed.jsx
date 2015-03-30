@@ -35,7 +35,7 @@ module.exports = React.createClass({
     }).catch(throwError);
   },
   render() {
-    var messages = this.state.messages.map((message) => {
+    var messages = this.state.messages.map((message, i) => {
 
       var image = <img src={message.image} />;
 
@@ -44,7 +44,7 @@ module.exports = React.createClass({
       }
 
       return (
-        <div className="message">
+        <div className="message" key={i}>
           <div className="message__image">{image}</div>
           <div className="message__content">
             <div className="message__user">

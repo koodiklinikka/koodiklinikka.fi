@@ -3,24 +3,30 @@ require('./ga');
 
 var React = require('react');
 
+var inviteForm = React.createFactory(require('./components/inviteForm'));
+var fader = React.createFactory(require('./components/fader'));
+var members = React.createFactory(require('./components/members'));
+var feed = React.createFactory(require('./components/feed'));
+var email = React.createFactory(require('./components/email'));
+
 React.render(
-  require('./components/inviteForm')(),
+  inviteForm(),
   document.getElementById('invite-form'));
 
 React.render(
-  require('./components/fader')(),
+  fader(),
   document.getElementById('fader'));
 
 
 React.render(
-  require('./components/members')(),
+  members(),
   document.getElementById('members'));
 
 
 React.render(
-  require('./components/feed')(),
+  feed(),
   document.getElementById('feed'));
 
 React.render(
-  require('./components/email')(),
+  email(),
   document.getElementById('email'));

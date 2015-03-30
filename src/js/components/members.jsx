@@ -21,10 +21,10 @@ module.exports = React.createClass({
   },
   render() {
 
-    var members = this.state.members.map(function(member) {
+    var members = this.state.members.map(function(member, i) {
       var src = `${member.avatar_url}&s=120`;
       return (
-        <img className='member' src={src} />
+        <img className="member" key={i} src={src} />
       );
     });
 
