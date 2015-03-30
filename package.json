@@ -21,7 +21,8 @@
     "parse-github-event": "^0.2.0",
     "react": "^0.12.2",
     "timeago": "^0.2.0",
-    "twitter-text": "^1.11.0"
+    "twitter-text": "^1.11.0",
+    "http-server": "^0.8.0"
   },
   "devDependencies": {
     "6to5ify": "^3.1.2",
