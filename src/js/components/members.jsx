@@ -4,7 +4,7 @@ var React = require('react');
 var request = require('axios');
 var _ = require('lodash');
 
-var API_URL = '/api/members';
+var api = require('../api');
 
 module.exports = React.createClass({
   getInitialState() {
@@ -13,7 +13,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount() {
-    request.get(API_URL).then(function(res) {
+    request.get(api('members')).then(function(res) {
       this.setState({
         members: _.shuffle(res.data)
       });

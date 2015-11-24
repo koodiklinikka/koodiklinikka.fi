@@ -5,6 +5,7 @@ var request = require('axios');
 var _ = require('lodash');
 
 var transformers = require('../util');
+var api = require('../api');
 
 function throwError(err) {
   setTimeout(() => {
@@ -20,7 +21,7 @@ module.exports = React.createClass({
     };
   },
   componentDidMount() {
-    request.get('/api/feeds').then((res) => {
+    request.get(api('feeds')).then((res) => {
 
       var feeds = res.data;
       var messages = [];

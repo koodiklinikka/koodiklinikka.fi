@@ -32,6 +32,7 @@
     "deamdify": "^0.1.1",
     "debowerify": "~0.9.1",
     "ecstatic": "~0.5.3",
+    "envify": "^3.4.0",
     "event-stream": "^3.2.1",
     "faker": "^2.1.2",
     "gulp": "~3.8.1",
@@ -62,7 +63,8 @@
       "reactify",
       "6to5ify",
       "debowerify",
-      "deamdify"
+      "deamdify",
+      "envify"
     ]
   }
 }

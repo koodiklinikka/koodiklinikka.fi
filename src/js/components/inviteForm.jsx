@@ -4,6 +4,8 @@ var request = require('axios');
 var React = require('react/addons');
 var classSet = React.addons.classSet;
 
+var api = require('../api');
+
 module.exports = React.createClass({
   getInitialState() {
     return {
@@ -22,7 +24,7 @@ module.exports = React.createClass({
       error: null
     });
 
-    request.post('/api/invites', {
+    request.post(api('invites'), {
       email: this.state.email
     })
     .then(this.handleSuccess)
