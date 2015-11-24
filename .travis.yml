@@ -1,0 +1,8 @@
+script: bash ./deploy.sh
+language: node_js
+node_js:
+- '5.0'
+env:
+  global:
+  - GH_REF: github.com/koodiklinikka/koodiklinikka.fi.git
+  - secure: "SdxYBRMcnZgohaudCwojqmLcUjwrwoxdNuW1u2pHuYCh6/KXhnl8wvKbqCur5nY1y2o6XH4oiqUX6fauyn5MKrqRjE0iEGAioSRqs5yIRGCk0nIN7H37JknH5knbQBix5PI2lyzAoogWlcSNIwwYeBem5L/fEvgKSLqQ6XMry5k="
