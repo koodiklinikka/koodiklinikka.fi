@@ -9,6 +9,7 @@ module.exports = React.createClass({
     return {
       email: '',
       submitted: false,
+      sending: false,
       error: null
     };
   },
@@ -17,6 +18,7 @@ module.exports = React.createClass({
 
     this.setState({
       submitted: false,
+      sending: true,
       error: null
     });
 
@@ -27,10 +29,10 @@ module.exports = React.createClass({
     .catch(this.handleError);
   },
   handleSuccess() {
-    this.setState({submitted: true});
+    this.setState({submitted: true, sending: false});
   },
   handleError(err) {
-    this.setState({error: err});
+    this.setState({error: err, sending: false});
   },
   onChange(e) {
     if(e.target.value === this.state.email) {
@@ -46,7 +48,8 @@ module.exports = React.createClass({
     var formClasses = classSet({
       'invite-form': true,
       'has-success': this.state.submitted,
-      'has-error': this.state.error
+      'has-error': this.state.error,
+      'sending': this.state.sending
     });
 
     var inputClasses = classSet({
@@ -91,6 +94,9 @@ module.exports = React.createClass({
           disabled={this.state.error || this.state.submitted}>
           ⏎
         </button>
+        <span
+          className='loader'>
+        </span>
         {feedbackMessage}
       </form>
       )
