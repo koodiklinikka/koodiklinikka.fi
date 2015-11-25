@@ -10,6 +10,7 @@ npm run build
 
 # go to the public directory and create a *new* Git repo
 cd public
+echo "koodiklinikka.fi" >> CNAME
 git init
 
 # inside this git repo we'll pretend to be a new user
