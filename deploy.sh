@@ -6,7 +6,6 @@ rm -rf public || exit 0;
 mkdir public;
 
 # run our compile script, discussed above
-npm install
 npm run build
 
 # go to the public directory and create a *new* Git repo
