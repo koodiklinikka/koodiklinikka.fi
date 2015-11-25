@@ -9,6 +9,10 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='apple-mobile-web-app-capable', content='yes')
 
+    script.
+      if(location.hostname === 'koodiklinikka.fi' && location.protocol !== 'https') {
+        location.protocol = 'https';
+      }
     link(rel='apple-touch-icon', sizes='57x57', href='icons/apple-touch-icon-57x57.png')
     link(rel='apple-touch-icon', sizes='114x114', href='icons/apple-touch-icon-114x114.png')
     link(rel='apple-touch-icon', sizes='72x72', href='icons/apple-touch-icon-72x72.png')
