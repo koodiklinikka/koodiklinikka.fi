@@ -1,5 +1,5 @@
-# Koodiklinikka 
-![Codeship badge](https://codeship.com/projects/543e75b0-7d87-0132-42d6-0658b99f7d58/status?branch=master)
+# Koodiklinikka
+![Travis](https://travis-ci.org/koodiklinikka/koodiklinikka.fi.svg?branch=master)
 
 <img align="right" src="https://raw.githubusercontent.com/koodiklinikka/koodiklinikka.fi/master/src/assets/images/logo.png">
 
