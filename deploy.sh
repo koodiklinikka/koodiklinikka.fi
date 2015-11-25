@@ -6,7 +6,7 @@ rm -rf public || exit 0;
 mkdir public;
 
 # run our compile script, discussed above
-npm run build
+NODE_ENV=production npm run build
 
 # go to the public directory and create a *new* Git repo
 cd public
