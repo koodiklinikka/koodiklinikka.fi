@@ -67,8 +67,10 @@ module.exports = React.createClass({
 
       if(this.state.submitted) {
         messageText = 'Kutsu lähetetty antamaasi sähköpostiosoitteeseen.';
-      } else if(this.state.error.status === 400) {
+      } else if(this.state.error.status === 400 && this.state.error.data === 'invalid_email') {
         messageText = 'Tarkasta syöttämäsi sähköpostiosoite';
+      } else if(this.state.error.status === 400 && this.state.error.data === 'already_invited') {
+        messageText = 'Sähköpostiosoitteeseen on jo lähetetty kutsu';
       } else {
         messageText = 'Jotain meni pieleen. Yritä hetken päästä uudelleen.';
       }
