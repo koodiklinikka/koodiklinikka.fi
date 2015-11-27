@@ -5,54 +5,43 @@
 
 **Koodiklinikka.fi lähdekoodi**. [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) ja [Pull Requestejä](https://github.com/koodiklinikka/koodiklinikka.fi/pulls) otetaan lämpimästi vastaan. Yritämme pitää kynnyksen kontribuoida projektiin alhaisena, jotta mahdollisimman moni pääsisi jättämään siihen jälkensä. Kaikki koodi katselmoidaan läpi ja mergetään projektiin kun näyttää hyvälle. Muutamasta mergetystä Pull Requestista oikeudet ylläpitää projektia.
 
-[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun 
+[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun
 * toiminnallisuuteen
-* designiin 
+* designiin
 * [HTTP-rajapintaan](https://github.com/koodiklinikka/koodiklinikka.fi-api)
 * projektin hallintaan liittyviin asioihin
 
 Tai koko Koodiklinikkaan yleisesti.
 
 
-
 -----------------------------
-# Contributing
-
-This repository is automatically deployed by [Codeship](https://codeship.com) to a [Digital Ocean](http://digitalocean.com) droplet hosting [http://koodiklinikka.fi](http://koodiklinikka.fi).
-
 
 ## Getting things up and running
 - Install [Node.js](http://nodejs.org)
 
 ```
- git clone git@github.com:koodiklinikka/koodiklinikka.fi.git <your project name>
+ git clone git@github.com:leonidas/gulp-project-template.git <your project name>
  cd <your project name>
  npm install
  npm start
  open http://localhost:9001 in your browser
 ```
 
-### Enable LiveReload
-Install [LiveReload for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
-
 ## CLI Commands
 * npm install
-    * Installs server-side dependencies from NPM and client-side dependencies from Bower
+    * Installs server-side dependencies from npm
 * npm start
     * Compiles your files, starts watching files for changes, serves static files to port 9001
 * npm run build
     * Builds everything
 
+# Production build
 Minification, uglification and other tasks you're expected to run before deploying your product can be made by running the build command with env variable NODE_ENV set to "production"
-```
-NODE_ENV=production npm run build
-```
-## API server
-API proxy can be defined with **SERVER** environment variable.
-```
-SERVER=http://localhost:9000 npm start
-```
+
+    NODE_ENV=production npm run build
+
 ## Development guidelines
-* **public** - directory should be dedicated only to compiled/copied files from **src** - directory.
+#### Directory structure
+
+**public** - directory should be dedicated only to compiled/copied files from **src** - directory.
   It should be possible to delete directory completely and after **npm start** or **npm run build** everything should be as they were before the deletion.
-* All backend dependencies should be installed with **npm**. Browser dependencies should be installed with **bower** or with **npm**.
