@@ -1,8 +1,8 @@
 'use strict';
 
 var request = require('axios');
-var React = require('react/addons');
-var classSet = React.addons.classSet;
+var React = require('react');
+var classSet = require('classnames');
 
 var api = require('../api');
 

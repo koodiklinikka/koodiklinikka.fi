@@ -21,7 +21,7 @@
     "http-server": "^0.8.0",
     "lodash": "^3.9.1",
     "parse-github-event": "^0.2.0",
-    "react": "^0.12.2",
+    "react": "^0.13.3",
     "timeago": "^0.2.0",
     "twitter-text": "^1.11.0"
   },
