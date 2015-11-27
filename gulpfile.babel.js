@@ -1,23 +1,25 @@
 import browserify from 'browserify';
 import browserSync from 'browser-sync';
 import duration from 'gulp-duration';
+import es from 'event-stream';
+import exorcist from 'exorcist';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
+import inject from 'gulp-inject';
 import jade from 'gulp-jade';
+import less from 'gulp-less';
 import notifier from 'node-notifier';
 import path from 'path';
 import prefix from 'gulp-autoprefixer';
 import rev from 'gulp-rev';
 import source from 'vinyl-source-stream';
-import exorcist from 'exorcist';
-import transform from 'vinyl-transform';
 import sourcemaps from 'gulp-sourcemaps';
 import streamify from 'gulp-streamify';
 import stylus from 'gulp-stylus';
+import transform from 'vinyl-transform';
 import uglify from 'gulp-uglify';
-import watchify from 'watchify';
 import watch from 'gulp-watch';
-import inject from 'gulp-inject';
+import watchify from 'watchify';
 
 /*eslint "no-process-env":0 */
 const production = process.env.NODE_ENV === 'production';
@@ -26,7 +28,7 @@ const config = {
   source: './src',
   destination: './public',
   scripts: {
-    source: './src/main.js',
+    source: './src/js/main.js',
     destination: './public/js/',
     extensions: ['.jsx'],
     filename: 'bundle.js'
@@ -38,12 +40,13 @@ const config = {
     revision: './public/**/*.html'
   },
   styles: {
-    source: './src/style.styl',
-    watch: './src/**/*.styl',
+    source: './src/styles/style.styl',
+    watch: './src/styles/**/*.styl',
+    icons: './src/styles/icons.less',
     destination: './public/css/'
   },
   assets: {
-    source: './src/assets/**/*.*',
+    source: ['./src/assets/**/*.*', './node_modules/font-awesome/fonts*/*.*'],
     watch: './src/assets/**/*.*',
     destination: './public/'
   },
@@ -116,11 +119,14 @@ gulp.task('styles', () => {
     pipeline = pipeline.pipe(sourcemaps.init());
   }
 
-  pipeline = pipeline.pipe(stylus({
+  const icons = gulp.src(config.styles.icons)
+    .pipe(less());
+
+  pipeline = es.merge(icons, pipeline.pipe(stylus({
     'include css': true,
     paths: ['node_modules', path.join(__dirname, config.source)],
     compress: production
-  }))
+  })))
   .on('error', handleError)
   .pipe(prefix('last 2 versions', 'Chrome 34', 'Firefox 28', 'iOS 7'));
 

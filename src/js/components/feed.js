@@ -21,14 +21,16 @@ module.exports = React.createClass({
     };
   },
   componentDidMount() {
-    request.get(api('feeds')).then((res) => {
+    request.get(api('feeds'))
 
-      var feeds = res.data;
-      var messages = [];
-      for(var type in feeds) {
-        var feedMessages = feeds[type].map(transformers[type]);
-        messages = messages.concat(feedMessages);
-      }
+    .then((res) => {
+
+      const messages = _(res.data)
+        .map((messages, type) => messages.map(transformers[type]))
+        .flatten()
+        .value();
+
+      console.log(messages);
 
       this.setState({
         messages: _(messages).sortBy('timestamp').reverse().value().slice(0, 40)
