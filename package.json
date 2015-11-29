@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "axios": "^0.4.2",
+    "classnames": "^2.2.1",
     "font-awesome": "^4.4.0",
     "http-server": "^0.8.0",
     "lodash": "^3.9.1",
