@@ -25,7 +25,7 @@ module.exports = React.createClass({
     });
 
     request.post(api('invites'), {
-      email: this.state.email
+      email: this.state.email.trim()
     })
     .then(this.handleSuccess)
     .catch(this.handleError);
