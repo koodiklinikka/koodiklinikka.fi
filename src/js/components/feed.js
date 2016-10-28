@@ -30,8 +30,6 @@ module.exports = React.createClass({
         .flatten()
         .value();
 
-      console.log(messages);
-
       this.setState({
         messages: _(messages).sortBy('timestamp').reverse().value().slice(0, 40)
       });
