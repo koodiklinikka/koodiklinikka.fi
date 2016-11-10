@@ -5,32 +5,40 @@
 
 **Koodiklinikka.fi lähdekoodi**. [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) ja [Pull Requestejä](https://github.com/koodiklinikka/koodiklinikka.fi/pulls) otetaan lämpimästi vastaan. Yritämme pitää kynnyksen kontribuoida projektiin alhaisena, jotta mahdollisimman moni pääsisi jättämään siihen jälkensä. Kaikki koodi katselmoidaan läpi ja mergetään projektiin kun näyttää hyvälle. Muutamasta mergetystä Pull Requestista oikeudet ylläpitää projektia.
 
-[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun
+[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun:
 * toiminnallisuuteen
 * designiin
 * [HTTP-rajapintaan](https://github.com/koodiklinikka/koodiklinikka.fi-api)
 * projektin hallintaan liittyviin asioihin
-
-Tai koko Koodiklinikkaan yleisesti.
+* tai koko Koodiklinikkaan yleisesti.
 
 
 -----------------------------
 
 ## Projektin asennus
-- Asenna [Node.js](http://nodejs.org)
 
-```
+- Asenna [Node.js](http://nodejs.org)
+- Kloonaa projekti koneellesi:
+
+  ```
  git clone git@github.com:koodiklinikka/koodiklinikka.fi.git
- cd koodiklinikka.fi
- npm install
- npm start
- avaa http://localhost:9001 selaimessasi
 ```
+
+- Käynnistä kehitystila:
+
+   ```
+  cd koodiklinikka.fi
+  npm install
+  npm start
+```
+
+- Avaa selaimessasi: [`http://localhost:9001`](http://localhost:9001)
+
 
 ## Komennot
-* npm install
+* `npm install`
     * asentaa projektin riippuvuudet
-* npm start
-    * kääntää lähdetiedostot ja palvelee sovellusta porttiin 9001
-* npm run build
+* `npm start`
+    * kääntää lähdetiedostot ja palvelee sovellusta porttiin `9001`
+* `npm run build`
     * kääntää lähdetiedostot
