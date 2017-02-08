@@ -166,23 +166,53 @@ section:first-child
   border-radius 3px
 
 footer
-  height footerHeight
-  line-height footerHeight
-  padding 0.5em
-  padding-right 1em
+  padding 0.5em 1em
   z-index 2
   border-top 1px solid #ECECEC
   font-size 1.5em
+  display flex
+  justify-content space-between
+  flex-wrap wrap
+  text-align center
+  @media screen and (max-width: 760px)
+    display block
   i
     margin 0 0.30em
     font-size 1.5em
 
+.contacts
+  line-height normal
+  text-align center
+  display flex
+  flex-direction column
+  justify-content center
+  @media screen and (max-width: 760px)
+    margin-top 1em
+
+.sponsors
+  text-align center
+  display inline-block
+
+.sponsors__label
+  color #ccc
+  font-size 12px
+  text-align left
+
 #email
   font-size .85rem
-  float right
-
   @media screen and (min-width: 400px)
     font-size 1rem
+
+.sponsor
+  height 40px
+  margin-right 1em
+  vertical-align middle
+  @media screen and (max-width: 760px)
+    margin-top 1em
+
+
+.sponsor__futurice, .sponsor__metosin, .sponsor__leonidas
+  height 30px
 
 .feed
   width feedWidth

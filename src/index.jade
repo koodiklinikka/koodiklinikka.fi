@@ -86,19 +86,32 @@ html
 
 
       footer
-        a(href='https://koodiklinikka.slack.com')
-          i.fa.fa-slack
+        .sponsors
+          .sponsors__label Yhteistyössä
+          a(href='http://futurice.com/', target='_blank')
+            img.sponsor.sponsor__futurice(src='images/futurice.svg')
+          a(href='http://www.metosin.fi/', target='_blank')
+            img.sponsor.sponsor__metosin(src='images/metosin.svg')
+          a(href='https://www.solita.fi/', target='_blank')
+            img.sponsor(src='images/solita.svg')
+          a(href='http://leonidasoy.fi/', target='_blank')
+            img.sponsor.sponsor__leonidas(src='images/leonidas.png')
 
-        a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
-          i.fa.fa-github
+        .contacts
+          div
+            a(href='https://koodiklinikka.slack.com')
+              i.fa.fa-slack
 
-        a(href='https://twitter.com/koodiklinikka')
-          i.fa.fa-twitter
+            a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
+              i.fa.fa-github
 
-        a(href='https://www.facebook.com/koodiklinikka')
-          i.fa.fa-facebook
+            a(href='https://twitter.com/koodiklinikka')
+              i.fa.fa-twitter
 
-        span#email
+            a(href='https://www.facebook.com/koodiklinikka')
+              i.fa.fa-facebook
+            div#email
+
 
     #fader
     // inject:js
