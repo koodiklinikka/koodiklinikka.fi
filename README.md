@@ -21,7 +21,7 @@
 - Kloonaa projekti koneellesi:
 
   ```
- git clone git@github.com:koodiklinikka/koodiklinikka.fi.git
+ git clone https://github.com/koodiklinikka/koodiklinikka.fi.git
 ```
 
 - Käynnistä kehitystila:
