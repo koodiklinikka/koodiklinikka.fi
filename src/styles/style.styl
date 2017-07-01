@@ -51,13 +51,15 @@ section
 .content
   z-index 2
   position relative
-  padding-right feedWidth
   min-height 50vh
   box-sizing border-box
 
   @media screen and (max-width: 700px)
     h3
       margin-top 0
+
+  &.with-feed
+    padding-right feedWidth
 section:first-child
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
   border-bottom 1px solid #EEEEEE
