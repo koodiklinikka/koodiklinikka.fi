@@ -5,7 +5,7 @@ var React = require('react');
 var classSet = require('classnames');
 var api = require('../api');
 
-var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+var stripe = Stripe('pk_test_OmNve9H1OuORlmD4rblpjgzh');
 var elements = stripe.elements();
 var card = elements.create('card', {
   style: {
@@ -55,15 +55,26 @@ module.exports = React.createClass({
         error: null
       })
 
-      // tää siirretään .theniin
-      this.setState({
-        sending: false,
-      })
+      console.log(result.token);
 
-      this.props.onPaymentSuccess();
+      request.post(api('membership'), {
+        stripeToken: result.token.id,
+        email: this.props.payerEmail
+      })
+      .then(() => {
+        this.setState({
+          sending: false
+        });
+        this.props.onPaymentSuccess();
+      })
+      .catch((e) => {
+        //TODO :errorhandling
+      });
+
     } else if (result.error) {
       this.setState({
-        error: stripeErrMessages[result.error.code] || result.error.message
+        error: stripeErrMessages[result.error.code] || result.error.message,
+        sending: false
       });
     }
   },
@@ -82,7 +93,7 @@ module.exports = React.createClass({
 
     var form = document.querySelector('form');
     var extraDetails = {
-      name: "My Name",
+      name: this.props.payerName,
     };
     stripe.createToken(card, extraDetails).then(this.setOutcome);
   },
@@ -92,6 +103,7 @@ module.exports = React.createClass({
       'form': true,
       'stripe-form': true,
       'has-error': this.state.error,
+      'sending': this.state.sending
     });
 
     var feedbackMessage;
@@ -111,6 +123,9 @@ module.exports = React.createClass({
         <span className='name'>{this.props.payerName}</span>
         <div id='card-element'></div>
         <button className='btn btn__submit' type='submit'>Maksa 10€</button>
+        <span
+          className='loader'>
+        </span>
       </form>
     )
   }

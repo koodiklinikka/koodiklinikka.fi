@@ -32,6 +32,7 @@ module.exports = React.createClass({
     });
 
     this.handleInfoFormSuccess();
+    //TODO handleError
   },
   handleInfoFormSuccess() {
     this.setState({submitted: true, sending: false, infoFormSuccess: true});
@@ -51,7 +52,7 @@ module.exports = React.createClass({
     });
   },
   handlePaymentSuccess() {
-    this.setState({paymentSuccess: true})
+    this.setState({paymentSuccess: true});
   },
   render() {
     var formClasses = classSet({
@@ -139,12 +140,12 @@ module.exports = React.createClass({
     } else if (this.state.infoFormSuccess && !this.state.paymentSuccess) {
       return (
         <div>
-          <StripeCheckout payerName={this.state.name} onPaymentSuccess={this.handlePaymentSuccess}></StripeCheckout>
+          <StripeCheckout payerName={this.state.name} payerEmail={this.state.email} onPaymentSuccess={this.handlePaymentSuccess}></StripeCheckout>
         </div>
       )
     } else {
       return (
-        <p> Onnee!
+        <p> Tervetuloa jäseneksi!
         </p>
       )
     }

@@ -115,9 +115,14 @@ section:first-child
     color rgba(255, 255, 255, 0.9)
   .loader
     background transparent url('../images/ajax-loader.gif') no-repeat center center
-    display block
+    display none
   &.sending
+    .btn
+      display none
     .loader
+      display block
+      margin-left auto
+      margin-right auto
       width 28px
       height 28px
 
@@ -137,14 +142,10 @@ section:first-child
     position absolute
     right 9px
     top 9px
-    width 0px
-    height 0px
     background transparent url('../images/ajax-loader.gif') no-repeat center center
-    display block
   &.sending
-    .btn
-      display none
     .loader
+      display block
       width 28px
       height 28px
 
