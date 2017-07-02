@@ -112,6 +112,7 @@ section:first-child
   .btn
     background linkColor
     border-bottom 2px solid #117280
+    color rgba(255, 255, 255, 0.9)
   .loader
     background transparent url('../images/ajax-loader.gif') no-repeat center center
     display block
@@ -152,7 +153,14 @@ section:first-child
     margin 8px 0px
   .btn
     margin-top 12px
-    color rgba(255, 255, 255, 0.9)
+
+.stripe-form
+  margin 20px 0px
+  .name
+    margin-top 20px
+    text-align left
+    display block
+    color rgba(0, 0, 0, 0.4)
 
 @keyframes drop
   0%
@@ -166,7 +174,7 @@ section:first-child
   100%
     transform rotateX(0deg)
 
-.invite-form--message
+.form--message
   background linkColor
   color #fff
   line-height 40px
@@ -176,8 +184,8 @@ section:first-child
   transform-origin 100% 0
   animation drop 0.6s linear
 
-.invite-form.has-error
-  .invite-form--message
+.form.has-error
+  .form--message
     background rgb(226, 33, 112)
 
 .members

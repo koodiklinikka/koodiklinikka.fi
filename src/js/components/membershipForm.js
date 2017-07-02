@@ -6,6 +6,8 @@ var classSet = require('classnames');
 
 var api = require('../api');
 
+var StripeCheckout = require('./stripeCheckout.js');
+
 module.exports = React.createClass({
   getInitialState() {
     return {
@@ -15,7 +17,9 @@ module.exports = React.createClass({
       residence: '',
       submitted: false,
       sending: false,
-      error: null
+      error: null,
+      infoFormSuccess: false,
+      paymentSuccess: false
     };
   },
   onSubmit(e) {
@@ -27,14 +31,10 @@ module.exports = React.createClass({
       error: null
     });
 
-    request.post(api('invites'), {
-      email: this.state.email.trim()
-    })
-    .then(this.handleSuccess)
-    .catch(this.handleError);
+    this.handleInfoFormSuccess();
   },
-  handleSuccess() {
-    this.setState({submitted: true, sending: false});
+  handleInfoFormSuccess() {
+    this.setState({submitted: true, sending: false, infoFormSuccess: true});
   },
   handleError(err) {
     this.setState({error: err, sending: false});
@@ -50,8 +50,12 @@ module.exports = React.createClass({
       submitted: false
     });
   },
+  handlePaymentSuccess() {
+    this.setState({paymentSuccess: true})
+  },
   render() {
     var formClasses = classSet({
+      'form': true,
       'membership-form': true,
       'has-success': this.state.submitted,
       'has-error': this.state.error,
@@ -80,54 +84,69 @@ module.exports = React.createClass({
       }
 
       feedbackMessage = (
-        <div className='membership-form--message'>
+        <div className='form--message'>
           {messageText}
         </div>
       );
     }
 
-    return (
-      <form className={formClasses} onSubmit={this.onSubmit}>
-        <input
-          className={inputClasses}
-          type='text'
-          name='email'
-          placeholder='Sähköposti'
-          value={this.state.email}
-          onChange={this.onChange} />
-        <input
-          className={inputClasses}
-          type='text'
-          name='name'
-          placeholder='Koko nimi'
-          value={this.state.name}
-          onChange={this.onChange} />
-        <input
-          className={inputClasses}
-          type='text'
-          name='handle'
-          placeholder='Slack-käyttäjätunnus'
-          value={this.state.handle}
-          onChange={this.onChange} />
-        <input
-          className={inputClasses}
-          type='text'
-          name='residence'
-          placeholder='Paikkakunta'
-          value={this.state.residence}
-          onChange={this.onChange} />
-        <button
-          className='btn btn__submit'
-          type='submit'
-          title='Lähetä'
-          disabled={this.state.error || this.state.submitted}>
-          Siirry maksamaan
-        </button>
-        <span
-          className='loader'>
-        </span>
-        {feedbackMessage}
-      </form>
+    if(!this.state.infoFormSuccess) {
+      return (
+        <div>
+          <form className={formClasses} onSubmit={this.onSubmit}>
+            {feedbackMessage}
+            <input
+              className={inputClasses}
+              type='text'
+              name='email'
+              placeholder='Sähköposti'
+              value={this.state.email}
+              onChange={this.onChange} />
+            <input
+              className={inputClasses}
+              type='text'
+              name='name'
+              placeholder='Koko nimi'
+              value={this.state.name}
+              onChange={this.onChange} />
+            <input
+              className={inputClasses}
+              type='text'
+              name='handle'
+              placeholder='Slack-käyttäjätunnus'
+              value={this.state.handle}
+              onChange={this.onChange} />
+            <input
+              className={inputClasses}
+              type='text'
+              name='residence'
+              placeholder='Paikkakunta'
+              value={this.state.residence}
+              onChange={this.onChange} />
+            <button
+              className='btn btn__submit'
+              type='submit'
+              title='Lähetä'
+              disabled={this.state.error || this.state.submitted}>
+              Siirry maksamaan
+            </button>
+            <span
+              className='loader'>
+            </span>
+          </form>
+        </div>
       )
+    } else if (this.state.infoFormSuccess && !this.state.paymentSuccess) {
+      return (
+        <div>
+          <StripeCheckout payerName={this.state.name} onPaymentSuccess={this.handlePaymentSuccess}></StripeCheckout>
+        </div>
+      )
+    } else {
+      return (
+        <p> Onnee!
+        </p>
+      )
+    }
   }
 });
