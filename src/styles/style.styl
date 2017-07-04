@@ -59,7 +59,8 @@ section
       margin-top 0
 
   &.with-feed
-    padding-right feedWidth
+    @media screen and (min-width: 1100px)
+      padding-right feedWidth
 section:first-child
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
   border-bottom 1px solid #EEEEEE
@@ -345,8 +346,9 @@ footer
       display block
 
 .neukkari-img-wrapper
-  background url('../images/neukkari.jpg')
-  background-size cover
+  background url('../images/hp3_bw.jpg')
+  background-size 120%
+  background-position-y 80%
   border-radius 20px
   border 1px solid #085078
   opacity 0.85
