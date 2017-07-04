@@ -25,21 +25,23 @@ var card = elements.create('card', {
 });
 
 var stripeErrMessages = {
-  incomplete_number: "incomplete number",
+  incomplete_number: "Kortin numero on virheellinen.",
   incorrect_number: "Kortin numero on virheellinen.",
   invalid_number: "Kortin numero on virheellinen.",
+  incomplete_expiry: "Kortin vanhenemisaika on virheellinen.",
   invalid_expiry_month: "Kortin vanhenemiskuu on virheellinen.",
   invalid_expiry_year: "Kortin vanhenemisvuosi on virheellinen.",
   invalid_cvc: "Kortin CVC koodi on virheellinen.",
+  incomplete_cvc: "Kortin CVC koodi on virheellinen.",
   expired_card: "Kortti on vanhentunut.",
   incorrect_cvc: "Kortin CVC koodi on virheellinen..",
-  incorrect_zip: "The card's zip code failed validation.",
+  incomplete_zip: "Virheellinen postinumero.",
+  incorrect_zip: "Virheellinen postinumero.",
   card_declined: "Kortti hylättiin.",
   missing: "There is no card on a customer that is being charged.",
   processing_error: "Virhe kortin prosessoinnissa.",
-  rate_limit:  "An error occurred due to requests hitting the API too quickly. Please let us know if you're consistently running into this error."
+  rate_limit:  "Rajapintaan tehty liian monta kutsua. Odota hetki."
 };
-
 
 module.exports = React.createClass({
   getInitialState() {
@@ -54,8 +56,6 @@ module.exports = React.createClass({
       this.setState({
         error: null
       })
-
-      console.log(result.token);
 
       request.post(api('membership'), {
         stripeToken: result.token.id,
@@ -72,6 +72,7 @@ module.exports = React.createClass({
       });
 
     } else if (result.error) {
+      console.log(result.error);
       this.setState({
         error: stripeErrMessages[result.error.code] || result.error.message,
         sending: false
@@ -109,7 +110,6 @@ module.exports = React.createClass({
     var feedbackMessage;
 
     if(this.state.error) {
-      console.log(this.state.error);
       feedbackMessage = (
         <div className='form--message'>
           {this.state.error}
