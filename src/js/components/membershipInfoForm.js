@@ -122,7 +122,7 @@ module.exports = React.createClass({
         feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`
       }
 
-      feedbackMessages.push((<div key={i} className='form--message'>{feedbackText}</div>))
+      feedbackMessages.push((<div key={i} className='form--message'>{ feedbackText }</div>))
     });
 
 
@@ -138,26 +138,26 @@ module.exports = React.createClass({
 
       inputFields.push((
         <input
-          key         = {fieldName}
-          className   = {inputClasses}
+          key         = { fieldName }
+          className   = { inputClasses }
           type        = 'text'
-          name        = {fieldName}
-          placeholder = {fieldNameTranslations[fieldName].fi}
-          value       = {this.state[fieldName]}
-          onChange    = {this.onChange} />
+          name        = { fieldName }
+          placeholder = { fieldNameTranslations[fieldName].fi }
+          value       = { this.state[fieldName] }
+          onChange    = { this.onChange } />
       ))
     })
 
     return (
       <div>
-        <form className={formClasses} onSubmit={this.onSubmit}>
-          {feedbackMessages}
-          {inputFields}
+        <form className={ formClasses } onSubmit={ this.onSubmit }>
+          { feedbackMessages }
+          { inputFields }
           <button
-            className='btn btn__submit'
-            type='submit'
-            title='Lähetä'
-            disabled={this.state.errors.length || this.state.submitted}>
+            className = 'btn btn__submit'
+            type      = 'submit'
+            title     = 'Lähetä'
+            disabled  = { this.state.errors.length || this.state.submitted }>
             Siirry maksamaan
           </button>
           <span
