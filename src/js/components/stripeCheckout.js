@@ -5,7 +5,9 @@ var React = require('react');
 var classSet = require('classnames');
 var api = require('../api');
 
+// create config for this
 var stripe = Stripe('pk_test_OmNve9H1OuORlmD4rblpjgzh');
+
 var elements = stripe.elements();
 var card = elements.create('card', {
   style: {
