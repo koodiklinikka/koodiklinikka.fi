@@ -1,5 +1,6 @@
 'use strict';
 
+var _ = require('lodash');
 var request = require('axios');
 var React = require('react');
 var classSet = require('classnames');
@@ -105,15 +106,15 @@ module.exports = React.createClass({
       'sending': this.state.sending
     });
 
-    var inputClasses = classSet({
-      'input': true,
-      'has-error': this.state.errors.length
-    });
 
+    /* generate error messages */
     var feedbackMessages = [];
+    var fieldsWithErrors = [];
 
     this.state.errors.forEach((err, i) => {
       var feedbackText;
+
+      fieldsWithErrors.push(err.field);
 
       if(err.type == 'missing') {
         feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`
@@ -124,38 +125,34 @@ module.exports = React.createClass({
       feedbackMessages.push((<div key={i} className='form--message'>{feedbackText}</div>))
     });
 
+
+    /* generate input fields */
+    var fieldNames = ['name', 'email', 'handle', 'residence'];
+    var inputFields = [];
+
+    fieldNames.forEach((fieldName) => {
+      var inputClasses = classSet({
+        'input': true,
+        'has-error': _.includes(fieldsWithErrors, fieldName)
+      });
+
+      inputFields.push((
+        <input
+          key         = {fieldName}
+          className   = {inputClasses}
+          type        = 'text'
+          name        = {fieldName}
+          placeholder = {fieldNameTranslations[fieldName].fi}
+          value       = {this.state[fieldName]}
+          onChange    = {this.onChange} />
+      ))
+    })
+
     return (
       <div>
         <form className={formClasses} onSubmit={this.onSubmit}>
           {feedbackMessages}
-          <input
-            className={inputClasses}
-            type='text'
-            name='name'
-            placeholder='Koko nimi'
-            value={this.state.name}
-            onChange={this.onChange} />
-          <input
-            className={inputClasses}
-            type='text'
-            name='email'
-            placeholder='Sähköposti'
-            value={this.state.email}
-            onChange={this.onChange} />
-          <input
-            className={inputClasses}
-            type='text'
-            name='handle'
-            placeholder='Slack-käyttäjätunnus'
-            value={this.state.handle}
-            onChange={this.onChange} />
-          <input
-            className={inputClasses}
-            type='text'
-            name='residence'
-            placeholder='Paikkakunta'
-            value={this.state.residence}
-            onChange={this.onChange} />
+          {inputFields}
           <button
             className='btn btn__submit'
             type='submit'
