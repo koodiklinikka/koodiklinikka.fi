@@ -81,13 +81,6 @@ module.exports = React.createClass({
   },
 
   render() {
-    var formClasses = classSet({
-      'form': true,
-      'stripe-form': true,
-      'has-error': this.state.error,
-      'sending': this.state.sending
-    });
-
     var feedbackMessage;
 
     if(this.state.error) {
