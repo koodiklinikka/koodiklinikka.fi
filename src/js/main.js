@@ -45,4 +45,8 @@ if(pathName == '/') {
   ReactDOM.render(
     email(),
     document.getElementById('email'));
+
+  ReactDOM.render(
+    members(),
+    document.getElementById('members'));
 }
