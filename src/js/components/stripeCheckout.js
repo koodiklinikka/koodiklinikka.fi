@@ -124,7 +124,7 @@ module.exports = React.createClass({
         {feedbackMessage}
         <span className='name'>{this.props.payerName}</span>
         <div id='card-element'></div>
-        <button className='btn btn__submit' type='submit'>Maksa 10€</button>
+        <button className='btn btn__submit' type='submit'>Maksa 15€</button>
         <span
           className='loader'>
         </span>
