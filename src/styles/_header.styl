@@ -28,9 +28,17 @@
   right 60px
   top 32px
 
-.header__nav a
-  color white
-  font-size 17px
+  @media screen and (max-width: 1030px)
+    right 40px
+    top 20px
+  a
+    color white
+    font-size 18px
+    margin-left 16px
+    text-shadow 0 2px 0 rgba(0,0,0,0.1)
+    @media screen and (max-width: 1030px)
+      display block
+      margin-top 5px
 
 .header__headline
   display table-cell
