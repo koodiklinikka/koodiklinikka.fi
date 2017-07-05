@@ -4,27 +4,7 @@ var request = require('axios');
 var React = require('react');
 var classSet = require('classnames');
 var api = require('../api');
-
-// create config for this
-var stripe = Stripe('pk_test_OmNve9H1OuORlmD4rblpjgzh');
-
-var elements = stripe.elements();
-var card = elements.create('card', {
-  style: {
-    base: {
-      iconColor: '#666EE8',
-      color: '#31325F',
-      lineHeight: '40px',
-      fontWeight: 300,
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSize: '15px',
-
-      '::placeholder': {
-        color: '#CFD7E0',
-      },
-    },
-  }
-});
+import StripeCheckout from 'react-stripe-checkout';
 
 var stripeErrMessages = {
   incomplete_number: "Kortin numero on virheellinen.",
@@ -82,10 +62,6 @@ module.exports = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    card.mount('#card-element');
-  },
-
   onSubmit(e) {
     e.preventDefault();
 
@@ -98,7 +74,10 @@ module.exports = React.createClass({
     var extraDetails = {
       name: this.props.payerName,
     };
-    stripe.createToken(card, extraDetails).then(this.setOutcome);
+  },
+
+  onToken(t) {
+    console.log(t);
   },
 
   render() {
@@ -120,15 +99,16 @@ module.exports = React.createClass({
     }
 
     return (
-      <form className={formClasses} onSubmit={this.onSubmit}>
-        {feedbackMessage}
-        <span className='name'>{this.props.payerName}</span>
-        <div id='card-element'></div>
-        <button className='btn btn__submit' type='submit'>Maksa 15€</button>
-        <span
-          className='loader'>
-        </span>
-      </form>
+      <StripeCheckout
+        amount={1500}
+        currency='EUR'
+        description='Jäsenmaksu'
+        image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
+        name='Koodiklinikka ry'
+        stripeKey='pk_test_OmNve9H1OuORlmD4rblpjgzh'
+        token={this.onToken}
+        locale="en"
+      />
     )
   }
 });
