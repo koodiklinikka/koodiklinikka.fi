@@ -93,7 +93,7 @@ module.exports = React.createClass({
 
     return (
       <StripeCheckout
-        amount={1500}
+        amount={1000}
         currency='EUR'
         description='Jäsenmaksu'
         image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
