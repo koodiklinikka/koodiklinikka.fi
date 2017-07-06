@@ -33,75 +33,51 @@ module.exports = React.createClass({
     };
   },
 
-  setOutcome(result) {
-    if (result.token) {
-      this.setState({
-        error: null
-      })
-
-      request.post(api('membership'), {
-        stripeToken: result.token.id,
-        email: this.props.payerEmail
-      })
-      .then(() => {
-        this.setState({
-          sending: false
-        });
-        this.props.onPaymentSuccess();
-      })
-      .catch((e) => {
-        //TODO :errorhandling
-      });
-
-    } else if (result.error) {
-      console.log(result.error);
-      this.setState({
-        error: stripeErrMessages[result.error.code] || result.error.message,
-        sending: false
-      });
-    }
-  },
-
-  onSubmit(e) {
-    e.preventDefault();
-
+  onSubmit(token) {
     this.setState({
       error: null,
       sending: true
     });
 
-    var form = document.querySelector('form');
-    var extraDetails = {
-      name: this.props.payerName,
-    };
-  },
-
-  onToken(t) {
-    console.log(t);
+    request.post(api('membership'), {
+      stripeToken: token.id,
+      email: this.props.payerEmail
+    })
+    .then(() => {
+      this.setState({
+        sending: false
+      });
+      this.props.onPaymentSuccess();
+    })
+    .catch((e) => {
+      this.setState({
+        sending: false,
+        error: e
+      });
+    });
   },
 
   render() {
-    var feedbackMessage;
-
-    if(this.state.error) {
-      feedbackMessage = (
-        <div className='form--message'>
-          {this.state.error}
-        </div>
-      );
+    if (this.state.error) {
+      return <p>Virhe maksaessa! Ota yhteyttä info@koodiklinikka.fi</p>
+    } else if (this.state.sending) {
+      return <img src="../images/ajax-loader.gif" alt="Odota hetki..." height="42" width="42"></img>
+    } else {
+      return (<StripeCheckout
+        amount      = {1000}
+        currency    = 'EUR'
+        description = 'Jäsenmaksu'
+        email       = {this.props.userInfo.email}
+        image       = 'https://avatars3.githubusercontent.com/u/10520119?v = 3&s = 200'
+        locale      = "en"
+        name        = 'Koodiklinikka ry'
+        stripeKey   = 'pk_test_OmNve9H1OuORlmD4rblpjgzh'
+        token       = {this.onSubmit}
+      >
+        <button className="btn btn-primary">
+          Maksa kortilla
+        </button>
+      </StripeCheckout>)
     }
-
-    return (
-      <StripeCheckout
-        amount={1000}
-        currency='EUR'
-        description='Jäsenmaksu'
-        image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
-        name='Koodiklinikka ry'
-        stripeKey='pk_test_OmNve9H1OuORlmD4rblpjgzh'
-        token={this.onToken}
-        locale="en"
-      />
-    )
   }
 });

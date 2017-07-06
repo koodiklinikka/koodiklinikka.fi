@@ -10,10 +10,10 @@ var api = require('../api');
 var StripeCheckout = require('./stripeCheckout.js');
 
 var fieldNameTranslations = {
-  email: {fi: "Sähköpostiosoite"},
-  name: {fi: "Koko nimi"},
-  handle: {fi: "Slack-käyttäjätunnus"},
-  residence: {fi: "Paikkakunta"}
+  email:     { fi: "Sähköpostiosoite" },
+  name:      { fi: "Koko nimi "},
+  handle:    { fi: "Slack-käyttäjätunnus "},
+  residence: { fi: "Paikkakunta" }
 }
 
 function validateEmail(email) {
@@ -25,12 +25,12 @@ module.exports = React.createClass({
 
   getInitialState() {
     return {
-      email: '',
-      name: '',
-      handle: '',
+      email:     '',
+      name:      '',
+      handle:    '',
       residence: '',
-      sending: false,
-      errors: []
+      sending:   false,
+      errors:    []
     };
   },
   onSubmit(e) {
@@ -43,9 +43,9 @@ module.exports = React.createClass({
 
 
     var userInfo = {
-      email: this.state.email,
-      name: this.state.name,
-      handle: this.state.handle,
+      email:     this.state.email,
+      name:      this.state.name,
+      handle:    this.state.handle,
       residence: this.state.residence,
     }
 
@@ -56,7 +56,7 @@ module.exports = React.createClass({
     if(userInfoErrors.length){
       this.setState({
         sending: false,
-        errors: userInfoErrors
+        errors:  userInfoErrors
       });
       console.log("errorei");
     } else {
@@ -64,7 +64,7 @@ module.exports = React.createClass({
     }
   },
   handleError(err) {
-    this.setState({error: err, sending: false});
+    this.setState({ error: err, sending: false });
   },
   onChange(e) {
     if(e.target.value === this.state[e.target.name]) {
@@ -81,18 +81,18 @@ module.exports = React.createClass({
     var foundErrors = [];
 
     if (!this.state.name)
-      foundErrors.push({field: 'name', type: 'missing'});
+      foundErrors.push({ field: 'name', type: 'missing' });
 
     if (!this.state.email)
-      foundErrors.push({field: 'email', type: 'missing'});
+      foundErrors.push({ field: 'email', type: 'missing' });
     else if(!validateEmail(this.state.email))
-      foundErrors.push({field: 'email', type: 'invalid'});
+      foundErrors.push({ field: 'email', type: 'invalid' });
 
     if (!this.state.handle)
-      foundErrors.push({field: 'handle', type: 'missing'});
+      foundErrors.push({ field: 'handle', type: 'missing' });
 
     if (!this.state.residence)
-      foundErrors.push({field: 'residence', type: 'missing'});
+      foundErrors.push({ field: 'residence', type: 'missing' });
 
 
     return foundErrors;
@@ -100,10 +100,10 @@ module.exports = React.createClass({
 
   render() {
     var formClasses = classSet({
-      'form': true,
+      'form':            true,
       'membership-form': true,
-      'has-error': this.state.errors.length,
-      'sending': this.state.sending
+      'has-error':       this.state.errors.length,
+      'sending':         this.state.sending
     });
 
 
@@ -117,9 +117,9 @@ module.exports = React.createClass({
       fieldsWithErrors.push(err.field);
 
       if(err.type == 'missing') {
-        feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`
+        feedbackText = `${ fieldNameTranslations[err.field].fi } on pakollinen.`
       } else if (err.type == 'invalid') {
-        feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`
+        feedbackText = `${ fieldNameTranslations[err.field].fi } on virheellinen.`
       }
 
       feedbackMessages.push((<div key={i} className='form--message'>{ feedbackText }</div>))
@@ -127,7 +127,7 @@ module.exports = React.createClass({
 
 
     /* generate input fields */
-    var fieldNames = ['name', 'email', 'handle', 'residence'];
+    var fieldNames  = ['name', 'email', 'handle', 'residence'];
     var inputFields = [];
 
     fieldNames.forEach((fieldName) => {

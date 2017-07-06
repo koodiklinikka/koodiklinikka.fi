@@ -10,32 +10,32 @@ var MembershipInfoForm = require('./membershipInfoForm.js');
 module.exports = React.createClass({
   getInitialState() {
     return {
-      userInfo: null,
+      userInfo:        null,
       infoFormSuccess: false,
-      paymentSuccess: false
+      paymentSuccess:  false
     };
   },
 
   handlePaymentSuccess() {
-    this.setState({paymentSuccess: true});
+    this.setState({ paymentSuccess: true });
   },
 
   handleInfoFormSuccess(userInfo) {
     this.setState({
-      userInfo: userInfo,
+      userInfo:        userInfo,
       infoFormSuccess: true,
     });
   },
 
   render() {
     if(!this.state.infoFormSuccess) {
-      return <MembershipInfoForm onSuccess={this.handleInfoFormSuccess}></MembershipInfoForm>
+      return <MembershipInfoForm onSuccess={ this.handleInfoFormSuccess }></MembershipInfoForm>
 
     } else if (!this.state.paymentSuccess) {
       return (
         <StripeCheckout
-          payerName={this.state.userInfo.name}
-          onPaymentSuccess={this.handlePaymentSuccess}>
+          userInfo         = { this.state.userInfo }
+          onPaymentSuccess = { this.handlePaymentSuccess }>
         </StripeCheckout>)
 
     } else {
