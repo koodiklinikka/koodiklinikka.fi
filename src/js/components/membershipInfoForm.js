@@ -1,12 +1,11 @@
 'use strict';
 
-var _ = require('lodash');
-var request = require('axios');
-var React = require('react');
+var _        = require('lodash');
+var request  = require('axios');
+var React    = require('react');
 var classSet = require('classnames');
 
-var api = require('../api');
-
+var api            = require('../api');
 var StripeCheckout = require('./stripeCheckout.js');
 
 var fieldNameTranslations = {

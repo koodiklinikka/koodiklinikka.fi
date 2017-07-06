@@ -1,18 +1,18 @@
 'use strict';
 
-var request = require('axios');
-var React = require('react');
 var classSet = require('classnames');
+var React    = require('react');
+var request  = require('axios');
 
-var StripeCheckout = require('./stripeCheckout.js');
 var MembershipInfoForm = require('./membershipInfoForm.js');
+var StripeCheckout     = require('./stripeCheckout.js');
 
 module.exports = React.createClass({
   getInitialState() {
     return {
-      userInfo:        null,
       infoFormSuccess: false,
-      paymentSuccess:  false
+      paymentSuccess:  false,
+      userInfo:        null
     };
   },
 
@@ -22,8 +22,8 @@ module.exports = React.createClass({
 
   handleInfoFormSuccess(userInfo) {
     this.setState({
-      userInfo:        userInfo,
       infoFormSuccess: true,
+      userInfo:        userInfo
     });
   },
 

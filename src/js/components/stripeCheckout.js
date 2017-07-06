@@ -1,47 +1,29 @@
 'use strict';
 
-var request = require('axios');
-var React = require('react');
+var request  = require('axios');
+var React    = require('react');
 var classSet = require('classnames');
-var api = require('../api');
-import StripeCheckout from 'react-stripe-checkout';
+var api      = require('../api');
 
-var stripeErrMessages = {
-  incomplete_number: "Kortin numero on virheellinen.",
-  incorrect_number: "Kortin numero on virheellinen.",
-  invalid_number: "Kortin numero on virheellinen.",
-  incomplete_expiry: "Kortin vanhenemisaika on virheellinen.",
-  invalid_expiry_month: "Kortin vanhenemiskuu on virheellinen.",
-  invalid_expiry_year: "Kortin vanhenemisvuosi on virheellinen.",
-  invalid_cvc: "Kortin CVC koodi on virheellinen.",
-  incomplete_cvc: "Kortin CVC koodi on virheellinen.",
-  expired_card: "Kortti on vanhentunut.",
-  incorrect_cvc: "Kortin CVC koodi on virheellinen..",
-  incomplete_zip: "Virheellinen postinumero.",
-  incorrect_zip: "Virheellinen postinumero.",
-  card_declined: "Kortti hylättiin.",
-  missing: "There is no card on a customer that is being charged.",
-  processing_error: "Virhe kortin prosessoinnissa.",
-  rate_limit:  "Rajapintaan tehty liian monta kutsua. Odota hetki."
-};
+import StripeCheckout from 'react-stripe-checkout';
 
 module.exports = React.createClass({
   getInitialState() {
     return {
-      sending: false,
-      error: null
+      error:   null,
+      sending: false
     };
   },
 
   onSubmit(token) {
     this.setState({
-      error: null,
+      error:   null,
       sending: true
     });
 
     request.post(api('membership'), {
-      stripeToken: token.id,
-      email: this.props.payerEmail
+      email:       this.props.payerEmail,
+      stripeToken: token.id
     })
     .then(() => {
       this.setState({
@@ -51,8 +33,8 @@ module.exports = React.createClass({
     })
     .catch((e) => {
       this.setState({
-        sending: false,
-        error: e
+        error: e,
+        sending: false
       });
     });
   },
