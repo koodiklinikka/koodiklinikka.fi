@@ -3,9 +3,10 @@
 var request  = require('axios');
 var React    = require('react');
 var classSet = require('classnames');
-var api      = require('../api');
-
 import StripeCheckout from 'react-stripe-checkout';
+
+var api      = require('../api');
+var config   = require('../../config.js')();
 
 module.exports = React.createClass({
   getInitialState() {
@@ -46,15 +47,15 @@ module.exports = React.createClass({
       return <img src="../images/ajax-loader.gif" alt="Odota hetki..." height="42" width="42"></img>
     } else {
       return (<StripeCheckout
-        amount      = {1000}
+        amount      = { 1000 }
         currency    = 'EUR'
         description = 'Jäsenmaksu'
-        email       = {this.props.userInfo.email}
+        email       = { this.props.userInfo.email }
         image       = 'https://avatars3.githubusercontent.com/u/10520119?v = 3&s = 200'
         locale      = "en"
         name        = 'Koodiklinikka ry'
-        stripeKey   = 'pk_test_OmNve9H1OuORlmD4rblpjgzh'
-        token       = {this.onSubmit}
+        stripeKey   = { config.stripe.publicKey }
+        token       = { this.onSubmit }
       >
         <button className="btn btn-primary">
           Maksa kortilla

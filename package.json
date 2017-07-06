@@ -8,7 +8,8 @@
   "scripts": {
     "start": "rm -rf public && gulp",
     "build": "rm -rf public && gulp build",
-    "dev": "SERVER=http://localhost:9000/ npm start",
+    "dev": "SERVER=http://localhost:9000/ ENV=development npm start",
+    "prod": "ENV=production npm start",
     "lint": "eslint src",
     "test": "mocha src/**/__tests__/*.js --compilers js:babel-core/register --require test/test-helper"
   },
