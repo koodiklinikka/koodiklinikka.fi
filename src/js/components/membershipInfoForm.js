@@ -1,16 +1,17 @@
-'use strict';
+import { pick, includes } from 'lodash';
+import React from 'react';
+import classSet from 'classnames';
+import request from 'axios';
 
-var _ = require('lodash');
-var request = require('axios');
-var React = require('react');
-var classSet = require('classnames');
-var StripeCheckout = require('react-stripe-checkout').default;
+import StripeCheckout from 'react-stripe-checkout';
 
-var api = require('../api');
-var Loader = require('./loader');
-var config = require('../../config.js')();
+import api from '../api';
+import Loader from './loader';
+import getConfig from '../../config';
 
-var fieldNameTranslations = {
+const config = getConfig();
+
+const fieldNameTranslations = {
   address: { fi: 'Osoite' },
   city: { fi: 'Paikkakunta' },
   email: { fi: 'Sähköpostiosoite' },
@@ -20,14 +21,14 @@ var fieldNameTranslations = {
 };
 
 function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
+  const emailRegexp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return emailRegexp.test(email);
 }
 
 const fieldNames = ['name', 'email', 'handle', 'address', 'postcode', 'city'];
 
 function getUserInfo(state) {
-  return _.pick(state, fieldNames);
+  return pick(state, fieldNames);
 }
 
 module.exports = React.createClass({
@@ -63,7 +64,7 @@ module.exports = React.createClass({
       });
   },
   onChange(e) {
-    var name = e.target.name;
+    const name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
     }
@@ -76,7 +77,7 @@ module.exports = React.createClass({
   },
 
   getDataErrors() {
-    var foundErrors = [];
+    const foundErrors = [];
 
     fieldNames.forEach((fieldName) => {
       if (!this.state[fieldName]) {
@@ -90,11 +91,13 @@ module.exports = React.createClass({
 
     return foundErrors;
   },
-
+  handleError(err) {
+    this.setState({ error: err, sending: false });
+  },
   render() {
     const inputErrors = this.getDataErrors();
 
-    var formClasses = classSet({
+    const formClasses = classSet({
       'form': true,
       'membership-form': true,
       'has-error': inputErrors.length !== 0 || this.state.error,
@@ -102,7 +105,7 @@ module.exports = React.createClass({
     });
 
     function getErrorMessage(err) {
-      var feedbackText;
+      let feedbackText;
 
       if (err.type === 'missing') {
         feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
@@ -110,19 +113,19 @@ module.exports = React.createClass({
         feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`;
       }
 
-      return <div key={err.field} className='form--message'>{feedbackText}</div>;
+      return <div key={err.field} className="form--message">{feedbackText}</div>;
     }
 
     /* generate error messages */
-    var visibleErrors = inputErrors
+    const visibleErrors = inputErrors
       .filter((error) => this.state.pristineFields.indexOf(error.field) === -1);
 
-    var fieldsWithErrors = visibleErrors.map(({ field }) => field);
+    const fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    var inputFields = fieldNames.map((fieldName) => {
-      var inputClasses = classSet({
+    const inputFields = fieldNames.map((fieldName) => {
+      const inputClasses = classSet({
         'input': true,
-        'has-error': _.includes(fieldsWithErrors, fieldName),
+        'has-error': includes(fieldsWithErrors, fieldName),
         'half': fieldName === 'city' || fieldName === 'postcode',
         'left': fieldName === 'postcode'
       });
@@ -155,7 +158,7 @@ module.exports = React.createClass({
     });
     if (this.state.sending) {
       return (
-        <div className='membership-form__loader'>
+        <div className="membership-form__loader">
           <Loader />
         </div>
       );
@@ -166,25 +169,26 @@ module.exports = React.createClass({
         <form className={formClasses}>
           {inputFields}
           {this.state.error && (
-            <div className='form--message'>
+            <div className="form--message">
               Jotain meni pieleen! Ota yhteyttä info@koodiklinikka.fi
             </div>
           )}
           <br />
           <StripeCheckout
             amount={1000}
-            currency='EUR'
-            description='Jäsenmaksu'
+            currency="EUR"
+            description="Jäsenmaksu"
             email={this.state.email}
-            image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
-            name='Koodiklinikka ry'
+            image="https://avatars3.githubusercontent.com/u/10520119?v=3&s=200"
+            locale="fi"
+            name="Koodiklinikka ry"
             stripeKey={config.stripe.publicKey}
             token={this.onSubmit}
           >
             <button
-              type='button'
+              type="button"
               disabled={inputErrors.length !== 0}
-              className='btn btn__submit'>
+              className="btn btn__submit">
               Siirry maksamaan
             </button>
           </StripeCheckout>

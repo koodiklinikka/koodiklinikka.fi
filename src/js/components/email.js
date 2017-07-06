@@ -1,8 +1,6 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
-
-module.exports = React.createClass({
+export default React.createClass({
   render() {
     return <a href="mailto:info@koodiklinikka.fi">info@koodiklinikka.fi</a>;
   }

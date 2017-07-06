@@ -1,4 +1,3 @@
-
 const development = {
   stripe: {
     publicKey: 'pk_test_OmNve9H1OuORlmD4rblpjgzh'
