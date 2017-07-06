@@ -11,7 +11,6 @@ var email = React.createFactory(require('./components/email'));
 var membershipForm = React.createFactory(require('./components/membershipForm'));
 
 const pathName = window.location.pathname;
-console.log(pathName);
 
 if(pathName == '/') {
   ReactDOM.render(

@@ -50,14 +50,11 @@ module.exports = React.createClass({
 
     var userInfoErrors = this.getDataErrors();
 
-    console.log(userInfoErrors);
-
     if(userInfoErrors.length){
       this.setState({
         sending: false,
         errors:  userInfoErrors
       });
-      console.log("errorei");
     } else {
       this.props.onSuccess(userInfo);
     }
