@@ -139,7 +139,7 @@ module.exports = React.createClass({
         <input
           key         = { fieldName }
           className   = { inputClasses }
-          type        = 'text'
+          type        = { fieldName == 'email' ? 'email' : 'text' }
           name        = { fieldName }
           placeholder = { fieldNameTranslations[fieldName].fi }
           value       = { this.state[fieldName] }
