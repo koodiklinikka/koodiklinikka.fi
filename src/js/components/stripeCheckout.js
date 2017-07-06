@@ -51,7 +51,7 @@ module.exports = React.createClass({
         currency    = 'EUR'
         description = 'Jäsenmaksu'
         email       = { this.props.userInfo.email }
-        image       = 'https://avatars3.githubusercontent.com/u/10520119?v = 3&s = 200'
+        image       = 'https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
         locale      = "en"
         name        = 'Koodiklinikka ry'
         stripeKey   = { config.stripe.publicKey }
