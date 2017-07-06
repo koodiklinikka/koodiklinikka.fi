@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Koodiklinikka
+    title Yhdistys
     // inject:css
     // endinject
     meta(name='description', content='Koodiklinikka on suomalainen Slack-yhteisö ohjelmistoalan harrastajille ja ammattilaisille.')
@@ -42,78 +42,45 @@ html
     .site
       .container
         .header
-          video(autoplay, loop, poster='images/poster.jpg', class='header__video-bg')
-            source(src='videos/jumbo.mp4', type='video/mp4')
           .header__container
             .header__nav
               a(href='/') etusivu
               a(href='/yhdistys.html') yhdistys
             .header__headline
               .header__logo
-              h1.header__title <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja&nbsp;ammattilaisille.
+              h1.header__title Koodiklinikka ry
+          .header__members
+            #members
 
-        .content.with-feed
-          section
-            .row
-              h3 Tule mukaan
-              #invite-form.form
-
+        .content
           section
             .row
               .bread
                 .column.column1-2
-                  h3 Yhteisö ohjelmoinnista kiinnostuneille
+                  h3 Rekisteröity yhdistys
                   p.
-                    Koodiklinikka on Suomen suurin ohjelmistoalan yhteisö, joka kokoaa työntekijät, harrastajat ja vasta-alkajat yhteen.
-                    Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
+                    Koodiklinikka on nyt rekisteröity yhdistys!
                   p.
-                    Mukaan liittyminen on ilmaista ja helppoa. Jätä sähköpostiosoitteesi ylläolevaan kenttään ja lähetämme sinulle kutsun Slack-yhteisöömme.
+                    Lähes kolmivuotisen taipaleensa aikana Koodiklinikka on kasvanut lähes tuhannen rekisteröityneen jäsenen yhteisöiksi ja näin saavuttanut aseman Suomen suurimpana ohjelmointiaiheisena yhteisönä! Liittymällä Koodiklinikka ry:n jäseneksi tuet toimintaamme, ja tulevaisuudessa yhdityksen jäsenyys oikeuttaa etuihin Koodiklinikan tapahtumissa.
+                  p.
+                    Yhdistyksen jäsenyys <b>ei ole</b>, eikä tule olemaan, <b>pakollinen</b> Koodiklinikan käyttäjille tai meetuppeihin osallistujille.
                 .column.column1-2
-                  a(href='images/slack.png', target='_blank')
-                    img(src='images/slack.png')
-
-
+                  .bread-img
             .row
               .bread
-                .column.column2-5
-                  img(src='images/octocat.png')
+                .column.column1-2
+                  h3 Liity jäseneksi
+                  #membership-form.form
 
-                .column.column3-5
-                  h3 Avoin lähdekoodi
-                  p
-                    |Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on vapaasti saatavilla ja hyödynnettävissä <a href="https://github.com/koodiklinikka">Github-organisaatiomme sivulta</a>.
-                    |Organisaation jäseneksi otamme kaikki Slack-yhteisömme jäsenet ja kontribuutio projekteihimme otetaan lämpimästi vastaan.
-
-                  #members
-
-            .row
-              h2 Potilaiden projekteja
-              .bread
-                .column.column2-5
-                  a(href='https://redom.js.org', target='_blank')
-                    img(src='images/redom.svg')
-
-                .column.column3-5
-                  h4 RE:DOM
-
+                .column.column1-2
                   p.
-                    Tiny (2 KB) turboboosted JavaScript library for creating user interfaces.
-                    Develop web apps with 100 % JavaScript and web standards.
-
-              .bread
-                .column.column2-5
-                  a(href='https://codestats.net/', target='_blank')
-                    img.project-image__codestats(src='images/codestats.png')
-
-                .column.column3-5
-                  h4 Code::Stats
-
+                    Kuka tahansa Slack:iin rekisteröitynyt käyttäjä voi liittyä yhdistyksen jäseneksi maksamalla kertaluontoisen <b>10€</b> jäsenmaksun.
                   p.
-                    Code::Stats is a free stats tracking service for programmers
-
-                  #members
-
-          #feed
+                    Nimellisellä jäsenmaksulla tulemme tekemään tapahtumistamme vieläkin mielenkiintoisempia ja kattamaan kustannuksia jäsenmäärämme kasvaessa.
+                  p.
+                    Jos tarvitset Slack-kutsun, siirry <a target="_blank" href="/">etusivulle</a>.
+                  p.
+                    Jäsenrekisterin rekisteriseloste luettavissa <a target="_blank" href="https://docs.google.com/document/d/1w-NZkf1EFYMC8a4LsoZouhpMVKORmPi8UFWRhurr0oM/edit?usp=sharing">Google Drivessä</a>.
 
 
       footer

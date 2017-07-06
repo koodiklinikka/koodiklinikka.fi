@@ -48,6 +48,7 @@ module.exports = React.createClass({
   },
   render() {
     var formClasses = classSet({
+      'form': true,
       'invite-form': true,
       'has-success': this.state.submitted,
       'has-error': this.state.error,
@@ -76,7 +77,7 @@ module.exports = React.createClass({
       }
 
       feedbackMessage = (
-        <div className='invite-form--message'>
+        <div className='form--message'>
           {messageText}
         </div>
       );

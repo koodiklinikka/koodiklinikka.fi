@@ -7,7 +7,7 @@ var _ = require('lodash');
 var api = require('../api');
 
 module.exports = React.createClass({
-  getInitialState() {
+  getInitialState() {
     return {
       members: []
     };

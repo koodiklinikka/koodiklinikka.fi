@@ -23,6 +23,23 @@
   vertical-align middle
   width 100%
 
+.header__nav
+  position absolute
+  right 60px
+  top 32px
+
+  @media screen and (max-width: 1030px)
+    right 40px
+    top 20px
+  a
+    color white
+    font-size 18px
+    margin-left 16px
+    text-shadow 0 2px 0 rgba(0,0,0,0.1)
+    @media screen and (max-width: 1030px)
+      display block
+      margin-top 5px
+
 .header__headline
   display table-cell
   padding 0 1em
@@ -85,3 +102,21 @@
   @media (min-aspect-ratio: 1/2)
     width 100%
     height auto
+
+.header__members
+  z-index -1
+  position absolute
+  top 0
+  left 0
+  height 100%
+  .member
+    margin 0
+    border-radius 0
+    width (100/18)%
+
+    @media screen and (max-width: 1200px)
+      width (100/15)%
+    @media screen and (max-width: 810px)
+      width 10%
+    @media screen and (min-width: 2000px)
+      width 5%
