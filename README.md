@@ -20,13 +20,13 @@
 - Asenna [Node.js](http://nodejs.org)
 - Kloonaa projekti koneellesi:
 
-  ```
+```
  git clone https://github.com/koodiklinikka/koodiklinikka.fi.git
 ```
 
 - Käynnistä kehitystila:
 
-   ```
+```
   cd koodiklinikka.fi
   npm install
   npm start
