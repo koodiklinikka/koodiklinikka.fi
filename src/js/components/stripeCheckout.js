@@ -23,7 +23,7 @@ module.exports = React.createClass({
     });
 
     request.post(api('membership'), {
-      email:       this.props.payerEmail,
+      userInfo:    this.props.userInfo,
       stripeToken: token.id
     })
     .then(() => {
