@@ -170,6 +170,7 @@ module.exports = React.createClass({
               Jotain meni pieleen! Ota yhteyttä info@koodiklinikka.fi
             </div>
           )}
+          <br />
           <StripeCheckout
             amount={1000}
             currency='EUR'
@@ -188,6 +189,9 @@ module.exports = React.createClass({
               Siirry maksamaan
             </button>
           </StripeCheckout>
+          <p>
+            <small>Seuraava vuosimaksu veloitetaan automaattisesti <br />kortiltasi vuoden kuluttua.</small>
+          </p>
         </form>
       </div>
     );
