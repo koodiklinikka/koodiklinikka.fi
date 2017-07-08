@@ -6,11 +6,11 @@ var development = {
 }
 
 var production = {
-    stripe: {
-      publicKey: "pk_live_xrnwdLNXbt20LMxpIDffJnnC"
-    }
+  stripe: {
+    publicKey: "pk_live_xrnwdLNXbt20LMxpIDffJnnC"
+  }
 }
 
-module.exports = function() {
+module.exports = function () {
   return process.env.ENV == 'development' ? development : production;
 }

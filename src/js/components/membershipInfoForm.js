@@ -1,21 +1,22 @@
 'use strict';
 
-var _        = require('lodash');
-var request  = require('axios');
-var React    = require('react');
+var _ = require('lodash');
+var request = require('axios');
+var React = require('react');
 var classSet = require('classnames');
 
-var api            = require('../api');
-var StripeCheckout = require('./stripeCheckout.js');
+var api = require('../api');
+var StripeCheckout = require('react-stripe-checkout').default;
+var config = require('../../config.js')();
 
 var fieldNameTranslations = {
-  address:   { fi: "Osoite" },
-  city:      { fi: "Paikkakunta" },
-  email:     { fi: "Sähköpostiosoite" },
-  handle:    { fi: "Slack-käyttäjätunnus "},
-  name:      { fi: "Koko nimi "},
-  postcode:  { fi: "Postinumero" }
-}
+  address: { fi: 'Osoite' },
+  city: { fi: 'Paikkakunta' },
+  email: { fi: 'Sähköpostiosoite' },
+  handle: { fi: 'Slack-käyttäjätunnus ' },
+  name: { fi: 'Koko nimi ' },
+  postcode: { fi: 'Postinumero' }
+};
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -24,54 +25,51 @@ function validateEmail(email) {
 
 const fieldNames = ['name', 'email', 'handle', 'address', 'city', 'postcode'];
 
+function getUserInfo(state) {
+  return _.pick(state, fieldNames);
+}
+
 module.exports = React.createClass({
 
   getInitialState() {
     return {
-      address:   '',
-      city:      '',
-      email:     '',
-      errors:    [],
-      handle:    '',
-      name:      '',
-      postcode:  '',
-      sending:   false
+      address: '',
+      city: '',
+      email: '',
+      handle: '',
+      name: '',
+      postcode: '',
+      sending: false,
+      pristineFields: fieldNames
     };
   },
-  onSubmit(e) {
-    e.preventDefault();
-
+  onSubmit(token) {
     this.setState({
       sending: true,
-      errors: []
+      error: null
     });
 
-    if (this.getDataErrors().length) {
-      this.setState({
-        sending: false,
-        errors:  userInfoErrors
+    request.post(api('membership'), {
+      userInfo: getUserInfo(this.state),
+      stripeToken: token.id
+    })
+      .then(() => {
+        this.setState({ sending: false });
+        this.props.onPaymentSuccess();
+      })
+      .catch((err) => {
+        this.setState({ error: err, sending: false });
       });
-    } else {
-      this.props.onSuccess({
-        email:     this.state.email,
-        name:      this.state.name,
-        handle:    this.state.handle,
-        address:   this.state.address,
-        postcode:  this.state.postcode,
-        city:      this.state.city,
-      });
-    }
-  },
-  handleError(err) {
-    this.setState({ error: err, sending: false });
   },
   onChange(e) {
-    if (e.target.value === this.state[e.target.name]) {
+    var name = e.target.name;
+    if (e.target.value === this.state[name]) {
       return;
     }
 
     this.setState({
       [e.target.name]: e.target.value,
+      pristineFields: this.state.pristineFields.filter((fieldName) => fieldName !== name),
       errors: []
     });
   },
@@ -80,84 +78,110 @@ module.exports = React.createClass({
     var foundErrors = [];
 
     fieldNames.forEach((fieldName) => {
-      if(!this.state[fieldName])
-        foundErrors.push({ field: fieldName, type: 'missing' })
-    })
+      if (!this.state[fieldName]) {
+        foundErrors.push({ field: fieldName, type: 'missing' });
+      }
+    });
 
-    if(this.state.email && !validateEmail(this.state.email))
+    if (this.state.email && !validateEmail(this.state.email)) {
       foundErrors.push({ field: 'email', type: 'invalid' });
+    }
 
     return foundErrors;
   },
 
   render() {
+    const inputErrors = this.getDataErrors();
+
     var formClasses = classSet({
-      'form':            true,
+      'form': true,
       'membership-form': true,
-      'has-error':       this.state.errors.length,
-      'sending':         this.state.sending
+      'has-error': inputErrors.length !== 0 || this.state.error,
+      'sending': this.state.sending
     });
 
-
-    /* generate error messages */
-    var feedbackMessages = [];
-    var fieldsWithErrors = [];
-
-    this.state.errors.forEach((err, i) => {
+    function getErrorMessage(err) {
       var feedbackText;
 
-      fieldsWithErrors.push(err.field);
-
-      if(err.type == 'missing') {
-        feedbackText = `${ fieldNameTranslations[err.field].fi } on pakollinen.`
-      } else if (err.type == 'invalid') {
-        feedbackText = `${ fieldNameTranslations[err.field].fi } on virheellinen.`
+      if (err.type === 'missing') {
+        feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
+      } else if (err.type === 'invalid') {
+        feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`;
       }
 
-      feedbackMessages.push((<div key={i} className='form--message'>{ feedbackText }</div>))
-    });
+      return <div key={err.field} className='form--message'>{feedbackText}</div>;
+    }
 
+    /* generate error messages */
+    var visibleErrors = inputErrors
+      .filter((error) => this.state.pristineFields.indexOf(error.field) === -1);
 
-    /* generate input fields */
-    var inputFields = [];
+    var fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    fieldNames.forEach((fieldName) => {
+    var inputFields = fieldNames.map((fieldName) => {
       var inputClasses = classSet({
         'input': true,
         'has-error': _.includes(fieldsWithErrors, fieldName),
-        'half': fieldName == 'city' || fieldName == 'postcode',
-        'left': fieldName == 'city'
+        'half': fieldName === 'city' || fieldName === 'postcode',
+        'left': fieldName === 'city'
       });
 
-      inputFields.push((
-        <input
-          key         = { fieldName }
-          className   = { inputClasses }
-          type        = { fieldName == 'email' ? 'email' : 'text' }
-          name        = { fieldName }
-          placeholder = { fieldNameTranslations[fieldName].fi }
-          value       = { this.state[fieldName] }
-          onChange    = { this.onChange } />
-      ))
-    })
+      function showsErrorFor(field) {
+        if (fieldName === 'city') {
+          return false;
+        }
+
+        return field === fieldName || fieldName === 'postcode' && field === 'city';
+      }
+
+      return (
+        <span key={fieldName}>
+          <input
+            className={inputClasses}
+            type={fieldName === 'email' ? 'email' : 'text'}
+            name={fieldName}
+            placeholder={fieldNameTranslations[fieldName].fi}
+            value={this.state[fieldName]}
+            onChange={this.onChange} />
+          {
+            visibleErrors
+              .filter(({ field }) => showsErrorFor(field))
+              .map(getErrorMessage)
+
+          }
+        </span>
+      );
+    });
 
     return (
       <div>
-        <form className={ formClasses } onSubmit={ this.onSubmit }>
-          { feedbackMessages }
-          { inputFields }
-          <button
-            className = 'btn btn__submit'
-            type      = 'submit'
-            title     = 'Lähetä'
-            disabled  = { this.state.errors.length || this.state.submitted }>
-            Siirry maksamaan
-          </button>
-          <span
-            className='loader'>
-          </span>
+        <form className={formClasses}>
+          {inputFields}
+          {this.state.error && (
+            <div className='form--message'>
+              Jotain meni pieleen! Ota yhteyttä info@koodiklinikka.fi
+            </div>
+          )}
+          <StripeCheckout
+            amount={1000}
+            currency='EUR'
+            description='Jäsenmaksu'
+            email={this.state.email}
+            image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
+            locale='fi'
+            name='Koodiklinikka ry'
+            stripeKey={config.stripe.publicKey}
+            token={this.onSubmit}
+          >
+            <button
+              type='button'
+              disabled={inputErrors.length !== 0}
+              className='btn btn__submit'>
+              Siirry maksamaan
+            </button>
+          </StripeCheckout>
         </form>
       </div>
-    )
+    );
   }
 });
