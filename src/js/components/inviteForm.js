@@ -5,7 +5,7 @@ var React = require('react');
 var classSet = require('classnames');
 
 var api = require('../api');
-
+var Loader = require('./loader');
 module.exports = React.createClass({
   getInitialState() {
     return {
@@ -99,11 +99,11 @@ module.exports = React.createClass({
           disabled={this.state.error || this.state.submitted}>
           ⏎
         </button>
-        <span
-          className='loader'>
-        </span>
+        <div className='invite-form__loader'>
+          <Loader />
+        </div>
         {feedbackMessage}
       </form>
-      )
+    );
   }
 });
