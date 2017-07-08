@@ -9,10 +9,12 @@ var api            = require('../api');
 var StripeCheckout = require('./stripeCheckout.js');
 
 var fieldNameTranslations = {
+  address:   { fi: "Osoite" },
+  city:      { fi: "Paikkakunta" },
   email:     { fi: "Sähköpostiosoite" },
-  name:      { fi: "Koko nimi "},
   handle:    { fi: "Slack-käyttäjätunnus "},
-  residence: { fi: "Paikkakunta" }
+  name:      { fi: "Koko nimi "},
+  postcode:  { fi: "Postinumero" }
 }
 
 function validateEmail(email) {
@@ -20,16 +22,20 @@ function validateEmail(email) {
   return re.test(email);
 }
 
+const fieldNames = ['name', 'email', 'handle', 'address', 'city', 'postcode'];
+
 module.exports = React.createClass({
 
   getInitialState() {
     return {
+      address:   '',
+      city:      '',
       email:     '',
-      name:      '',
+      errors:    [],
       handle:    '',
-      residence: '',
-      sending:   false,
-      errors:    []
+      name:      '',
+      postcode:  '',
+      sending:   false
     };
   },
   onSubmit(e) {
@@ -40,30 +46,27 @@ module.exports = React.createClass({
       errors: []
     });
 
-
-    var userInfo = {
-      email:     this.state.email,
-      name:      this.state.name,
-      handle:    this.state.handle,
-      residence: this.state.residence,
-    }
-
-    var userInfoErrors = this.getDataErrors();
-
-    if(userInfoErrors.length){
+    if (this.getDataErrors().length) {
       this.setState({
         sending: false,
         errors:  userInfoErrors
       });
     } else {
-      this.props.onSuccess(userInfo);
+      this.props.onSuccess({
+        email:     this.state.email,
+        name:      this.state.name,
+        handle:    this.state.handle,
+        address:   this.state.address,
+        postcode:  this.state.postcode,
+        city:      this.state.city,
+      });
     }
   },
   handleError(err) {
     this.setState({ error: err, sending: false });
   },
   onChange(e) {
-    if(e.target.value === this.state[e.target.name]) {
+    if (e.target.value === this.state[e.target.name]) {
       return;
     }
 
@@ -76,20 +79,13 @@ module.exports = React.createClass({
   getDataErrors() {
     var foundErrors = [];
 
-    if (!this.state.name)
-      foundErrors.push({ field: 'name', type: 'missing' });
+    fieldNames.forEach((fieldName) => {
+      if(!this.state[fieldName])
+        foundErrors.push({ field: fieldName, type: 'missing' })
+    })
 
-    if (!this.state.email)
-      foundErrors.push({ field: 'email', type: 'missing' });
-    else if(!validateEmail(this.state.email))
+    if(this.state.email && !validateEmail(this.state.email))
       foundErrors.push({ field: 'email', type: 'invalid' });
-
-    if (!this.state.handle)
-      foundErrors.push({ field: 'handle', type: 'missing' });
-
-    if (!this.state.residence)
-      foundErrors.push({ field: 'residence', type: 'missing' });
-
 
     return foundErrors;
   },
@@ -123,13 +119,14 @@ module.exports = React.createClass({
 
 
     /* generate input fields */
-    var fieldNames  = ['name', 'email', 'handle', 'residence'];
     var inputFields = [];
 
     fieldNames.forEach((fieldName) => {
       var inputClasses = classSet({
         'input': true,
-        'has-error': _.includes(fieldsWithErrors, fieldName)
+        'has-error': _.includes(fieldsWithErrors, fieldName),
+        'half': fieldName == 'city' || fieldName == 'postcode',
+        'left': fieldName == 'city'
       });
 
       inputFields.push((
