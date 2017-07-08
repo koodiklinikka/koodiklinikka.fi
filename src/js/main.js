@@ -46,6 +46,9 @@ if(pathName == '/') {
     document.getElementById('email'));
 
   ReactDOM.render(
-    members(),
+    React.createElement('div', {}, [
+      members({key: 0}),
+      members({key: 1})
+    ]),
     document.getElementById('members'));
 }
