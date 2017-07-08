@@ -12,7 +12,11 @@ var membershipForm = React.createFactory(require('./components/membershipForm'))
 
 const pathName = window.location.pathname;
 
-if(pathName == '/') {
+document.querySelectorAll('.email').forEach((element) =>
+  ReactDOM.render(email(), element)
+);
+
+if (pathName == '/') {
   ReactDOM.render(
     inviteForm(),
     document.getElementById('invite-form'));
@@ -29,9 +33,6 @@ if(pathName == '/') {
     feed(),
     document.getElementById('feed'));
 
-  ReactDOM.render(
-    email(),
-    document.getElementById('email'));
 } else if (pathName == '/yhdistys.html') {
   ReactDOM.render(
     membershipForm(),
@@ -42,13 +43,9 @@ if(pathName == '/') {
     document.getElementById('fader'));
 
   ReactDOM.render(
-    email(),
-    document.getElementById('email'));
-
-  ReactDOM.render(
     React.createElement('div', {}, [
-      members({key: 0}),
-      members({key: 1})
+      members({ key: 0 }),
+      members({ key: 1 })
     ]),
     document.getElementById('members'));
 }
