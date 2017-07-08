@@ -6,6 +6,7 @@ footerHeight = 50px
 @require '_input'
 @require '_button'
 @require '_header'
+@require '_loader'
 
 body, html
   margin 0
@@ -112,28 +113,16 @@ section:first-child
     &:first-child
       margin-top 0
 
-.loader
-  background transparent url('../images/ajax-loader.gif') no-repeat center center
-  width 28px
-  height 28px
-
 .form
   .btn
     background linkColor
     border-bottom 2px solid #117280
     color rgba(255, 255, 255, 0.9)
-  .loader
-    display none
   &.sending
     .btn
       display none
-    .loader
+    .invite-form__loader
       display block
-      margin-left auto
-      margin-right auto
-      width 28px
-      height 28px
-
 .invite-form
   position relative
   .btn
@@ -146,21 +135,24 @@ section:first-child
     color rgba(255, 255, 255, 0.5)
     &:active
       border-bottom 0
-  .loader
+  .invite-form__loader
+    display none
+    width 20px
+    height 20px
     position absolute
-    right 9px
-    top 9px
-  &.sending
-    .loader
-      display block
-      width 28px
-      height 28px
+    right 14px
+    top 14px
 
 .membership-form
   .input
     margin 8px 0px
   .btn
     margin-top 12px
+
+.membership-form__loader
+  width 70px
+  height 70px
+  margin auto
 
 .stripe-form
   margin 20px 0px
@@ -353,11 +345,12 @@ footer
 
 .bread-img
   background url('../images/hp3_bw.jpg')
-  background-size 120%
-  background-position-y 80%
-  border-radius 0px
+  background-size cover
+  border-radius 160px
   opacity 0.85
+  width 320px
   height 320px
+  margin auto
 
 @media screen and (max-width: 700px)
   .bread-img

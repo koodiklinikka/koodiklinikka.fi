@@ -4,9 +4,10 @@ var _ = require('lodash');
 var request = require('axios');
 var React = require('react');
 var classSet = require('classnames');
+var StripeCheckout = require('react-stripe-checkout').default;
 
 var api = require('../api');
-var StripeCheckout = require('react-stripe-checkout').default;
+var Loader = require('./loader');
 var config = require('../../config.js')();
 
 var fieldNameTranslations = {
@@ -152,9 +153,16 @@ module.exports = React.createClass({
         </span>
       );
     });
-
+    if (this.state.sending) {
+      return (
+        <div className='membership-form__loader'>
+          <Loader />
+        </div>
+      );
+    }
     return (
       <div>
+        <h3>Liity jäseneksi</h3>
         <form className={formClasses}>
           {inputFields}
           {this.state.error && (
