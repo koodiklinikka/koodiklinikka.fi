@@ -24,7 +24,7 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-const fieldNames = ['name', 'email', 'handle', 'address', 'city', 'postcode'];
+const fieldNames = ['name', 'email', 'handle', 'address', 'postcode', 'city'];
 
 function getUserInfo(state) {
   return _.pick(state, fieldNames);
@@ -124,7 +124,7 @@ module.exports = React.createClass({
         'input': true,
         'has-error': _.includes(fieldsWithErrors, fieldName),
         'half': fieldName === 'city' || fieldName === 'postcode',
-        'left': fieldName === 'city'
+        'left': fieldName === 'postcode'
       });
 
       function showsErrorFor(field) {
