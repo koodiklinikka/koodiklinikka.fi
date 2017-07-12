@@ -5,7 +5,7 @@ var React = require('react');
 var classSet = require('classnames');
 
 var api = require('../api');
-
+var Loader = require('./loader');
 module.exports = React.createClass({
   getInitialState() {
     return {
@@ -48,6 +48,7 @@ module.exports = React.createClass({
   },
   render() {
     var formClasses = classSet({
+      'form': true,
       'invite-form': true,
       'has-success': this.state.submitted,
       'has-error': this.state.error,
@@ -76,7 +77,7 @@ module.exports = React.createClass({
       }
 
       feedbackMessage = (
-        <div className='invite-form--message'>
+        <div className='form--message'>
           {messageText}
         </div>
       );
@@ -98,11 +99,11 @@ module.exports = React.createClass({
           disabled={this.state.error || this.state.submitted}>
           ⏎
         </button>
-        <span
-          className='loader'>
-        </span>
+        <div className='invite-form__loader'>
+          <Loader />
+        </div>
         {feedbackMessage}
       </form>
-      )
+    );
   }
 });

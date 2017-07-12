@@ -1,150 +1,79 @@
-doctype html
-html
-  head
-    title Koodiklinikka
-    // inject:css
-    // endinject
-    meta(name='description', content='Koodiklinikka on suomalainen Slack-yhteisö ohjelmistoalan harrastajille ja ammattilaisille.')
-    meta(name='keywords', content='ohjelmointi,frontend,open source,devaus,suomi,javascript,clojure,go,java,node.js,io.js,angular.js,web')
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    meta(name='apple-mobile-web-app-capable', content='yes')
+extends templates/head
 
-    script.
-      if(location.hostname === 'koodiklinikka.fi' && location.protocol !== 'https:') {
-        location.protocol = 'https';
-      }
-    link(rel='apple-touch-icon', sizes='57x57', href='icons/apple-touch-icon-57x57.png')
-    link(rel='apple-touch-icon', sizes='114x114', href='icons/apple-touch-icon-114x114.png')
-    link(rel='apple-touch-icon', sizes='72x72', href='icons/apple-touch-icon-72x72.png')
-    link(rel='apple-touch-icon', sizes='144x144', href='icons/apple-touch-icon-144x144.png')
-    link(rel='apple-touch-icon', sizes='60x60', href='icons/apple-touch-icon-60x60.png')
-    link(rel='apple-touch-icon', sizes='120x120', href='icons/apple-touch-icon-120x120.png')
-    link(rel='apple-touch-icon', sizes='76x76', href='icons/apple-touch-icon-76x76.png')
-    link(rel='apple-touch-icon', sizes='152x152', href='icons/apple-touch-icon-152x152.png')
-    link(rel='apple-touch-icon', sizes='180x180', href='icons/apple-touch-icon-180x180.png')
-    link(rel='icon', type='image/png', href='icons/favicon-192x192.png', sizes='192x192')
-    link(rel='icon', type='image/png', href='icons/favicon-160x160.png', sizes='160x160')
-    link(rel='icon', type='image/png', href='icons/favicon-96x96.png', sizes='96x96')
-    link(rel='icon', type='image/png', href='icons/favicon-16x16.png', sizes='16x16')
-    link(rel='icon', type='image/png', href='icons/favicon-32x32.png', sizes='32x32')
-    link(rel='shortcut icon', href='icons/favicon.ico')
-    link(rel='icon', href='icons/favicon.ico')
-    meta(name='msapplication-TileColor', content='#10558c')
-    meta(name='msapplication-TileImage', content='icons/mstile-144x144.png')
-    meta(property='og:image', content='images/logo.png')
-    script(src='//use.typekit.net/scb5xny.js')
-    script.
-      try{Typekit.load();}catch(e){};
+block title
+  | Koodiklinikka
 
-  body
-    .site
-      .container
-        .header
-          video(autoplay, loop, poster='images/poster.jpg', class='header__video-bg')
-            source(src='videos/jumbo.mp4', type='video/mp4')
-          .header__container
-            .header__headline
-              .header__logo
-              h1.header__title <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja&nbsp;ammattilaisille.
+block header_content
+  video(autoplay, loop, poster='images/poster.jpg', class='header__video-bg')
+    source(src='videos/jumbo.mp4', type='video/mp4')
+  .header__container
+    .header__nav
+      a(href='/') etusivu
+      a(href='/yhdistys.html') yhdistys
+    .header__headline
+      .header__logo
+      h1.header__title <a target="_blank" href="https://slack.com/">Slack</a>-yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja&nbsp;ammattilaisille.
 
-        .content
-          section
-            .row
-              h3 Tule mukaan
-              #invite-form
+block content
+  .content.with-feed
+    section
+      .row
+        h3 Tule mukaan
+        #invite-form.form
 
-          section
-            .row
-              .bread
-                .column.column1-2
-                  h3 Yhteisö ohjelmoinnista kiinnostuneille
-                  p.
-                    Koodiklinikka on Suomen suurin ohjelmistoalan yhteisö, joka kokoaa työntekijät, harrastajat ja vasta-alkajat yhteen.
-                    Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
-                  p.
-                    Mukaan liittyminen on ilmaista ja helppoa. Jätä sähköpostiosoitteesi ylläolevaan kenttään ja lähetämme sinulle kutsun Slack-yhteisöömme.
-                .column.column1-2
-                  a(href='images/slack.png', target='_blank')
-                    img(src='images/slack.png')
+    section
+      .row
+        .bread
+          .column.column1-2
+            h3 Yhteisö ohjelmoinnista kiinnostuneille
+            p.
+              Koodiklinikka on Suomen suurin ohjelmistoalan yhteisö, joka kokoaa työntekijät, harrastajat ja vasta-alkajat yhteen.
+              Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.
+            p.
+              Mukaan liittyminen on ilmaista ja helppoa. Jätä sähköpostiosoitteesi ylläolevaan kenttään ja lähetämme sinulle kutsun Slack-yhteisöömme.
+          .column.column1-2
+            a(href='images/slack.png', target='_blank')
+              img(src='images/slack.png')
 
 
-            .row
-              .bread
-                .column.column2-5
-                  img(src='images/octocat.png')
+      .row
+        .bread
+          .column.column2-5
+            img(src='images/octocat.png')
 
-                .column.column3-5
-                  h3 Avoin lähdekoodi
-                  p
-                    |Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on vapaasti saatavilla ja hyödynnettävissä <a href="https://github.com/koodiklinikka">Github-organisaatiomme sivulta</a>.
-                    |Organisaation jäseneksi otamme kaikki Slack-yhteisömme jäsenet ja kontribuutio projekteihimme otetaan lämpimästi vastaan.
+          .column.column3-5
+            h3 Avoin lähdekoodi
+            p
+              |Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on vapaasti saatavilla ja hyödynnettävissä <a href="https://github.com/koodiklinikka">Github-organisaatiomme sivulta</a>.
+              |Organisaation jäseneksi otamme kaikki Slack-yhteisömme jäsenet ja kontribuutio projekteihimme otetaan lämpimästi vastaan.
 
-                  #members
+            #members
 
-            .row
-              h2 Potilaiden projekteja
-              .bread
-                .column.column2-5
-                  a(href='https://redom.js.org', target='_blank')
-                    img(src='images/redom.svg')
+      .row
+        h2 Potilaiden projekteja
+        .bread
+          .column.column2-5
+            a(href='https://redom.js.org', target='_blank')
+              img(src='images/redom.svg')
 
-                .column.column3-5
-                  h4 RE:DOM
+          .column.column3-5
+            h4 RE:DOM
 
-                  p.
-                    Tiny (2 KB) turboboosted JavaScript library for creating user interfaces.
-                    Develop web apps with 100 % JavaScript and web standards.
+            p.
+              Tiny (2 KB) turboboosted JavaScript library for creating user interfaces.
+              Develop web apps with 100 % JavaScript and web standards.
 
-              .bread
-                .column.column2-5
-                  a(href='https://codestats.net/', target='_blank')
-                    img.project-image__codestats(src='images/codestats.png')
+        .bread
+          .column.column2-5
+            a(href='https://codestats.net/', target='_blank')
+              img.project-image__codestats(src='images/codestats.png')
 
-                .column.column3-5
-                  h4 Code::Stats
+          .column.column3-5
+            h4 Code::Stats
 
-                  p.
-                    Code::Stats is a free stats tracking service for programmers
+            p.
+              Code::Stats is a free stats tracking service for programmers
 
-                  #members
+            #members
 
-          #feed
-
-
-      footer
-        .sponsors
-          .sponsors__label Yhteistyössä
-          a(href='http://futurice.com/', target='_blank')
-            img.sponsor.sponsor__futurice(src='images/futurice.svg')
-          a(href='http://www.metosin.fi/', target='_blank')
-            img.sponsor.sponsor__metosin(src='images/metosin.svg')
-          a(href='https://www.solita.fi/', target='_blank')
-            img.sponsor(src='images/solita.svg')
-          a(href='http://leonidasoy.fi/', target='_blank')
-            img.sponsor.sponsor__leonidas(src='images/leonidas.png')
-          a(href='https://www.nordea.com/', target='_blank')
-            img.sponsor.sponsor__nordea(src='images/nordea.png')
-
-        .contacts
-          div
-            a(href='https://koodiklinikka.slack.com')
-              i.fa.fa-slack
-
-            a(href='https://github.com/koodiklinikka/koodiklinikka.fi')
-              i.fa.fa-github
-
-            a(href='https://twitter.com/koodiklinikka')
-              i.fa.fa-twitter
-
-            a(href='https://www.linkedin.com/groups/12025476')
-              i.fa.fa-linkedin
-
-            a(href='https://www.facebook.com/koodiklinikka')
-              i.fa.fa-facebook
-            div#email
-
-
-    #fader
-    // inject:js
-    // endinject
+    #feed

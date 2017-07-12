@@ -8,6 +8,8 @@
   "scripts": {
     "start": "rm -rf public && gulp",
     "build": "rm -rf public && gulp build",
+    "dev": "SERVER=http://localhost:9000/ ENV=development npm start",
+    "prod": "ENV=production npm start",
     "lint": "eslint src",
     "test": "mocha src/**/__tests__/*.js --compilers js:babel-core/register --require test/test-helper"
   },
@@ -22,8 +24,10 @@
     "http-server": "^0.8.0",
     "lodash": "^3.9.1",
     "parse-github-event": "^0.2.0",
+    "prop-types": "^15.5.10",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-stripe-checkout": "^2.4.0",
     "timeago": "^0.2.0",
     "twitter-text": "^1.11.0"
   },

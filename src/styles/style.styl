@@ -6,6 +6,7 @@ footerHeight = 50px
 @require '_input'
 @require '_button'
 @require '_header'
+@require '_loader'
 
 body, html
   margin 0
@@ -24,6 +25,9 @@ h1, h2, h3
 
 h2
   margin-bottom 1em
+
+h3
+  font-size 1.25em
 
 p
   margin-top 1em
@@ -51,13 +55,17 @@ section
 .content
   z-index 2
   position relative
-  padding-right feedWidth
   min-height 50vh
   box-sizing border-box
 
   @media screen and (max-width: 700px)
     h3
       margin-top 0
+
+  &.with-feed
+    padding-right feedWidth
+
+
 section:first-child
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
   border-bottom 1px solid #EEEEEE
@@ -104,35 +112,55 @@ section:first-child
     padding 0
     &:first-child
       margin-top 0
+
+.form
+  .btn
+    background linkColor
+    border-bottom 2px solid #117280
+    color rgba(255, 255, 255, 0.9)
+  &.sending
+    .btn
+      display none
+    .invite-form__loader
+      display block
 .invite-form
   position relative
   .btn
     width 40px
     height 32px
-    background linkColor
     padding 0
     position absolute
     right 8px
     top 7px
-
-    border-bottom 2px solid #117280
     color rgba(255, 255, 255, 0.5)
     &:active
       border-bottom 0
-  .loader
+  .invite-form__loader
+    display none
+    width 20px
+    height 20px
     position absolute
-    right 9px
-    top 9px
-    width 0px
-    height 0px
-    background transparent url('../images/ajax-loader.gif') no-repeat center center
+    right 14px
+    top 14px
+
+.membership-form
+  .input
+    margin 8px 0px
+  .btn
+    margin-top 12px
+
+.membership-form__loader
+  width 70px
+  height 70px
+  margin auto
+
+.stripe-form
+  margin 20px 0px
+  .name
+    margin-top 20px
+    text-align left
     display block
-  &.sending
-    .btn
-      display none
-    .loader
-      width 28px
-      height 28px
+    color rgba(0, 0, 0, 0.4)
 
 @keyframes drop
   0%
@@ -146,7 +174,7 @@ section:first-child
   100%
     transform rotateX(0deg)
 
-.invite-form--message
+.form--message
   background linkColor
   color #fff
   line-height 40px
@@ -156,8 +184,8 @@ section:first-child
   transform-origin 100% 0
   animation drop 0.6s linear
 
-.invite-form.has-error
-  .invite-form--message
+.form.has-error
+  .form--message
     background rgb(226, 33, 112)
 
 .members
@@ -182,7 +210,7 @@ footer
   justify-content space-between
   flex-wrap wrap
   text-align center
-  @media screen and (max-width: 760px)
+  @media screen and (max-width: 940px)
     display block
   i
     margin 0 0.30em
@@ -194,7 +222,7 @@ footer
   display flex
   flex-direction column
   justify-content center
-  @media screen and (max-width: 760px)
+  @media screen and (max-width: 940px)
     margin-top 1em
 
 .sponsors
@@ -215,16 +243,17 @@ footer
   height 40px
   margin-right 1em
   vertical-align middle
-  @media screen and (max-width: 760px)
+  @media screen and (max-width: 940px)
     margin-top 1em
-
 
 .sponsor__futurice, .sponsor__metosin, .sponsor__leonidas
   height 30px
 
 .sponsor__nordea
   height 25px
-  margin-top: -3px
+  margin-top -3px
+  @media screen and (max-width: 940px)
+    margin-top 1em
 
 .feed
   width feedWidth
@@ -242,7 +271,7 @@ footer
 @media screen and (max-width: 980px)
   .feed
     width 0
-  .content
+  .content.with-feed
     padding-right 0
 
 .message
@@ -314,3 +343,24 @@ footer
     display block
     .column
       display block
+
+.bread-img
+  background url('../images/hp3_bw.jpg')
+  background-size cover
+  border-radius 160px
+  opacity 0.85
+  width 320px
+  height 320px
+  margin auto
+
+@media screen and (max-width: 700px)
+  .bread-img
+    display none
+
+.organization
+  padding-top 3em
+
+.membership-information.column
+  vertical-align initial
+  p:first-child
+    margin-top 37px
