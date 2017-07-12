@@ -177,7 +177,6 @@ module.exports = React.createClass({
             description='Jäsenmaksu'
             email={this.state.email}
             image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
-            locale='fi'
             name='Koodiklinikka ry'
             stripeKey={config.stripe.publicKey}
             token={this.onSubmit}
