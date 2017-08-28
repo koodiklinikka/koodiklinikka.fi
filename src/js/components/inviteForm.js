@@ -97,7 +97,7 @@ module.exports = React.createClass({
           type='submit'
           title='Lähetä'
           disabled={this.state.error || this.state.submitted}>
-          ⏎
+          Lähetä
         </button>
         <div className='invite-form__loader'>
           <Loader />
