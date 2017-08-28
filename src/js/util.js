@@ -4,9 +4,11 @@ var _           = require('lodash');
 var githubEvent = require('parse-github-event');
 var twitterText = require('twitter-text');
 
+const isVisibleGithubEvent = ({type}) => type !== 'PushEvent' && type !== 'DeleteEvent';
+
 module.exports = {
   github(items) {
-    return items.filter(({type}) => type !== 'PushEvent').map((item) => {
+    return items.filter(isVisibleGithubEvent).map((item) => {
 
       _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
