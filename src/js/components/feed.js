@@ -26,7 +26,7 @@ module.exports = React.createClass({
     .then((res) => {
 
       const messages = _(res.data)
-        .map((messages, type) => messages.map(transformers[type]))
+        .map((messages, type) => transformers[type](messages))
         .flatten()
         .value();
 
