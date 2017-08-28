@@ -11,5 +11,6 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   repo: koodiklinikka/koodiklinikka.github.io
+  target_branch: master
   on:
     branch: master
