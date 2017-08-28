@@ -1,8 +1,15 @@
-script: bash ./deploy.sh
+script: npm run build
 language: node_js
 node_js:
 - '5.0'
-env:
-  global:
-  - GH_REF: github.com/koodiklinikka/koodiklinikka.github.io.git
-  - secure: "jLdOsoWHBQG2VGync9Il4l/HX7J35cp7f09rMi+Wcvu2gkFjLFiPv0mwAJxIdDQYA8SsnK9VaGlDDRdTAbsntlE0rZ8RI/qcyfMHd4QPvlAajBpGKFG3O2Ku98TV2SWRl4C7qmkgUiPOACPofpnjxiiHLGGq8sFQ4Vhvb+xvx1E="
+install:
+  - npm install
+deploy:
+  local_dir: public
+  provider: pages
+  fqdn: koodiklinikka.fi
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  repo: koodiklinikka/koodiklinikka.github.io
+  on:
+    branch: master
