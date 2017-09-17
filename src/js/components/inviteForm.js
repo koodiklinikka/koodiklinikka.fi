@@ -1,13 +1,13 @@
-import request from 'axios';
-import React from 'react';
-import classSet from 'classnames';
-import getAPIPath from '../api';
-import Loader from './loader';
+import request from "axios";
+import React from "react";
+import classSet from "classnames";
+import getAPIPath from "../api";
+import Loader from "./loader";
 
 export default React.createClass({
   getInitialState() {
     return {
-      email: '',
+      email: "",
       submitted: false,
       sending: false,
       error: null
@@ -22,9 +22,10 @@ export default React.createClass({
       error: null
     });
 
-    request.post(getAPIPath('invites'), {
-      email: this.state.email.trim()
-    })
+    request
+      .post(getAPIPath("invites"), {
+        email: this.state.email.trim()
+      })
       .then(this.handleSuccess)
       .catch(this.handleError);
   },
@@ -46,17 +47,17 @@ export default React.createClass({
   },
   render() {
     const formClasses = classSet({
-      'form': true,
-      'invite-form': true,
-      'has-success': this.state.submitted,
-      'has-error': this.state.error,
-      'sending': this.state.sending
+      form: true,
+      "invite-form": true,
+      "has-success": this.state.submitted,
+      "has-error": this.state.error,
+      sending: this.state.sending
     });
 
     const inputClasses = classSet({
-      'input': true,
-      'has-success': this.state.submitted,
-      'has-error': this.state.error
+      input: true,
+      "has-success": this.state.submitted,
+      "has-error": this.state.error
     });
 
     let feedbackMessage;
@@ -65,20 +66,22 @@ export default React.createClass({
       let messageText;
 
       if (this.state.submitted) {
-        messageText = 'Kutsu lähetetty antamaasi sähköpostiosoitteeseen.';
-      } else if (this.state.error.status === 400 && this.state.error.data === 'invalid_email') {
-        messageText = 'Tarkasta syöttämäsi sähköpostiosoite';
-      } else if (this.state.error.status === 400 && this.state.error.data === 'already_invited') {
-        messageText = 'Sähköpostiosoitteeseen on jo lähetetty kutsu';
+        messageText = "Kutsu lähetetty antamaasi sähköpostiosoitteeseen.";
+      } else if (
+        this.state.error.status === 400 &&
+        this.state.error.data === "invalid_email"
+      ) {
+        messageText = "Tarkasta syöttämäsi sähköpostiosoite";
+      } else if (
+        this.state.error.status === 400 &&
+        this.state.error.data === "already_invited"
+      ) {
+        messageText = "Sähköpostiosoitteeseen on jo lähetetty kutsu";
       } else {
-        messageText = 'Jotain meni pieleen. Yritä hetken päästä uudelleen.';
+        messageText = "Jotain meni pieleen. Yritä hetken päästä uudelleen.";
       }
 
-      feedbackMessage = (
-        <div className="form--message">
-          {messageText}
-        </div>
-      );
+      feedbackMessage = <div className="form--message">{messageText}</div>;
     }
 
     return (
@@ -89,12 +92,14 @@ export default React.createClass({
           name="email"
           placeholder="Email"
           value={this.state.email}
-          onChange={this.onChange} />
+          onChange={this.onChange}
+        />
         <button
           className="btn btn__submit"
           type="submit"
           title="Lähetä"
-          disabled={this.state.error || this.state.submitted}>
+          disabled={this.state.error || this.state.submitted}
+        >
           Lähetä
         </button>
         <div className="invite-form__loader">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
@@ -16,11 +16,11 @@ export default React.createClass({
     };
   },
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll);
+    window.addEventListener("scroll", this.onScroll);
     this.onScroll();
   },
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener("scroll", this.onScroll);
   },
   onScroll() {
     const scrollableDistance = document.body.scrollHeight - window.innerHeight;
@@ -36,8 +36,6 @@ export default React.createClass({
       opacity: this.state.opacity
     };
 
-    return (
-      <div className="fader" style={style}></div>
-    );
+    return <div className="fader" style={style} />;
   }
 });
