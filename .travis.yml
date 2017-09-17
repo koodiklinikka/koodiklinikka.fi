@@ -14,3 +14,6 @@ deploy:
   target_branch: master
   on:
     branch: master
+after_success:
+  - chmod ugo+x ./deploy-surge.sh
+  - ./deploy-surge.sh
