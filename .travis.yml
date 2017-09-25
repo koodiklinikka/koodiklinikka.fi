@@ -3,14 +3,17 @@ language: node_js
 node_js:
 - '5.0'
 install:
-  - npm install
+- npm install
 deploy:
   local_dir: public
   provider: pages
   fqdn: koodiklinikka.fi
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  github_token: "$GITHUB_TOKEN"
   repo: koodiklinikka/koodiklinikka.github.io
   target_branch: master
   on:
     branch: master
+after_success:
+  - chmod ugo+x ./deploy-surge.sh
+  - "./deploy-surge.sh"
