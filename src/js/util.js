@@ -1,47 +1,9 @@
 'use strict';
 
 var _           = require('lodash');
-var githubEvent = require('parse-github-event');
 var twitterText = require('twitter-text');
 
-const isVisibleGithubEvent = ({type}) => type !== 'PushEvent' && type !== 'DeleteEvent';
-
 module.exports = {
-  github(items) {
-    return items.filter(isVisibleGithubEvent).map((item) => {
-
-      _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-
-      var template = _.template(githubEvent.parse(item).text);
-
-      var repository = `https://github.com/${item.repo.name}`;
-      var branch;
-      if(item.payload.ref) {
-        branch = item.payload.ref.replace('refs/heads/', '');
-      }
-
-      var message = template({
-        repository: `<a target="_blank" href="${repository}">${item.repo.name}</a>`,
-        branch: branch,
-        number: item.payload.number,
-        ref_type: item.payload.ref_type,
-        ref: item.payload.ref
-      });
-
-      var url = `https://github.com/${item.actor.login}`;
-
-      return {
-        user: item.actor.login,
-        userLink: url,
-        image: item.actor.avatar_url,
-        imageLink: url,
-        body: message,
-        timestamp: new Date(item.created_at),
-        url: message.url,
-        type: 'github'
-      };
-    });
-  },
   twitter(items) {
     return items.map((item) => {
       if(item.retweeted) {
