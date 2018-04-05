@@ -17,17 +17,13 @@ headerHeight = 400px
      display none
 
 .header__container
-  background linear-gradient(120deg, rgba(5, 164, 255, 0.55) 10%, rgba(5, 86, 117, 0.47) 90%)
+  background #3E7394
+  background linear-gradient(120deg, rgba(#085078, 0.8) 10%, rgba(#85D8CE, 0.7) 90%)
   display table
   height 100%
   text-align center
   vertical-align middle
   width 100%
-
-.header__headline
-  display table-cell
-  padding 0 1em
-  vertical-align middle
 
 .header__nav
   position absolute
@@ -61,14 +57,29 @@ headerHeight = 400px
         position absolute
         text-shadow none
 
+.header__headline
+  display table-cell
+  padding 0 1em
+  vertical-align middle
+
 .header__logo
   background url('../images/logo.png')
   background-size contain
-  height 70px  
-  width 70px
-  position absolute
-  top 1em
-  left 1em
+  display inline-block
+  height 180px
+  margin-right 2em
+  vertical-align middle
+  width 180px
+
+  @media screen and (max-width: 1030px)
+    height 120px
+    margin-right 1.5em
+    width 120px
+
+  @media screen and (max-width: 810px)
+    height 80px
+    margin 0 0 1.5em
+    width 80px
 
 .header__title
   color #fff
@@ -99,26 +110,6 @@ headerHeight = 400px
     color inherit
     text-decoration underline
 
-.header--promo
-  background-image url('https://ngvikings.org/images/backgrounds/home.jpg')
-.header--promo .header__container
-  background linear-gradient(180deg, rgba(5, 164, 255, 0.28) 10%, rgba(0, 0, 0, 0.5) 90%)
-  
-.header--promo .header__title
-  font-size 2.5em
-  @media screen and (max-width: 1030px)
-    font-size 2em
-  @media screen and (max-width: 810px)
-    text-align left
-    max-width 640px
-    padding-top 2em
-  @media screen and (max-width: 530px)
-    font-size 1.75em
-
-.header--promo .promo
-  color #ffcc00
-  font-size 0.75em
-  margin-top 0.5em
 .header__video-bg
   height 100%
   position absolute

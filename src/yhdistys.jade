@@ -3,17 +3,16 @@ extends templates/head
 block title
   | Yhdistys
 
-block header
-  .header
-    .header__container
-      .header__nav
-        a(href='/') etusivu
-        a(href='/yhdistys.html') yhdistys
-      .header__headline
-        .header__logo
-        h1.header__title Koodiklinikka ry
-    .header__members
-      #members
+block header_content
+  .header__container
+    .header__nav
+      a(href='/') etusivu
+      a(href='/yhdistys.html') yhdistys
+    .header__headline
+      .header__logo
+      h1.header__title Koodiklinikka ry
+  .header__members
+    #members
 
 block content
   .content
