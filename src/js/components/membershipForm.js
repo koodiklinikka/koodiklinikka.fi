@@ -4,16 +4,16 @@ import MembershipInfoForm from './membershipInfoForm';
 module.exports = React.createClass({
   getInitialState() {
     return {
-      paymentSuccess: false
+      signupSuccess: false
     };
   },
-  handlePaymentSuccess() {
-    this.setState({ paymentSuccess: true });
+  handleSignupSuccess() {
+    this.setState({ signupSuccess: true });
   },
   render() {
-    if(!this.state.paymentSuccess) {
+    if (!this.state.signupSuccess) {
       return (
-        <MembershipInfoForm onPaymentSuccess={this.handlePaymentSuccess} />
+        <MembershipInfoForm onSignupSuccess={this.handleSignupSuccess} />
       );
     }
     return (
@@ -26,7 +26,7 @@ module.exports = React.createClass({
             fill='#349c4a'
             d='M384.235 158.192L216.92 325.518 127.86 236.48l-14.142 14.144 103.2 103.18 181.36-181.47' />
         </svg>
-        <p> Maksu ja rekisteröityminen onnistui.</p>
+        <p> Rekisteröityminen onnistui. Tervetuloa jäseneksi!</p>
         <p> Tervetuloa Koodiklinikka ry:n jäseneksi!</p>
       </div>
     );

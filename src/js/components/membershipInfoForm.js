@@ -4,7 +4,6 @@ var _ = require('lodash');
 var request = require('axios');
 var React = require('react');
 var classSet = require('classnames');
-var StripeCheckout = require('react-stripe-checkout').default;
 
 var api = require('../api');
 var Loader = require('./loader');
@@ -44,15 +43,14 @@ module.exports = React.createClass({
       pristineFields: fieldNames
     };
   },
-  onSubmit(token) {
+  onSubmit() {
     this.setState({
       sending: true,
       error: null
     });
 
     request.post(api('membership'), {
-      userInfo: getUserInfo(this.state),
-      stripeToken: token.id
+      userInfo: getUserInfo(this.state)
     })
       .then(() => {
         this.setState({ sending: false });
@@ -171,26 +169,14 @@ module.exports = React.createClass({
             </div>
           )}
           <br />
-          <StripeCheckout
-            amount={1000}
-            currency='EUR'
-            description='Jäsenmaksu'
-            email={this.state.email}
-            image='https://avatars3.githubusercontent.com/u/10520119?v=3&s=200'
-            name='Koodiklinikka ry'
-            stripeKey={config.stripe.publicKey}
-            token={this.onSubmit}
+          <button
+            type='button'
+            disabled={inputErrors.length !== 0}
+            className='btn btn__submit'
+            onClick={this.onSubmit}
           >
-            <button
-              type='button'
-              disabled={inputErrors.length !== 0}
-              className='btn btn__submit'>
-              Siirry maksamaan
-            </button>
-          </StripeCheckout>
-          <p>
-            <small>Seuraava vuosimaksu veloitetaan automaattisesti <br />kortiltasi vuoden kuluttua.</small>
-          </p>
+            Liity jäseneksi
+          </button>
         </form>
       </div>
     );
