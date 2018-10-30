@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 
-var _ = require('lodash');
-var request = require('axios');
-var React = require('react');
-var classSet = require('classnames');
+var _ = require("lodash");
+var request = require("axios");
+var React = require("react");
+var classSet = require("classnames");
 
-var api = require('../api');
-var Loader = require('./loader');
-var config = require('../../config.js')();
+var api = require("../api");
+var Loader = require("./loader");
+var config = require("../../config.js")();
 
 var fieldNameTranslations = {
-  address: { fi: 'Osoite' },
-  city: { fi: 'Paikkakunta' },
-  email: { fi: 'Sähköpostiosoite' },
-  handle: { fi: 'Slack-käyttäjätunnus ' },
-  name: { fi: 'Koko nimi ' },
-  postcode: { fi: 'Postinumero' }
+  address: { fi: "Osoite" },
+  city: { fi: "Paikkakunta" },
+  email: { fi: "Sähköpostiosoite" },
+  handle: { fi: "Slack-käyttäjätunnus " },
+  name: { fi: "Koko nimi " },
+  postcode: { fi: "Postinumero" }
 };
 
 function validateEmail(email) {
@@ -23,22 +23,21 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-const fieldNames = ['name', 'email', 'handle', 'address', 'postcode', 'city'];
+const fieldNames = ["name", "email", "handle", "address", "postcode", "city"];
 
 function getUserInfo(state) {
   return _.pick(state, fieldNames);
 }
 
 module.exports = React.createClass({
-
   getInitialState() {
     return {
-      address: '',
-      city: '',
-      email: '',
-      handle: '',
-      name: '',
-      postcode: '',
+      address: "",
+      city: "",
+      email: "",
+      handle: "",
+      name: "",
+      postcode: "",
       sending: false,
       pristineFields: fieldNames
     };
@@ -49,14 +48,15 @@ module.exports = React.createClass({
       error: null
     });
 
-    request.post(api('membership'), {
-      userInfo: getUserInfo(this.state)
-    })
+    request
+      .post(api("membership"), {
+        userInfo: getUserInfo(this.state)
+      })
       .then(() => {
         this.setState({ sending: false });
-        this.props.onPaymentSuccess();
+        this.props.onSignupSuccess();
       })
-      .catch((err) => {
+      .catch(err => {
         this.setState({ error: err, sending: false });
       });
   },
@@ -68,7 +68,9 @@ module.exports = React.createClass({
 
     this.setState({
       [e.target.name]: e.target.value,
-      pristineFields: this.state.pristineFields.filter((fieldName) => fieldName !== name),
+      pristineFields: this.state.pristineFields.filter(
+        fieldName => fieldName !== name
+      ),
       errors: []
     });
   },
@@ -76,14 +78,14 @@ module.exports = React.createClass({
   getDataErrors() {
     var foundErrors = [];
 
-    fieldNames.forEach((fieldName) => {
+    fieldNames.forEach(fieldName => {
       if (!this.state[fieldName]) {
-        foundErrors.push({ field: fieldName, type: 'missing' });
+        foundErrors.push({ field: fieldName, type: "missing" });
       }
     });
 
     if (this.state.email && !validateEmail(this.state.email)) {
-      foundErrors.push({ field: 'email', type: 'invalid' });
+      foundErrors.push({ field: "email", type: "invalid" });
     }
 
     return foundErrors;
@@ -93,67 +95,74 @@ module.exports = React.createClass({
     const inputErrors = this.getDataErrors();
 
     var formClasses = classSet({
-      'form': true,
-      'membership-form': true,
-      'has-error': inputErrors.length !== 0 || this.state.error,
-      'sending': this.state.sending
+      form: true,
+      "membership-form": true,
+      "has-error": inputErrors.length !== 0 || this.state.error,
+      sending: this.state.sending
     });
 
     function getErrorMessage(err) {
       var feedbackText;
 
-      if (err.type === 'missing') {
+      if (err.type === "missing") {
         feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
-      } else if (err.type === 'invalid') {
-        feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`;
+      } else if (err.type === "invalid") {
+        feedbackText = `${
+          fieldNameTranslations[err.field].fi
+        } on virheellinen.`;
       }
 
-      return <div key={err.field} className='form--message'>{feedbackText}</div>;
+      return (
+        <div key={err.field} className="form--message">
+          {feedbackText}
+        </div>
+      );
     }
 
     /* generate error messages */
-    var visibleErrors = inputErrors
-      .filter((error) => this.state.pristineFields.indexOf(error.field) === -1);
+    var visibleErrors = inputErrors.filter(
+      error => this.state.pristineFields.indexOf(error.field) === -1
+    );
 
     var fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    var inputFields = fieldNames.map((fieldName) => {
+    var inputFields = fieldNames.map(fieldName => {
       var inputClasses = classSet({
-        'input': true,
-        'has-error': _.includes(fieldsWithErrors, fieldName),
-        'half': fieldName === 'city' || fieldName === 'postcode',
-        'left': fieldName === 'postcode'
+        input: true,
+        "has-error": _.includes(fieldsWithErrors, fieldName),
+        half: fieldName === "city" || fieldName === "postcode",
+        left: fieldName === "postcode"
       });
 
       function showsErrorFor(field) {
-        if (fieldName === 'city') {
+        if (fieldName === "city") {
           return false;
         }
 
-        return field === fieldName || fieldName === 'postcode' && field === 'city';
+        return (
+          field === fieldName || (fieldName === "postcode" && field === "city")
+        );
       }
 
       return (
         <span key={fieldName}>
           <input
             className={inputClasses}
-            type={fieldName === 'email' ? 'email' : 'text'}
+            type={fieldName === "email" ? "email" : "text"}
             name={fieldName}
             placeholder={fieldNameTranslations[fieldName].fi}
             value={this.state[fieldName]}
-            onChange={this.onChange} />
-          {
-            visibleErrors
-              .filter(({ field }) => showsErrorFor(field))
-              .map(getErrorMessage)
-
-          }
+            onChange={this.onChange}
+          />
+          {visibleErrors
+            .filter(({ field }) => showsErrorFor(field))
+            .map(getErrorMessage)}
         </span>
       );
     });
     if (this.state.sending) {
       return (
-        <div className='membership-form__loader'>
+        <div className="membership-form__loader">
           <Loader />
         </div>
       );
@@ -164,15 +173,15 @@ module.exports = React.createClass({
         <form className={formClasses}>
           {inputFields}
           {this.state.error && (
-            <div className='form--message'>
+            <div className="form--message">
               Jotain meni pieleen! Ota yhteyttä info@koodiklinikka.fi
             </div>
           )}
           <br />
           <button
-            type='button'
+            type="button"
             disabled={inputErrors.length !== 0}
-            className='btn btn__submit'
+            className="btn btn__submit"
             onClick={this.onSubmit}
           >
             Liity jäseneksi
