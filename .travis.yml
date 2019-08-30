@@ -1,9 +1,9 @@
 script: npm run build
 language: node_js
 node_js:
-- '5.0'
+  - "11.6.0"
 install:
-- npm install
+  - npm install
 deploy:
   local_dir: public
   provider: pages
