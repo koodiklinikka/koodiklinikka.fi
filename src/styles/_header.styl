@@ -30,37 +30,26 @@ headerHeight = 400px
   left 90px
   top 40px
 
+  @media screen and (max-width: 810px)
+    left auto
+    right auto
+    width: 100%
+
   a
-    color white
-    font-size 16px
-    font-weight bold
-    margin-left 16px
-    text-shadow 0 2px 0 rgba(0,0,0,0.1)
-    position relative
+    display: block;
+    max-width: 180px;
+
+    @media screen and (max-width: 810px)
+      margin-left auto
+      margin-right auto
+    
+    img
+      width: 100%;
 
 .header__headline
   display table-cell
   padding 0 1em
   vertical-align middle
-
-.header__logo
-  background url('../images/logo.png')
-  background-size contain
-  display inline-block
-  height 180px
-  margin-right 2em
-  vertical-align middle
-  width 180px
-
-  @media screen and (max-width: 1030px)
-    height 120px
-    margin-right 1.5em
-    width 120px
-
-  @media screen and (max-width: 810px)
-    height 80px
-    margin 0 0 1.5em
-    width 80px
 
 .header__title
   color #fff
@@ -70,7 +59,7 @@ headerHeight = 400px
   line-height 1.1
   margin auto
   max-width 780px
-  text-align left
+  text-align center
   text-shadow 0 2px 0 rgba(#000, 0.1)
   vertical-align middle
 
