@@ -1,12 +1,12 @@
 "use strict";
 
-import _ from 'lodash';
-import request from 'axios';
-import React from 'react';
-import classSet from 'classnames';
-import api from '../api';
-import Loader from './loader';
-import configFactory from '../../config.js';
+import _ from "lodash";
+import request from "axios";
+import React from "react";
+import classSet from "classnames";
+import api from "../api";
+import Loader from "./loader";
+import configFactory from "../../config.js";
 const config = configFactory();
 
 var fieldNameTranslations = {
@@ -60,7 +60,7 @@ export default class MembershipInfoForm extends React.Component {
       });
   };
 
-  onChange = (e) => {
+  onChange = e => {
     var name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
@@ -107,9 +107,7 @@ export default class MembershipInfoForm extends React.Component {
       if (err.type === "missing") {
         feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
       } else if (err.type === "invalid") {
-        feedbackText = `${
-          fieldNameTranslations[err.field].fi
-        } on virheellinen.`;
+        feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`;
       }
 
       return (
@@ -190,4 +188,4 @@ export default class MembershipInfoForm extends React.Component {
       </div>
     );
   }
-};
+}

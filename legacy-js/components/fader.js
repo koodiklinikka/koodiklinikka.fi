@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
 function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
@@ -17,8 +17,8 @@ export default class Fader extends React.Component {
 
   onScroll = () => {
     var scrollableDistance = document.body.scrollHeight - window.innerHeight,
-        scrollTop = window.pageYOffset || document.documentElement.scrollTop,
-        distanceToBottom = scrollableDistance - scrollTop;
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop,
+      distanceToBottom = scrollableDistance - scrollTop;
 
     this.setState({
       opacity: clamp(0, 1, distanceToBottom / this.props.threshold)
@@ -26,12 +26,12 @@ export default class Fader extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.onScroll);
+    window.addEventListener("scroll", this.onScroll);
     this.onScroll();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener("scroll", this.onScroll);
   }
 
   render() {
@@ -39,8 +39,6 @@ export default class Fader extends React.Component {
       opacity: this.state.opacity
     };
 
-    return (
-      <div className="fader" style={style}></div>
-    )
+    return <div className="fader" style={style}></div>;
   }
-};
+}

@@ -1,23 +1,23 @@
-'use strict';
+"use strict";
 
-import _ from 'lodash';
-import githubEvent from 'parse-github-event';
-import twitterText from 'twitter-text';
+import _ from "lodash";
+import githubEvent from "parse-github-event";
+import twitterText from "twitter-text";
 
-const isVisibleGithubEvent = ({type}) => type !== 'PushEvent' && type !== 'DeleteEvent';
+const isVisibleGithubEvent = ({ type }) =>
+  type !== "PushEvent" && type !== "DeleteEvent";
 
 export default {
   github(items) {
-    return items.filter(isVisibleGithubEvent).map((item) => {
-
+    return items.filter(isVisibleGithubEvent).map(item => {
       _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
       var template = _.template(githubEvent.parse(item).text);
 
       var repository = `https://github.com/${item.repo.name}`;
       var branch;
-      if(item.payload.ref) {
-        branch = item.payload.ref.replace('refs/heads/', '');
+      if (item.payload.ref) {
+        branch = item.payload.ref.replace("refs/heads/", "");
       }
 
       var message = template({
@@ -38,13 +38,13 @@ export default {
         body: message,
         timestamp: new Date(item.created_at),
         url: message.url,
-        type: 'github'
+        type: "github"
       };
     });
   },
   twitter(items) {
-    return items.map((item) => {
-      if(item.retweeted) {
+    return items.map(item => {
+      if (item.retweeted) {
         item = item.retweeted_status;
       }
 
@@ -57,7 +57,7 @@ export default {
         imageLink: url,
         body: twitterText.autoLink(item.text),
         timestamp: new Date(item.created_at),
-        type: 'twitter'
+        type: "twitter"
       };
     });
   }
