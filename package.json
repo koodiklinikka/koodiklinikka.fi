@@ -23,6 +23,7 @@
     "lodash": "^3.9.1",
     "next": "^9.0.6",
     "next-fonts": "^0.18.0",
+    "next-ga": "^2.3.4",
     "parse-github-event": "^0.2.0",
     "prop-types": "^15.5.10",
     "react": "^16.9.0",

@@ -1,4 +1,3 @@
-* Google Analytics (ID `UA-58806132-1`)
 * Stripe
   * Test ID `pk_test_OmNve9H1OuORlmD4rblpjgzh`
   * Prod ID `pk_live_xrnwdLNXbt20LMxpIDffJnnC`
