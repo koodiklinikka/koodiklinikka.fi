@@ -3,3 +3,4 @@
   * Prod ID `pk_live_xrnwdLNXbt20LMxpIDffJnnC`
 * API integration (test backend `https://lit-plateau-4689.herokuapp.com/`)
 * Hero video
+* Deployment

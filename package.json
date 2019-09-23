@@ -4,12 +4,11 @@
   "description": "Koodiklinikka homepage",
   "author": "Riku Rouvila <riku.rouvila@leonidasoy.fi>",
   "license": "MIT",
-  "main": "gulpfile.js",
   "scripts": {
-    "start": "rm -rf public && gulp",
-    "build": "rm -rf public && gulp build",
-    "dev": "SERVER=http://localhost:9000/ ENV=development npm start",
-    "prod": "ENV=production npm start",
+    "start": "next",
+    "build": "next build && next export",
+    "dev": "SERVER=http://localhost:9000/ ENV=development next",
+    "prod": "ENV=production next build && next export",
     "lint": "eslint --ext .jsx --ext .js ."
   },
   "dependencies": {
