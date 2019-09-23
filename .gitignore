@@ -1,5 +1,5 @@
-npm-debug.log
+*.log
+.DS_Store
+.next
 node_modules
 public
-.DS_Store
-
