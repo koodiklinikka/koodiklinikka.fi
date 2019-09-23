@@ -1,2 +1,4 @@
 const withStylus = require('@zeit/next-stylus');
-module.exports = withStylus({});
+const withLess = require('@zeit/next-less');
+const withFonts = require('next-fonts');
+module.exports = withFonts(withLess(withStylus()));

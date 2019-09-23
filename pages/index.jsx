@@ -1,4 +1,5 @@
 import "../styles/style.styl";
+import "../styles/icons.less";
 import Head from "next/head";
 import InviteForm from '../components/InviteForm';
 import Members from '../components/Members';
