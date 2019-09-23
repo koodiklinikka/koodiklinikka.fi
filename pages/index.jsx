@@ -1,5 +1,8 @@
 import "../styles/style.styl";
 import Head from "next/head";
+import InviteForm from '../components/InviteForm';
+import Members from '../components/Members';
+import Feed from '../components/Feed';
 
 const Hero = () => (
   <div className="header">
@@ -39,7 +42,7 @@ const IndexContent = () => (
             </a>
             -yhteisöömme
           </h3>
-          <div id="invite-form" className="form" />
+          <div className="form"><InviteForm /></div>
           <p className="code-of-conduct">
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
             <a
@@ -94,7 +97,9 @@ const IndexContent = () => (
                 jäsenet. Koodiklinikan projekteihin voi osallistua kuka tahansa
                 ja muutosideat ovat aina lämpimästi tervetulleita.
               </p>
-              <div id="members" />
+              <div id="members">
+                <Members />
+              </div>
             </div>
           </div>
         </div>
@@ -158,7 +163,9 @@ const IndexContent = () => (
           </div>
         </div>
       </section>
-      <div id="feed" />
+      <div id="feed">
+        <Feed />
+      </div>
     </div>
   </>
 );

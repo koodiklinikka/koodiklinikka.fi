@@ -1,5 +1,5 @@
 import React from "react";
-import MembershipInfoForm from "./membershipInfoForm";
+import MembershipInfoForm from "./MembershipInfoForm";
 
 export default class MembershipForm extends React.Component {
   state = {

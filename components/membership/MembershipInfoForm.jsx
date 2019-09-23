@@ -5,9 +5,9 @@ import request from "axios";
 import React from "react";
 import classSet from "classnames";
 import api from "../api";
-import Loader from "./loader";
-import configFactory from "../../config.js";
-const config = configFactory();
+import Loader from "../Loader";
+//import configFactory from "../../config.js";
+//const config = configFactory();
 
 var fieldNameTranslations = {
   address: { fi: "Osoite" },

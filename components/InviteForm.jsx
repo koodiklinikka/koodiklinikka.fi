@@ -3,8 +3,8 @@
 import request from "axios";
 import React from "react";
 import classSet from "classnames";
-import api from "../api";
-import Loader from "./loader";
+import api from "./api";
+import Loader from "./Loader";
 
 export default class InviteForm extends React.Component {
   state = {

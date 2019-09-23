@@ -3,7 +3,7 @@
 import React from "react";
 import request from "axios";
 import _ from "lodash";
-import api from "../api";
+import api from "./api";
 
 export default class Members extends React.Component {
   state = {

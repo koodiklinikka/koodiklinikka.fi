@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { Footer } from "../components/Footer";
+import Fader from '../components/Fader';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -53,7 +54,7 @@ class MyDocument extends Document {
             </div>
             <Footer />
           </div>
-          <div id="fader" />
+          <Fader />
         </body>
       </Html>
     );

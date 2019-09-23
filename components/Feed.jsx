@@ -3,8 +3,8 @@
 import React from "react";
 import request from "axios";
 import _ from "lodash";
-import transformers from "../util";
-import api from "../api";
+import transformers from "./feed-transformers";
+import api from "./api";
 
 function throwError(err) {
   setTimeout(() => {
