@@ -1,5 +1,3 @@
-"use strict";
-
 import request from "axios";
 import React from "react";
 import classSet from "classnames";

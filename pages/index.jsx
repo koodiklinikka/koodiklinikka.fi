@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/style.styl";
 import "../styles/icons.less";
 import Head from "next/head";

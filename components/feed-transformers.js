@@ -1,5 +1,3 @@
-"use strict";
-
 import _ from "lodash";
 import githubEvent from "parse-github-event";
 import twitterText from "twitter-text";
