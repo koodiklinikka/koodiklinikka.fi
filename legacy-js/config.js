@@ -11,6 +11,6 @@ var production = {
   }
 }
 
-module.exports = function () {
+export default function () {
   return process.env.ENV == 'development' ? development : production;
-}
+};

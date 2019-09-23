@@ -1,7 +1,7 @@
 'use strict';
-require('./ga');
-let ReactDOM = require('react-dom');
-var React = require('react');
+import './ga';
+import ReactDOM from 'react-dom';
+import React from 'react';
 
 var inviteForm = React.createFactory(require('./components/inviteForm'));
 var fader = React.createFactory(require('./components/fader'));

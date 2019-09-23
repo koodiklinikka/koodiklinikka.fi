@@ -1,12 +1,12 @@
 'use strict';
 
-var request = require('axios');
-var React = require('react');
-var classSet = require('classnames');
+import request from 'axios';
+import React from 'react';
+import classSet from 'classnames';
+import api from '../api';
+import Loader from './loader';
 
-var api = require('../api');
-var Loader = require('./loader');
-module.exports = class extends React.Component {
+export default class extends React.Component {
   state = {
     email: '',
     submitted: false,

@@ -1,11 +1,10 @@
 'use strict';
 
-var React = require('react');
-var request = require('axios');
-var _ = require('lodash');
-
-var transformers = require('../util');
-var api = require('../api');
+import React from 'react';
+import request from 'axios';
+import _ from 'lodash';
+import transformers from '../util';
+import api from '../api';
 
 function throwError(err) {
   setTimeout(() => {
@@ -14,7 +13,7 @@ function throwError(err) {
   });
 }
 
-module.exports = class extends React.Component {
+export default class extends React.Component {
   state = {
     messages: []
   };

@@ -1,12 +1,12 @@
 'use strict';
 
-var _           = require('lodash');
-var githubEvent = require('parse-github-event');
-var twitterText = require('twitter-text');
+import _ from 'lodash';
+import githubEvent from 'parse-github-event';
+import twitterText from 'twitter-text';
 
 const isVisibleGithubEvent = ({type}) => type !== 'PushEvent' && type !== 'DeleteEvent';
 
-module.exports = {
+export default {
   github(items) {
     return items.filter(isVisibleGithubEvent).map((item) => {
 

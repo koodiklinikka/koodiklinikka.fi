@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-module.exports = function Loader() {
+export default function Loader() {
   return (
     <div className='sk-folding-cube'>
       <div className='sk-cube1 sk-cube'></div>

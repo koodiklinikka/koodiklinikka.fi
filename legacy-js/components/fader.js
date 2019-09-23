@@ -1,12 +1,12 @@
 'use strict';
 
-var React = require('react');
+import React from 'react';
 
 function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
 }
 
-module.exports = class extends React.Component {
+export default class extends React.Component {
   static defaultProps = {
     threshold: 100
   };

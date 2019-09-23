@@ -1,12 +1,11 @@
 'use strict';
 
-var React = require('react');
-var request = require('axios');
-var _ = require('lodash');
+import React from 'react';
+import request from 'axios';
+import _ from 'lodash';
+import api from '../api';
 
-var api = require('../api');
-
-module.exports = class extends React.Component {
+export default class extends React.Component {
   state = {
     members: []
   };

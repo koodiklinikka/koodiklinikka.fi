@@ -1,13 +1,13 @@
 "use strict";
 
-var _ = require("lodash");
-var request = require("axios");
-var React = require("react");
-var classSet = require("classnames");
-
-var api = require("../api");
-var Loader = require("./loader");
-var config = require("../../config.js")();
+import _ from 'lodash';
+import request from 'axios';
+import React from 'react';
+import classSet from 'classnames';
+import api from '../api';
+import Loader from './loader';
+import configFactory from '../../config.js';
+const config = configFactory();
 
 var fieldNameTranslations = {
   address: { fi: "Osoite" },
@@ -29,7 +29,7 @@ function getUserInfo(state) {
   return _.pick(state, fieldNames);
 }
 
-module.exports = class extends React.Component {
+export default class extends React.Component {
   state = {
     address: "",
     city: "",
