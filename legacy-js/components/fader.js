@@ -6,7 +6,7 @@ function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
 }
 
-export default class extends React.Component {
+export default class Fader extends React.Component {
   static defaultProps = {
     threshold: 100
   };

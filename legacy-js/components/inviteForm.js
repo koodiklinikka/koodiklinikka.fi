@@ -6,7 +6,7 @@ import classSet from 'classnames';
 import api from '../api';
 import Loader from './loader';
 
-export default class extends React.Component {
+export default class InviteForm extends React.Component {
   state = {
     email: '',
     submitted: false,

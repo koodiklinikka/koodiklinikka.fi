@@ -1,7 +1,7 @@
 import React from 'react';
 import MembershipInfoForm from './membershipInfoForm';
 
-export default class extends React.Component {
+export default class MembershipForm extends React.Component {
   state = {
     signupSuccess: false
   };

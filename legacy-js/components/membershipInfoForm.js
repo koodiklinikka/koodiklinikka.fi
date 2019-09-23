@@ -29,7 +29,7 @@ function getUserInfo(state) {
   return _.pick(state, fieldNames);
 }
 
-export default class extends React.Component {
+export default class MembershipInfoForm extends React.Component {
   state = {
     address: "",
     city: "",

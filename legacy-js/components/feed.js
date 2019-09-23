@@ -13,7 +13,7 @@ function throwError(err) {
   });
 }
 
-export default class extends React.Component {
+export default class Feed extends React.Component {
   state = {
     messages: []
   };

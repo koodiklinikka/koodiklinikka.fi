@@ -5,7 +5,7 @@ import request from 'axios';
 import _ from 'lodash';
 import api from '../api';
 
-export default class extends React.Component {
+export default class Members extends React.Component {
   state = {
     members: []
   };
