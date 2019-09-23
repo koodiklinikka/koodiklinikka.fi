@@ -6,16 +6,15 @@ var classSet = require('classnames');
 
 var api = require('../api');
 var Loader = require('./loader');
-module.exports = React.createClass({
-  getInitialState() {
-    return {
-      email: '',
-      submitted: false,
-      sending: false,
-      error: null
-    };
-  },
-  onSubmit(e) {
+module.exports = class extends React.Component {
+  state = {
+    email: '',
+    submitted: false,
+    sending: false,
+    error: null
+  };
+
+  onSubmit = (e) => {
     e.preventDefault();
 
     this.setState({
@@ -29,14 +28,17 @@ module.exports = React.createClass({
     })
     .then(this.handleSuccess)
     .catch(this.handleError);
-  },
-  handleSuccess() {
+  };
+
+  handleSuccess = () => {
     this.setState({submitted: true, sending: false});
-  },
-  handleError(err) {
+  };
+
+  handleError = (err) => {
     this.setState({error: err, sending: false});
-  },
-  onChange(e) {
+  };
+
+  onChange = (e) => {
     if(e.target.value === this.state.email) {
       return;
     }
@@ -45,7 +47,8 @@ module.exports = React.createClass({
       error: null,
       submitted: false
     });
-  },
+  };
+
   render() {
     var formClasses = classSet({
       'form': true,
@@ -106,4 +109,4 @@ module.exports = React.createClass({
       </form>
     );
   }
-});
+};

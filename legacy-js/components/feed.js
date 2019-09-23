@@ -14,12 +14,11 @@ function throwError(err) {
   });
 }
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {
-      messages: []
-    };
-  },
+module.exports = class extends React.Component {
+  state = {
+    messages: []
+  };
+
   componentDidMount() {
     request.get(api('feeds'))
 
@@ -34,7 +33,8 @@ module.exports = React.createClass({
         messages: _(messages).sortBy('timestamp').reverse().value().slice(0, 40)
       });
     }).catch(throwError);
-  },
+  }
+
   render() {
     var messages = this.state.messages.map((message, i) => {
 
@@ -70,4 +70,4 @@ module.exports = React.createClass({
       <div className="feed">{messages}</div>
     )
   }
-});
+};

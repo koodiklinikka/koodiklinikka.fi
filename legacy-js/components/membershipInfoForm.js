@@ -29,20 +29,19 @@ function getUserInfo(state) {
   return _.pick(state, fieldNames);
 }
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {
-      address: "",
-      city: "",
-      email: "",
-      handle: "",
-      name: "",
-      postcode: "",
-      sending: false,
-      pristineFields: fieldNames
-    };
-  },
-  onSubmit() {
+module.exports = class extends React.Component {
+  state = {
+    address: "",
+    city: "",
+    email: "",
+    handle: "",
+    name: "",
+    postcode: "",
+    sending: false,
+    pristineFields: fieldNames
+  };
+
+  onSubmit = () => {
     this.setState({
       sending: true,
       error: null
@@ -59,8 +58,9 @@ module.exports = React.createClass({
       .catch(err => {
         this.setState({ error: err, sending: false });
       });
-  },
-  onChange(e) {
+  };
+
+  onChange = (e) => {
     var name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
@@ -73,9 +73,9 @@ module.exports = React.createClass({
       ),
       errors: []
     });
-  },
+  };
 
-  getDataErrors() {
+  getDataErrors = () => {
     var foundErrors = [];
 
     fieldNames.forEach(fieldName => {
@@ -89,7 +89,7 @@ module.exports = React.createClass({
     }
 
     return foundErrors;
-  },
+  };
 
   render() {
     const inputErrors = this.getDataErrors();
@@ -190,4 +190,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};

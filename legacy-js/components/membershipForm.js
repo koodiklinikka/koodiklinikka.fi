@@ -1,15 +1,15 @@
 import React from 'react';
 import MembershipInfoForm from './membershipInfoForm';
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {
-      signupSuccess: false
-    };
-  },
-  handleSignupSuccess() {
+module.exports = class extends React.Component {
+  state = {
+    signupSuccess: false
+  };
+
+  handleSignupSuccess = () => {
     this.setState({ signupSuccess: true });
-  },
+  };
+
   render() {
     if (!this.state.signupSuccess) {
       return (
@@ -31,4 +31,4 @@ module.exports = React.createClass({
       </div>
     );
   }
-});
+};

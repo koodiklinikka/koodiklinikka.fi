@@ -6,19 +6,19 @@ var _ = require('lodash');
 
 var api = require('../api');
 
-module.exports = React.createClass({
-  getInitialState() {
-    return {
-      members: []
-    };
-  },
+module.exports = class extends React.Component {
+  state = {
+    members: []
+  };
+
   componentDidMount() {
     request.get(api('members')).then(function(res) {
       this.setState({
         members: _.shuffle(res.data)
       });
     }.bind(this));
-  },
+  }
+
   render() {
 
     var members = this.state.members.map(function(member, i) {
@@ -36,4 +36,4 @@ module.exports = React.createClass({
       </div>
     )
   }
-});
+};
