@@ -1,38 +1,34 @@
 import React from "react";
 import EmailComponent from "./EmailComponent";
 
+const SponsorLink = ({ href, id, name }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    <img
+      src={`/static/images/sponsors/${id}.${id === "nordea" ? "png" : "svg"}`}
+      alt={name}
+      className={`sponsor sponsor__${id}`}
+    />
+  </a>
+);
+
 export function Footer() {
   return (
     <footer>
       <div className="sponsors">
         <div className="sponsors__label">Yhteistyössä</div>
-        <a href="http://futurice.com/" target="_blank">
-          <img
-            src="/static/images/futurice.svg"
-            className="sponsor sponsor__futurice"
-          />
-        </a>
-        <a href="http://www.metosin.fi/" target="_blank">
-          <img
-            src="/static/images/metosin.svg"
-            className="sponsor sponsor__metosin"
-          />
-        </a>
-        <a href="https://www.solita.fi/" target="_blank">
-          <img src="/static/images/solita.svg" className="sponsor" />
-        </a>
-        <a href="http://wakeone.co/" target="_blank">
-          <img
-            src="/static/images/wakeone.svg"
-            className="sponsor sponsor__wakeone"
-          />
-        </a>
-        <a href="https://www.nordea.com/" target="_blank">
-          <img
-            src="/static/images/nordea.png"
-            className="sponsor sponsor__nordea"
-          />
-        </a>
+        <SponsorLink
+          id="futurice"
+          name="Futurice"
+          href="http://futurice.com/"
+        />
+        <SponsorLink
+          id="metosin"
+          name="Metosin"
+          href="http://www.metosin.fi/"
+        />
+        <SponsorLink id="solita" name="Solita" href="https://www.solita.fi/" />
+        <SponsorLink id="wakeone" name="Wakeone" href="http://wakeone.co/" />
+        <SponsorLink id="nordea" name="Nordea" href="https://www.nordea.com/" />
       </div>
       <div className="contacts">
         <div>
