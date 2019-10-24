@@ -10,15 +10,15 @@ export default {
     return items.filter(isVisibleGithubEvent).map(item => {
       _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
-      var template = _.template(githubEvent.parse(item).text);
+      const template = _.template(githubEvent.parse(item).text);
 
-      var repository = `https://github.com/${item.repo.name}`;
-      var branch;
+      const repository = `https://github.com/${item.repo.name}`;
+      let branch;
       if (item.payload.ref) {
         branch = item.payload.ref.replace("refs/heads/", "");
       }
 
-      var message = template({
+      const message = template({
         repository: `<a target="_blank" href="${repository}">${item.repo.name}</a>`,
         branch: branch,
         number: item.payload.number,
@@ -26,7 +26,7 @@ export default {
         ref: item.payload.ref,
       });
 
-      var url = `https://github.com/${item.actor.login}`;
+      const url = `https://github.com/${item.actor.login}`;
 
       return {
         user: item.actor.login,
@@ -46,7 +46,7 @@ export default {
         item = item.retweeted_status;
       }
 
-      var url = `https://twitter.com/${item.user.screen_name}`;
+      const url = `https://twitter.com/${item.user.screen_name}`;
 
       return {
         user: `@${item.user.screen_name}`,

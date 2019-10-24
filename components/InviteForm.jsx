@@ -51,7 +51,7 @@ export default class InviteForm extends React.Component {
   };
 
   render() {
-    var formClasses = classSet({
+    const formClasses = classSet({
       form: true,
       "invite-form": true,
       "has-success": this.state.submitted,
@@ -59,13 +59,13 @@ export default class InviteForm extends React.Component {
       sending: this.state.sending,
     });
 
-    var inputClasses = classSet({
+    const inputClasses = classSet({
       input: true,
       "has-success": this.state.submitted,
       "has-error": this.state.error,
     });
 
-    var feedbackMessage;
+    let feedbackMessage;
 
     if (this.state.error || this.state.submitted) {
       let messageText;
