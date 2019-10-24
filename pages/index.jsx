@@ -6,6 +6,7 @@ import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
 import { projects } from "../data/indexData";
+
 const Hero = () => (
   <div className="header">
     <video
@@ -35,8 +36,8 @@ const Hero = () => (
 const PatientProject = ({ title, description, url, image }) => (
   <div className="bread">
     <div className="column column2-5">
-      <a href={url} target="_blank">
-        <img src={image} style={{ width: "7rem" }} />
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <img src={image} style={{ width: "7rem" }} alt={title} />
       </a>
     </div>
     <div className="column column3-5">
@@ -53,7 +54,11 @@ const IndexContent = () => (
         <div className="row">
           <h3>
             Tule mukaan{" "}
-            <a target="_blank" href="https://slack.com/">
+            <a
+              target="_blank"
+              href="https://slack.com/"
+              rel="noopener noreferrer"
+            >
               Slack
             </a>
             -yhteisöömme
@@ -65,6 +70,7 @@ const IndexContent = () => (
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
             <a
               target="_blank"
+              rel="noopener noreferrer"
               href="https://github.com/koodiklinikka/code-of-conduct/blob/master/README.md"
             >
               käyttäytymissäännöt
@@ -93,7 +99,7 @@ const IndexContent = () => (
             </div>
             <div className="column column1-2">
               <a href="/static/images/slack.png" target="_blank">
-                <img src="/static/images/slack.png" />
+                <img src="/static/images/slack.png" alt="Slack" />
               </a>
             </div>
           </div>
@@ -101,7 +107,7 @@ const IndexContent = () => (
         <div className="row">
           <div className="bread">
             <div className="column column2-5">
-              <img src="/static/images/octocat.png" />
+              <img src="/static/images/octocat.png" alt="Octocat" />
             </div>
             <div className="column column3-5">
               <h3>Avoin lähdekoodi</h3>
