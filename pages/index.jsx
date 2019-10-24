@@ -2,10 +2,10 @@ import React from "react";
 import "../styles/style.styl";
 import "../styles/icons.less";
 import Head from "next/head";
-import InviteForm from '../components/InviteForm';
-import Members from '../components/Members';
-import Feed from '../components/Feed';
-
+import InviteForm from "../components/InviteForm";
+import Members from "../components/Members";
+import Feed from "../components/Feed";
+import { projects } from './patientProjects'
 const Hero = () => (
   <div className="header">
     <video
@@ -28,6 +28,20 @@ const Hero = () => (
           harrastajille ja ammattilaisille.
         </h1>
       </div>
+    </div>
+  </div>
+);
+
+const PatientProject = ({ title, description, url, image }) => (
+  <div className="bread">
+    <div className="column column2-5">
+      <a href={url} target="_blank">
+        <img src={image} style={{ width: "7rem"}} />
+      </a>
+    </div>
+    <div className="column column3-5">
+      <h4>{title}</h4>
+      <p>{description}</p>
     </div>
   </div>
 );
@@ -107,62 +121,9 @@ const IndexContent = () => (
         </div>
         <div className="row">
           <h2>Potilaiden projekteja</h2>
-          <div className="bread">
-            <div className="column column2-5">
-              <a href="https://redom.js.org" target="_blank">
-                <img src="/static/images/redom.svg" />
-              </a>
-            </div>
-            <div className="column column3-5">
-              <h4>RE:DOM</h4>
-              <p>
-                Tiny (2 KB) turboboosted JavaScript library for creating user
-                interfaces. Develop web apps with 100 % JavaScript and web
-                standards.
-              </p>
-            </div>
-          </div>
-          <div className="bread">
-            <div className="column column2-5">
-              <a href="https://codestats.net/" target="_blank">
-                <img
-                  src="/static/images/codestats.png"
-                  className="project-image__codestats"
-                />
-              </a>
-            </div>
-            <div className="column column3-5">
-              <h4>Code::Stats</h4>
-              <p>
-                Code::Stats is a free stats tracking service for programmers
-              </p>
-            </div>
-          </div>
-          <div className="bread">
-            <div className="column column2-5">
-              <a href="https://reactabular.js.org/" target="_blank">
-                <img
-                  src="/static/images/reactabular.png"
-                  className="project-image__codestats"
-                />
-              </a>
-            </div>
-            <div className="column column3-5">
-              <h4>Reactabular</h4>
-              <p>A framework for building the React table you need</p>
-            </div>
-          </div>
-          <div className="bread">
-            <div className="column column2-5">
-              <a href="https://avain.app" target="_blank">
-                <img src="/static/images/avain.svg" style={{ width: "7rem" }} />
-              </a>
-            </div>
-            <div className="column column3-5">
-              <h4>Avain.app</h4>
-              <p>Secure one-time password manager (PWA + Web Crypto)</p>
-            </div>
-          </div>
+          {projects.map(project => (
+            <PatientProject key={project.url} {...project} />
+          ))}
         </div>
       </section>
       <div id="feed">
