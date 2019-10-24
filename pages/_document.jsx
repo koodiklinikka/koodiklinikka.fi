@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { Footer } from "../components/Footer";
-import Fader from '../components/Fader';
+import Fader from "../components/Fader";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -45,7 +45,7 @@ class MyDocument extends Document {
           <meta property="og:image" content="images/logo.png" />
           <script src="https://js.stripe.com/v3/" />
           <script src="//use.typekit.net/scb5xny.js" />
-          <script>{'try{Typekit.load();}catch(e){};'}</script>
+          <script>{"try{Typekit.load();}catch(e){};"}</script>
         </Head>
         <body>
           <div className="site">

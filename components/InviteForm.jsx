@@ -9,7 +9,7 @@ export default class InviteForm extends React.Component {
     email: "",
     submitted: false,
     sending: false,
-    error: null
+    error: null,
   };
 
   onSubmit = e => {
@@ -18,12 +18,12 @@ export default class InviteForm extends React.Component {
     this.setState({
       submitted: false,
       sending: true,
-      error: null
+      error: null,
     });
 
     request
       .post(api("invites"), {
-        email: this.state.email.trim()
+        email: this.state.email.trim(),
       })
       .then(this.handleSuccess)
       .catch(this.handleError);
@@ -44,7 +44,7 @@ export default class InviteForm extends React.Component {
     this.setState({
       email: e.target.value,
       error: null,
-      submitted: false
+      submitted: false,
     });
   };
 
@@ -54,13 +54,13 @@ export default class InviteForm extends React.Component {
       "invite-form": true,
       "has-success": this.state.submitted,
       "has-error": this.state.error,
-      sending: this.state.sending
+      sending: this.state.sending,
     });
 
     var inputClasses = classSet({
       input: true,
       "has-success": this.state.submitted,
-      "has-error": this.state.error
+      "has-error": this.state.error,
     });
 
     var feedbackMessage;

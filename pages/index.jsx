@@ -5,7 +5,7 @@ import Head from "next/head";
 import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
-import { projects } from '../data/indexData';
+import { projects } from "../data/indexData";
 const Hero = () => (
   <div className="header">
     <video
@@ -36,7 +36,7 @@ const PatientProject = ({ title, description, url, image }) => (
   <div className="bread">
     <div className="column column2-5">
       <a href={url} target="_blank">
-        <img src={image} style={{ width: "7rem"}} />
+        <img src={image} style={{ width: "7rem" }} />
       </a>
     </div>
     <div className="column column3-5">
@@ -58,7 +58,9 @@ const IndexContent = () => (
             </a>
             -yhteisöömme
           </h3>
-          <div className="form"><InviteForm /></div>
+          <div className="form">
+            <InviteForm />
+          </div>
           <p className="code-of-conduct">
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
             <a
