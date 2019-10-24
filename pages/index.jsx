@@ -5,7 +5,7 @@ import Head from "next/head";
 import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
-import { projects } from './patientProjects'
+import { projects } from '../data/indexData';
 const Hero = () => (
   <div className="header">
     <video

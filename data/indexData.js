@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "RE:DOM",
     description:
-      " Tiny (2 KB) turboboosted JavaScript library for creating user interfaces. Develop web apps with 100 % JavaScript and web standards.",
+      "Tiny (2 KB) turboboosted JavaScript library for creating user interfaces. Develop web apps with 100 % JavaScript and web standards.",
     url: "https://redom.js.org",
     image: "/static/images/redom.svg",
   },
