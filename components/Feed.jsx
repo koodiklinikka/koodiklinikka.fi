@@ -1,8 +1,9 @@
+import _ from "lodash";
 import React from "react";
 import request from "axios";
-import _ from "lodash";
-import transformers from "./feed-transformers";
+import timeago from "timeago";
 import api from "./api";
+import transformers from "./feed-transformers";
 
 function throwError(err) {
   setTimeout(() => {
@@ -65,7 +66,7 @@ export default class Feed extends React.Component {
             </div>
             <div className="message__details">
               <span className="message__timestamp">
-                {require("timeago")(message.timestamp)}
+                {timeago(message.timestamp)}
               </span>
               <span className="message__meta">{message.meta}</span>
             </div>
