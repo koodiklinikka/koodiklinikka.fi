@@ -12,7 +12,7 @@ export default class InviteForm extends React.Component {
     error: null,
   };
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
 
     this.setState({
@@ -21,12 +21,14 @@ export default class InviteForm extends React.Component {
       error: null,
     });
 
-    request
-      .post(api("invites"), {
+    try {
+      await request.post(api("invites"), {
         email: this.state.email.trim(),
-      })
-      .then(this.handleSuccess)
-      .catch(this.handleError);
+      });
+      this.handleSuccess();
+    } catch (error) {
+      this.handleError(error);
+    }
   };
 
   handleSuccess = () => {

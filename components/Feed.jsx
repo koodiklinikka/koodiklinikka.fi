@@ -5,37 +5,29 @@ import timeago from "timeago";
 import api from "./api";
 import transformers from "./feed-transformers";
 
-function throwError(err) {
-  setTimeout(() => {
-    console.log(err.stack);
-    throw err;
-  });
-}
-
 export default class Feed extends React.Component {
   state = {
     messages: [],
   };
 
   componentDidMount() {
-    request
-      .get(api("feeds"))
+    this.updateFeed();
+  }
 
-      .then(res => {
-        const messages = _(res.data)
-          .map((messages, type) => transformers[type](messages))
-          .flatten()
-          .value();
+  async updateFeed() {
+    const res = await request.get(api("feeds"));
+    const messages = _(res.data)
+      .map((messages, type) => transformers[type](messages))
+      .flatten()
+      .value();
 
-        this.setState({
-          messages: _(messages)
-            .sortBy("timestamp")
-            .reverse()
-            .value()
-            .slice(0, 40),
-        });
-      })
-      .catch(throwError);
+    this.setState({
+      messages: _(messages)
+        .sortBy("timestamp")
+        .reverse()
+        .value()
+        .slice(0, 40),
+    });
   }
 
   render() {
