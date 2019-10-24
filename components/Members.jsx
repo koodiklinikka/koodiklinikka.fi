@@ -9,19 +9,20 @@ export default class Members extends React.Component {
   };
 
   componentDidMount() {
-    request.get(api("members")).then(
-      function(res) {
-        this.setState({
-          members: _.shuffle(res.data),
-        });
-      }.bind(this)
-    );
+    this.refreshMembers();
+  }
+
+  async refreshMembers() {
+    const res = await request.get(api("members"));
+    this.setState({
+      members: _.shuffle(res.data),
+    });
   }
 
   render() {
-    var members = this.state.members.map(function(member, i) {
+    var members = this.state.members.map(member => {
       var src = `${member.avatar_url}&s=120`;
-      return <img className="member" key={i} src={src} />;
+      return <img className="member" key={member.avatar_url} src={src} />;
     });
 
     return (
