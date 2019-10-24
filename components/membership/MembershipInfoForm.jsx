@@ -11,7 +11,7 @@ var fieldNameTranslations = {
   email: { fi: "Sähköpostiosoite" },
   handle: { fi: "Slack-käyttäjätunnus " },
   name: { fi: "Koko nimi " },
-  postcode: { fi: "Postinumero" }
+  postcode: { fi: "Postinumero" },
 };
 
 const mailValidateRe = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -35,18 +35,18 @@ export default class MembershipInfoForm extends React.Component {
     name: "",
     postcode: "",
     sending: false,
-    pristineFields: fieldNames
+    pristineFields: fieldNames,
   };
 
   onSubmit = () => {
     this.setState({
       sending: true,
-      error: null
+      error: null,
     });
 
     request
       .post(api("membership"), {
-        userInfo: getUserInfo(this.state)
+        userInfo: getUserInfo(this.state),
       })
       .then(() => {
         this.setState({ sending: false });
@@ -68,7 +68,7 @@ export default class MembershipInfoForm extends React.Component {
       pristineFields: this.state.pristineFields.filter(
         fieldName => fieldName !== name
       ),
-      errors: []
+      errors: [],
     });
   };
 
@@ -95,7 +95,7 @@ export default class MembershipInfoForm extends React.Component {
       form: true,
       "membership-form": true,
       "has-error": inputErrors.length !== 0 || this.state.error,
-      sending: this.state.sending
+      sending: this.state.sending,
     });
 
     function getErrorMessage(err) {
@@ -126,7 +126,7 @@ export default class MembershipInfoForm extends React.Component {
         input: true,
         "has-error": _.includes(fieldsWithErrors, fieldName),
         half: fieldName === "city" || fieldName === "postcode",
-        left: fieldName === "postcode"
+        left: fieldName === "postcode",
       });
 
       function showsErrorFor(field) {

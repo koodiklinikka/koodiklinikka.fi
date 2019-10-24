@@ -6,11 +6,11 @@ function clamp(min, max, value) {
 
 export default class Fader extends React.Component {
   static defaultProps = {
-    threshold: 100
+    threshold: 100,
   };
 
   state = {
-    opacity: 0
+    opacity: 0,
   };
 
   onScroll = () => {
@@ -19,7 +19,7 @@ export default class Fader extends React.Component {
       distanceToBottom = scrollableDistance - scrollTop;
 
     this.setState({
-      opacity: clamp(0, 1, distanceToBottom / this.props.threshold)
+      opacity: clamp(0, 1, distanceToBottom / this.props.threshold),
     });
   };
 
@@ -34,7 +34,7 @@ export default class Fader extends React.Component {
 
   render() {
     var style = {
-      opacity: this.state.opacity
+      opacity: this.state.opacity,
     };
 
     return <div className="fader" style={style}></div>;

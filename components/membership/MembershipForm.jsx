@@ -3,7 +3,7 @@ import MembershipInfoForm from "./MembershipInfoForm";
 
 export default class MembershipForm extends React.Component {
   state = {
-    signupSuccess: false
+    signupSuccess: false,
   };
 
   handleSignupSuccess = () => {

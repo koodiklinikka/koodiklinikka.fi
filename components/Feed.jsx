@@ -14,7 +14,7 @@ function throwError(err) {
 
 export default class Feed extends React.Component {
   state = {
-    messages: []
+    messages: [],
   };
 
   componentDidMount() {
@@ -32,7 +32,7 @@ export default class Feed extends React.Component {
             .sortBy("timestamp")
             .reverse()
             .value()
-            .slice(0, 40)
+            .slice(0, 40),
         });
       })
       .catch(throwError);

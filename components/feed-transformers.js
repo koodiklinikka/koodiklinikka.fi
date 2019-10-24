@@ -23,7 +23,7 @@ export default {
         branch: branch,
         number: item.payload.number,
         ref_type: item.payload.ref_type,
-        ref: item.payload.ref
+        ref: item.payload.ref,
       });
 
       var url = `https://github.com/${item.actor.login}`;
@@ -36,7 +36,7 @@ export default {
         body: message,
         timestamp: new Date(item.created_at),
         url: message.url,
-        type: "github"
+        type: "github",
       };
     });
   },
@@ -55,8 +55,8 @@ export default {
         imageLink: url,
         body: twitterText.autoLink(item.text),
         timestamp: new Date(item.created_at),
-        type: "twitter"
+        type: "twitter",
       };
     });
-  }
+  },
 };

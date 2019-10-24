@@ -5,14 +5,14 @@ import api from "./api";
 
 export default class Members extends React.Component {
   state = {
-    members: []
+    members: [],
   };
 
   componentDidMount() {
     request.get(api("members")).then(
       function(res) {
         this.setState({
-          members: _.shuffle(res.data)
+          members: _.shuffle(res.data),
         });
       }.bind(this)
     );
