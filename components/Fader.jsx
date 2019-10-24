@@ -14,7 +14,7 @@ export default class Fader extends React.Component {
   };
 
   onScroll = () => {
-    var scrollableDistance = document.body.scrollHeight - window.innerHeight,
+    const scrollableDistance = document.body.scrollHeight - window.innerHeight,
       scrollTop = window.pageYOffset || document.documentElement.scrollTop,
       distanceToBottom = scrollableDistance - scrollTop;
 
@@ -33,7 +33,7 @@ export default class Fader extends React.Component {
   }
 
   render() {
-    var style = {
+    const style = {
       opacity: this.state.opacity,
     };
 

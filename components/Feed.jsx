@@ -31,8 +31,8 @@ export default class Feed extends React.Component {
   }
 
   render() {
-    var messages = this.state.messages.map((message, i) => {
-      var image = <img src={message.image} />;
+    const messages = this.state.messages.map((message, i) => {
+      let image = <img src={message.image} />;
 
       if (message.imageLink) {
         image = (

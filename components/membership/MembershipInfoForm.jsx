@@ -5,7 +5,7 @@ import classSet from "classnames";
 import api from "../api";
 import Loader from "../Loader";
 
-var fieldNameTranslations = {
+const fieldNameTranslations = {
   address: { fi: "Osoite" },
   city: { fi: "Paikkakunta" },
   email: { fi: "Sähköpostiosoite" },
@@ -58,7 +58,7 @@ export default class MembershipInfoForm extends React.Component {
   };
 
   onChange = e => {
-    var name = e.target.name;
+    const name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
     }
@@ -73,7 +73,7 @@ export default class MembershipInfoForm extends React.Component {
   };
 
   getDataErrors = () => {
-    var foundErrors = [];
+    const foundErrors = [];
 
     fieldNames.forEach(fieldName => {
       if (!this.state[fieldName]) {
@@ -91,7 +91,7 @@ export default class MembershipInfoForm extends React.Component {
   render() {
     const inputErrors = this.getDataErrors();
 
-    var formClasses = classSet({
+    const formClasses = classSet({
       form: true,
       "membership-form": true,
       "has-error": inputErrors.length !== 0 || this.state.error,
@@ -99,7 +99,7 @@ export default class MembershipInfoForm extends React.Component {
     });
 
     function getErrorMessage(err) {
-      var feedbackText;
+      let feedbackText;
 
       if (err.type === "missing") {
         feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
@@ -115,14 +115,14 @@ export default class MembershipInfoForm extends React.Component {
     }
 
     /* generate error messages */
-    var visibleErrors = inputErrors.filter(
+    const visibleErrors = inputErrors.filter(
       error => this.state.pristineFields.indexOf(error.field) === -1
     );
 
-    var fieldsWithErrors = visibleErrors.map(({ field }) => field);
+    const fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    var inputFields = fieldNames.map(fieldName => {
-      var inputClasses = classSet({
+    const inputFields = fieldNames.map(fieldName => {
+      const inputClasses = classSet({
         input: true,
         "has-error": _.includes(fieldsWithErrors, fieldName),
         half: fieldName === "city" || fieldName === "postcode",
