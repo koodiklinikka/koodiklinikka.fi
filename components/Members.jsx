@@ -27,7 +27,11 @@ export default class Members extends React.Component {
 
     return (
       <div className="members">
-        <a href="https://github.com/koodiklinikka" target="_blank">
+        <a
+          href="https://github.com/koodiklinikka"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {members}
         </a>
       </div>

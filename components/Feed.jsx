@@ -36,7 +36,7 @@ export default class Feed extends React.Component {
 
       if (message.imageLink) {
         image = (
-          <a target="_blank" href={message.imageLink}>
+          <a target="_blank" href={message.imageLink} rel="noopener noreferrer">
             {image}
           </a>
         );
