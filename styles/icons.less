@@ -1,0 +1,28 @@
+@import "../node_modules/font-awesome/less/variables.less";
+@import "../node_modules/font-awesome/less/core.less";
+
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../node_modules/font-awesome/fonts/fontawesome-webfont.woff2?v=@{fa-version}")
+      format("woff2"),
+    url("../node_modules/font-awesome/fonts/fontawesome-webfont.woff?v=@{fa-version}")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.@{fa-css-prefix}-github:before {
+  content: @fa-var-github;
+}
+.@{fa-css-prefix}-slack:before {
+  content: @fa-var-slack;
+}
+.@{fa-css-prefix}-twitter:before {
+  content: @fa-var-twitter;
+}
+.@{fa-css-prefix}-linkedin:before {
+  content: @fa-var-linkedin;
+}
+.@{fa-css-prefix}-facebook:before {
+  content: @fa-var-facebook;
+}

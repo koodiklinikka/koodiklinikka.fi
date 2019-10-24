@@ -32,13 +32,13 @@
   npm start
 ```
 
-- Avaa selaimessasi: [`http://localhost:9001`](http://localhost:9001)
+- Avaa selaimessasi: [`http://localhost:3000`](http://localhost:3000)
 
 
 ## Komennot
 * `npm install`
     * asentaa projektin riippuvuudet
 * `npm start`
-    * kääntää lähdetiedostot ja palvelee sovellusta porttiin `9001`
+    * kääntää lähdetiedostot ja palvelee sovellusta porttiin `3000`
 * `npm run build`
-    * kääntää lähdetiedostot
+    * kääntää lähdetiedostot -> `out/`
