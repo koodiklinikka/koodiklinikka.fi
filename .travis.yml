@@ -1,7 +1,6 @@
+dist: bionic
 script: npm run build
 language: node_js
-node_js:
-  - "11.6.0"
 install:
   - npm install
 #deploy:
