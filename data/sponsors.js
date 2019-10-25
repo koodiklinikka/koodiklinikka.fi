@@ -19,5 +19,9 @@ const sponsors = [
     name: "Nordea",
     href: "https://www.nordea.fi/",
   },
+  {
+    name: "Idean",
+    href: "https://www.idean.com/",
+  },
 ];
 export default sponsors;
