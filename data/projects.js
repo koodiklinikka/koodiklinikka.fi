@@ -1,4 +1,4 @@
-export const projects = [
+const projects = [
   {
     title: "RE:DOM",
     description:
@@ -25,3 +25,4 @@ export const projects = [
     image: "/static/images/avain.svg",
   },
 ];
+export default projects;
