@@ -1,11 +1,11 @@
 const sponsors = [
   {
     name: "Futurice",
-    href: "http://futurice.com/",
+    href: "https://futurice.com/",
   },
   {
     name: "Metosin",
-    href: "http://www.metosin.fi/",
+    href: "https://www.metosin.fi/",
   },
   {
     name: "Solita",
@@ -13,7 +13,7 @@ const sponsors = [
   },
   {
     name: "Wakeone",
-    href: "http://wakeone.co/",
+    href: "https://wakeone.co/",
   },
   {
     name: "Nordea",
