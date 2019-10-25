@@ -1,12 +1,12 @@
 import React from "react";
 import EmailComponent from "./EmailComponent";
-
-const SponsorLink = ({ href, id, name }) => (
+import sponsors from "../data/sponsors"
+const SponsorLink = ({ href, name }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <img
-      src={`/static/images/sponsors/${id}.${id === "nordea" ? "png" : "svg"}`}
+      src={`/static/images/sponsors/${name}.${name === "Nordea" ? "png" : "svg"}`}
       alt={name}
-      className={`sponsor sponsor__${id}`}
+      className={`sponsor sponsor__${name.toLowerCase()}`}
     />
   </a>
 );
@@ -16,19 +16,7 @@ export function Footer() {
     <footer>
       <div className="sponsors">
         <div className="sponsors__label">Yhteistyössä</div>
-        <SponsorLink
-          id="futurice"
-          name="Futurice"
-          href="http://futurice.com/"
-        />
-        <SponsorLink
-          id="metosin"
-          name="Metosin"
-          href="http://www.metosin.fi/"
-        />
-        <SponsorLink id="solita" name="Solita" href="https://www.solita.fi/" />
-        <SponsorLink id="wakeone" name="Wakeone" href="http://wakeone.co/" />
-        <SponsorLink id="nordea" name="Nordea" href="https://www.nordea.com/" />
+        {sponsors.map(sponsor => <SponsorLink key={sponsor.id} {...sponsor} />)}
       </div>
       <div className="contacts">
         <div>
