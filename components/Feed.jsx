@@ -1,4 +1,5 @@
-import _ from "lodash";
+import flatMap from "lodash/flatMap";
+import sortBy from "lodash/sortBy";
 import React from "react";
 import request from "axios";
 import api from "./api";
@@ -6,6 +7,7 @@ import transformers from "./feed-transformers";
 import ReactTimeAgo from "react-time-ago";
 import JavascriptTimeAgo from "javascript-time-ago";
 import timeagoFi from "javascript-time-ago/locale/fi";
+
 JavascriptTimeAgo.locale(timeagoFi);
 
 export default class Feed extends React.Component {
@@ -19,17 +21,13 @@ export default class Feed extends React.Component {
 
   async updateFeed() {
     const res = await request.get(api("feeds"));
-    const messages = _(res.data)
-      .map((messages, type) => transformers[type](messages))
-      .flatten()
-      .value();
-
+    const messages = sortBy(
+      flatMap(res.data, (messages, type) => transformers[type](messages)),
+      "timestamp"
+    );
+    messages.reverse(); // In-place
     this.setState({
-      messages: _(messages)
-        .sortBy("timestamp")
-        .reverse()
-        .value()
-        .slice(0, 40),
+      messages: messages.slice(0, 40),
     });
   }
 
@@ -62,9 +60,9 @@ export default class Feed extends React.Component {
             <div
               className="message__body"
               dangerouslySetInnerHTML={{ __html: message.body }}
-            ></div>
+            />
             <div className="message__icon">
-              <i className={`fa fa-${message.type}`}></i>
+              <i className={`fa fa-${message.type}`} aria-hidden="true" />
             </div>
             <div className="message__details">
               <span className="message__timestamp">

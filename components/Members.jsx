@@ -1,6 +1,6 @@
 import React from "react";
 import request from "axios";
-import _ from "lodash";
+import shuffle from "lodash/shuffle";
 import api from "./api";
 
 export default class Members extends React.Component {
@@ -15,7 +15,7 @@ export default class Members extends React.Component {
   async refreshMembers() {
     const res = await request.get(api("members"));
     this.setState({
-      members: _.shuffle(res.data),
+      members: shuffle(res.data),
     });
   }
 
