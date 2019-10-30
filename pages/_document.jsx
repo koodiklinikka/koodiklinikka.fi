@@ -58,7 +58,7 @@ class MyDocument extends Document {
             sizes="16x16"
             href="/static/icons/favicon-16x16.png"
           />
-          <link rel="manifest" href="/static/cons/site.webmanifest" />
+          <link rel="manifest" href="/static/icons/site.webmanifest" />
           <meta property="og:image" content="images/logo.png" />
           <script src="https://js.stripe.com/v3/" />
           <script src="//use.typekit.net/scb5xny.js" />
