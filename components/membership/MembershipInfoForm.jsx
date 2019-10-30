@@ -38,23 +38,21 @@ export default class MembershipInfoForm extends React.Component {
     pristineFields: fieldNames,
   };
 
-  onSubmit = () => {
+  onSubmit = async () => {
     this.setState({
       sending: true,
       error: null,
     });
 
-    request
-      .post(api("membership"), {
+    try {
+      await request.post(api("membership"), {
         userInfo: getUserInfo(this.state),
-      })
-      .then(() => {
-        this.setState({ sending: false });
-        this.props.onSignupSuccess();
-      })
-      .catch(err => {
-        this.setState({ error: err, sending: false });
       });
+      this.setState({ sending: false });
+      this.props.onSignupSuccess();
+    } catch (err) {
+      this.setState({ error: err, sending: false });
+    }
   };
 
   onChange = e => {
