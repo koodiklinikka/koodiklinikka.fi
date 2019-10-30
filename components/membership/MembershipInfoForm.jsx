@@ -1,4 +1,4 @@
-import _ from "lodash";
+import pick from "lodash/pick";
 import request from "axios";
 import React from "react";
 import classSet from "classnames";
@@ -23,7 +23,7 @@ function validateEmail(email) {
 const fieldNames = ["name", "email", "handle", "address", "postcode", "city"];
 
 function getUserInfo(state) {
-  return _.pick(state, fieldNames);
+  return pick(state, fieldNames);
 }
 
 export default class MembershipInfoForm extends React.Component {
@@ -38,23 +38,21 @@ export default class MembershipInfoForm extends React.Component {
     pristineFields: fieldNames,
   };
 
-  onSubmit = () => {
+  onSubmit = async () => {
     this.setState({
       sending: true,
       error: null,
     });
 
-    request
-      .post(api("membership"), {
+    try {
+      await request.post(api("membership"), {
         userInfo: getUserInfo(this.state),
-      })
-      .then(() => {
-        this.setState({ sending: false });
-        this.props.onSignupSuccess();
-      })
-      .catch(err => {
-        this.setState({ error: err, sending: false });
       });
+      this.setState({ sending: false });
+      this.props.onSignupSuccess();
+    } catch (err) {
+      this.setState({ error: err, sending: false });
+    }
   };
 
   onChange = e => {
@@ -124,7 +122,7 @@ export default class MembershipInfoForm extends React.Component {
     const inputFields = fieldNames.map(fieldName => {
       const inputClasses = classSet({
         input: true,
-        "has-error": _.includes(fieldsWithErrors, fieldName),
+        "has-error": fieldsWithErrors.includes(fieldName),
         half: fieldName === "city" || fieldName === "postcode",
         left: fieldName === "postcode",
       });

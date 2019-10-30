@@ -1,16 +1,23 @@
-import _ from "lodash";
+import lodashTemplate from "lodash/template";
+import defaultTemplateSettings from "lodash/templateSettings";
 import githubEvent from "parse-github-event";
 import twitterText from "twitter-text";
 
 const isVisibleGithubEvent = ({ type }) =>
   type !== "PushEvent" && type !== "DeleteEvent";
 
+const templateSettings = {
+  ...defaultTemplateSettings,
+  interpolate: /{{([\s\S]+?)}}/g,
+};
+
 export default {
   github(items) {
     return items.filter(isVisibleGithubEvent).map(item => {
-      _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-
-      const template = _.template(githubEvent.parse(item).text);
+      const template = lodashTemplate(
+        githubEvent.parse(item).text,
+        templateSettings
+      );
 
       const repository = `https://github.com/${item.repo.name}`;
       let branch;
