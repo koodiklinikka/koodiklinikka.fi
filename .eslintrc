@@ -2,10 +2,12 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "parserOptions": {
     "ecmaFeatures": {
