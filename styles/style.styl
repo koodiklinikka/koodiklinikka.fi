@@ -125,12 +125,41 @@ section:first-child
       display block
 .invite-form
   position relative
+  .form__field
+    display flex
+    flex-flow column-reverse
+    margin-bottom 1em
+  .invite-form__input
+    padding-right 5em
+  .input,
+  .label
+    transition all 0.2s
+  .input:placeholder-shown + .label
+    max-width 66.66%
+    white-space nowrap
+    overflow hidden
+    text-overflow ellipsis
+    transform-origin left bottom
+    transform translate(18px, 36px) scale(1.2)
+    cursor text
+    font-weight 400
+    opacity 0.6
+  .input:not(:placeholder-shown) + .label,
+  .input:focus + .label
+    transform translate(0, 0) scale(1)
+    cursor pointer
+    font-weight 600
+    opacity 1
+  .input::-webkit-input-placeholder
+    opacity 0
+  .input:focus::-webkit-input-placeholder
+    opacity 1
   .btn
     height 32px
     padding 0 10px
     position absolute
     right 8px
-    top 7px
+    bottom 7px
     color #fff
     &:active
       border-bottom 0

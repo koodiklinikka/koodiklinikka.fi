@@ -61,6 +61,7 @@ export default class InviteForm extends React.Component {
 
     const inputClasses = classSet({
       input: true,
+      "invite-form__input": true,
       "has-success": this.state.submitted,
       "has-error": this.state.error,
     });
@@ -91,22 +92,30 @@ export default class InviteForm extends React.Component {
 
     return (
       <form className={formClasses} onSubmit={this.onSubmit}>
-        <input
-          className={inputClasses}
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.onChange}
-        />
-        <button
-          className="btn btn__submit"
-          type="submit"
-          title="Lähetä"
-          disabled={this.state.error || this.state.submitted}
-        >
-          Lähetä
-        </button>
+        <div className="form__field">
+          <input
+            className={inputClasses}
+            type="text"
+            name="email"
+            id="email-field"
+            // Placeholder is not accessible way to provide information
+            // Used here for :placeholder-shown -styles
+            placeholder=" "
+            value={this.state.email}
+            onChange={this.onChange}
+          />
+          <label className="label" htmlFor="email-field">
+            Email
+          </label>
+          <button
+            className="btn btn__submit"
+            type="submit"
+            title="Lähetä"
+            disabled={this.state.error || this.state.submitted}
+          >
+            Lähetä
+          </button>
+        </div>
         <div className="invite-form__loader">
           <Loader />
         </div>
