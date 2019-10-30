@@ -36,7 +36,12 @@ export default class Feed extends React.Component {
 
       if (message.imageLink) {
         image = (
-          <a target="_blank" href={message.imageLink} rel="noopener noreferrer" tabIndex="-1">
+          <a
+            target="_blank"
+            href={message.imageLink}
+            rel="noopener noreferrer"
+            tabIndex="-1"
+          >
             {image}
           </a>
         );
@@ -44,7 +49,9 @@ export default class Feed extends React.Component {
 
       return (
         <div className="message" key={i}>
-          <div className="message__image" aria-hidden="true">{image}</div>
+          <div className="message__image" aria-hidden="true">
+            {image}
+          </div>
           <div className="message__content">
             <div className="message__user">
               <a href={message.userLink}>{message.user}</a>
