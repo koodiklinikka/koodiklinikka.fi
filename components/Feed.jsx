@@ -32,11 +32,11 @@ export default class Feed extends React.Component {
 
   render() {
     const messages = this.state.messages.map((message, i) => {
-      let image = <img src={message.image} />;
+      let image = <img src={message.image} alt="" />;
 
       if (message.imageLink) {
         image = (
-          <a target="_blank" href={message.imageLink} rel="noopener noreferrer">
+          <a target="_blank" href={message.imageLink} rel="noopener noreferrer" tabIndex="-1">
             {image}
           </a>
         );
@@ -44,7 +44,7 @@ export default class Feed extends React.Component {
 
       return (
         <div className="message" key={i}>
-          <div className="message__image">{image}</div>
+          <div className="message__image" aria-hidden="true">{image}</div>
           <div className="message__content">
             <div className="message__user">
               <a href={message.userLink}>{message.user}</a>

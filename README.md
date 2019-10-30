@@ -1,7 +1,7 @@
 # Koodiklinikka
 ![Travis](https://travis-ci.org/koodiklinikka/koodiklinikka.fi.svg?branch=master)
 
-<img align="right" src="https://raw.githubusercontent.com/koodiklinikka/koodiklinikka.fi/master/src/assets/images/logo.png">
+<img align="right" src="https://raw.githubusercontent.com/koodiklinikka/koodiklinikka.fi/master/static/images/logo.png" alt="Koodiklinikka-logo">
 
 **Koodiklinikka.fi lähdekoodi**. [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) ja [Pull Requestejä](https://github.com/koodiklinikka/koodiklinikka.fi/pulls) otetaan lämpimästi vastaan. Yritämme pitää kynnyksen kontribuoida projektiin alhaisena, jotta mahdollisimman moni pääsisi jättämään siihen jälkensä. Kaikki koodi katselmoidaan läpi ja mergetään projektiin kun näyttää hyvälle. Muutamasta mergetystä Pull Requestista oikeudet ylläpitää projektia.
 

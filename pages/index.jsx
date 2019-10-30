@@ -99,7 +99,7 @@ const IndexContent = () => (
             </div>
             <div className="column column1-2">
               <a href="/static/images/slack.png" target="_blank">
-                <img src="/static/images/slack.png" alt="Slack" />
+                <img src="/static/images/slack.png" alt="Slack app at Koodiklinikka" />
               </a>
             </div>
           </div>
@@ -107,7 +107,7 @@ const IndexContent = () => (
         <div className="row">
           <div className="bread">
             <div className="column column2-5">
-              <img src="/static/images/octocat.png" alt="Octocat" />
+              <img src="/static/images/octocat.png" alt="Octocat, the mascot of GitHub" />
             </div>
             <div className="column column3-5">
               <h3>Avoin lähdekoodi</h3>
