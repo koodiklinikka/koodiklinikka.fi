@@ -1,9 +1,12 @@
 import _ from "lodash";
 import React from "react";
 import request from "axios";
-import timeago from "timeago";
 import api from "./api";
 import transformers from "./feed-transformers";
+import ReactTimeAgo from "react-time-ago";
+import JavascriptTimeAgo from "javascript-time-ago";
+import timeagoFi from "javascript-time-ago/locale/fi";
+JavascriptTimeAgo.locale(timeagoFi);
 
 export default class Feed extends React.Component {
   state = {
@@ -65,7 +68,7 @@ export default class Feed extends React.Component {
             </div>
             <div className="message__details">
               <span className="message__timestamp">
-                {timeago(message.timestamp)}
+                <ReactTimeAgo date={message.timestamp} locale="fi" />
               </span>
               <span className="message__meta">{message.meta}</span>
             </div>
