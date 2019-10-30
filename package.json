@@ -36,6 +36,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "prettier": "^1.18.2"
   },

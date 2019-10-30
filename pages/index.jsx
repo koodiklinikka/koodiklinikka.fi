@@ -12,6 +12,7 @@ const Hero = () => (
     <video
       autoPlay
       loop
+      muted
       poster="/static/images/poster.jpg"
       className="header__video-bg"
     >
