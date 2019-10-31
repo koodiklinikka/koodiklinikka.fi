@@ -7,16 +7,16 @@ install:
 test:
   - npm run lint
   - npm run build
-#deploy:
-#  local_dir: public
-#  provider: pages
-#  fqdn: koodiklinikka.fi
-#  skip_cleanup: true
-#  github_token: "$GITHUB_TOKEN"
-#  repo: koodiklinikka/koodiklinikka.github.io
-#  target_branch: master
-#  on:
-#    branch: master
-#after_success:
-#  - chmod ugo+x ./deploy-surge.sh
-#  - "./deploy-surge.sh"
+deploy:
+  local_dir: out
+  provider: pages
+  fqdn: koodiklinikka.fi
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  repo: koodiklinikka/koodiklinikka.github.io
+  target_branch: master
+  on:
+    branch: master
+after_success:
+  - chmod ugo+x ./deploy-surge.sh
+  - "./deploy-surge.sh"
