@@ -1,4 +1,3 @@
-import pick from "lodash/pick";
 import request from "axios";
 import React from "react";
 import classSet from "classnames";
@@ -12,12 +11,14 @@ type Props = {
 type State = {
   error: boolean;
   errors: string[];
-  address: string;
-  city: string;
-  email: string;
-  handle: string;
-  name: string;
-  postcode: string;
+  fields: {
+    name: string;
+    email: string;
+    handle: string;
+    address: string;
+    postcode: string;
+    city: string;
+  };
   sending: boolean;
   pristineFields: string[];
 };
@@ -37,31 +38,24 @@ function validateEmail(email) {
   return mailValidateRe.test(email);
 }
 
-const fieldNames: string[] = [
-  "name",
-  "email",
-  "handle",
-  "address",
-  "postcode",
-  "city",
-];
-
 function getUserInfo(state) {
-  return pick(state, fieldNames);
+  return state.fields;
 }
 
 export default class MembershipInfoForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.setState({
-      address: "",
-      city: "",
-      email: "",
-      handle: "",
-      name: "",
-      postcode: "",
+      fields: {
+        address: "",
+        city: "",
+        email: "",
+        handle: "",
+        name: "",
+        postcode: "",
+      },
       sending: false,
-      pristineFields: fieldNames,
+      pristineFields: Object.keys(this.state.fields),
     });
   }
 
@@ -83,14 +77,16 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
   };
 
   onChange = e => {
-    const name: string = e.target.name;
+    const name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
     }
 
     this.setState({
-      // TODO: fix type-error here
-      [name]: e.target.value,
+      fields: {
+        ...this.state.fields,
+        [name]: e.target.value,
+      },
       pristineFields: this.state.pristineFields.filter(
         fieldName => fieldName !== name
       ),
@@ -101,13 +97,13 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
   getDataErrors = () => {
     const foundErrors = [];
 
-    fieldNames.forEach(fieldName => {
+    Object.keys(this.state.fields).forEach(fieldName => {
       if (!this.state[fieldName]) {
         foundErrors.push({ field: fieldName, type: "missing" });
       }
     });
 
-    if (this.state.email && !validateEmail(this.state.email)) {
+    if (this.state.fields.email && !validateEmail(this.state.fields.email)) {
       foundErrors.push({ field: "email", type: "invalid" });
     }
 
@@ -147,7 +143,7 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
 
     const fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    const inputFields = fieldNames.map(fieldName => {
+    const inputFields = Object.keys(this.state.fields).map(fieldName => {
       const inputClasses = classSet({
         input: true,
         "has-error": fieldsWithErrors.includes(fieldName),
