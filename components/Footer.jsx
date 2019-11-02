@@ -4,9 +4,7 @@ import sponsors from "../data/sponsors";
 const SponsorLink = ({ href, name }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <img
-      src={`/static/images/sponsors/${name}.${
-        name === "Nordea" ? "png" : "svg"
-      }`}
+      src={`/static/images/sponsors/${name.toLowerCase()}.svg`}
       alt={name}
       className={`sponsor sponsor__${name.toLowerCase()}`}
     />
