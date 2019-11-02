@@ -17,7 +17,7 @@ export function Footer() {
       <div className="sponsors">
         <div className="sponsors__label">Yhteistyössä</div>
         {sponsors.map(sponsor => (
-          <SponsorLink key={sponsor.id} {...sponsor} />
+          <SponsorLink key={sponsor.name} {...sponsor} />
         ))}
       </div>
       <div className="contacts">
