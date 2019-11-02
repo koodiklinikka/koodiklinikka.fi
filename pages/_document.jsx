@@ -60,8 +60,6 @@ class MyDocument extends Document {
           />
           <link rel="manifest" href="/static/icons/site.webmanifest" />
           <meta property="og:image" content="images/logo.png" />
-          <script src="//use.typekit.net/scb5xny.js" />
-          <script>{"try{Typekit.load();}catch(e){};"}</script>
         </Head>
         <body>
           <div className="site">
