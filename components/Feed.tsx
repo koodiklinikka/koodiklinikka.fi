@@ -8,7 +8,8 @@ import ReactTimeAgo from "react-time-ago";
 import JavascriptTimeAgo from "javascript-time-ago";
 import timeagoFi from "javascript-time-ago/locale/fi";
 
-JavascriptTimeAgo.locale(timeagoFi);
+// TODO: Add type definitions for javascript-time-ago
+(JavascriptTimeAgo as any).locale(timeagoFi);
 
 export default class Feed extends React.Component {
   state = {
