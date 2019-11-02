@@ -23,7 +23,15 @@ export default class Members extends React.Component {
     const members = this.state.members.map((member) => {
       const src = `${member.avatar_url}&s=120`;
       return (
-        <img className="member" key={member.avatar_url} src={src} alt="" />
+        <img
+          className="member"
+          key={member.avatar_url}
+          src={src}
+          alt=""
+          width={30}
+          height={30}
+          loading="lazy"
+        />
       );
     });
 

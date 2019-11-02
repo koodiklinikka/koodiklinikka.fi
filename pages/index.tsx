@@ -50,7 +50,7 @@ const IndexContent = () => (
             -yhteisöömme
           </h3>
           <div className="form">
-            <InviteForm />
+            <InviteForm/>
           </div>
           <p className="code-of-conduct">
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
@@ -88,6 +88,7 @@ const IndexContent = () => (
                 <img
                   src="/static/images/slack.png"
                   alt="Slack app at Koodiklinikka"
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -200,7 +201,7 @@ const IndexContent = () => (
         </div>
       </section>
       <div id="feed">
-        <Feed />
+        <Feed/>
       </div>
     </div>
   </>
@@ -211,8 +212,8 @@ const Index = () => (
     <Head>
       <title>Koodiklinikka</title>
     </Head>
-    <Hero />
-    <IndexContent />
+    <Hero/>
+    <IndexContent/>
   </React.Fragment>
 );
 
