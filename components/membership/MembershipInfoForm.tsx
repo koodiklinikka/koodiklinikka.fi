@@ -5,6 +5,23 @@ import classSet from "classnames";
 import api from "../api";
 import Loader from "../Loader";
 
+type Props = {
+  onSignupSuccess: () => void;
+};
+
+type State = {
+  error: boolean;
+  errors: string[];
+  address: string;
+  city: string;
+  email: string;
+  handle: string;
+  name: string;
+  postcode: string;
+  sending: boolean;
+  pristineFields: string[];
+};
+
 const fieldNameTranslations = {
   address: { fi: "Osoite" },
   city: { fi: "Paikkakunta" },
@@ -20,23 +37,33 @@ function validateEmail(email) {
   return mailValidateRe.test(email);
 }
 
-const fieldNames = ["name", "email", "handle", "address", "postcode", "city"];
+const fieldNames: string[] = [
+  "name",
+  "email",
+  "handle",
+  "address",
+  "postcode",
+  "city",
+];
 
 function getUserInfo(state) {
   return pick(state, fieldNames);
 }
 
-export default class MembershipInfoForm extends React.Component {
-  state = {
-    address: "",
-    city: "",
-    email: "",
-    handle: "",
-    name: "",
-    postcode: "",
-    sending: false,
-    pristineFields: fieldNames,
-  };
+export default class MembershipInfoForm extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.setState({
+      address: "",
+      city: "",
+      email: "",
+      handle: "",
+      name: "",
+      postcode: "",
+      sending: false,
+      pristineFields: fieldNames,
+    });
+  }
 
   onSubmit = async () => {
     this.setState({
@@ -56,13 +83,14 @@ export default class MembershipInfoForm extends React.Component {
   };
 
   onChange = e => {
-    const name = e.target.name;
+    const name: string = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
     }
 
     this.setState({
-      [e.target.name]: e.target.value,
+      // TODO: fix type-error here
+      [name]: e.target.value,
       pristineFields: this.state.pristineFields.filter(
         fieldName => fieldName !== name
       ),
