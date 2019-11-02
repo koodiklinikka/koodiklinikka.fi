@@ -27,7 +27,6 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-ga": "^3.1.2",
-    "react-stripe-checkout": "^2.6.3",
     "react-time-ago": "^6.0.1",
     "stylus": "^0.54.7",
     "twitter-text": "^3.0.0"

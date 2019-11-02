@@ -14,6 +14,7 @@ const SponsorLink = ({ href, name }: Props) => (
       src={`/static/images/sponsors/${name.toLowerCase()}.svg`}
       alt={name}
       className={`sponsor sponsor__${name.toLowerCase()}`}
+      loading="lazy"
     />
   </a>
 );

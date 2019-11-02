@@ -34,11 +34,11 @@ class MyDocument extends Document {
           <div className="site">
             <div className="container">
               <Main />
-              <NextScript />
             </div>
             <Footer />
           </div>
           <Fader />
+          <NextScript />
         </body>
       </Html>
     );
