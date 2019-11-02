@@ -38,7 +38,7 @@ const PatientProject = ({ title, description, url, image }) => (
   <div className="bread">
     <div className="column column2-5">
       <a href={url} target="_blank" rel="noopener noreferrer">
-        <img src={image} style={{ width: "7rem" }} alt={title} />
+        <img src={image} style={{ width: "7rem" }} alt={title} loading="lazy" />
       </a>
     </div>
     <div className="column column3-5">
@@ -103,6 +103,7 @@ const IndexContent = () => (
                 <img
                   src="/static/images/slack.png"
                   alt="Slack app at Koodiklinikka"
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -114,6 +115,7 @@ const IndexContent = () => (
               <img
                 src="/static/images/octocat.png"
                 alt="Octocat, the mascot of GitHub"
+                loading="lazy"
               />
             </div>
             <div className="column column3-5">
