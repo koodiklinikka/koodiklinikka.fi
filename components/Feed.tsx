@@ -41,7 +41,7 @@ export default class Feed extends React.Component {
             target="_blank"
             href={message.imageLink}
             rel="noopener noreferrer"
-            tabIndex="-1"
+            tabIndex={-1}
           >
             {image}
           </a>

@@ -33,7 +33,7 @@ export default class Members extends React.Component {
           href="https://github.com/koodiklinikka"
           target="_blank"
           rel="noopener noreferrer"
-          tabIndex="-1"
+          tabIndex={-1}
         >
           {members}
         </a>
