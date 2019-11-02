@@ -33,12 +33,15 @@
     "twitter-text": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node": "12.12.5",
+    "@types/react": "16.9.11",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "typescript": "3.6.4"
   },
   "prettier": {
     "trailingComma": "es5"
