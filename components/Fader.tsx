@@ -1,10 +1,14 @@
 import React from "react";
 
+type Props = {
+  threshold: number;
+};
+
 function clamp(min, max, value) {
   return Math.min(Math.max(value, min), max);
 }
 
-export default class Fader extends React.Component {
+export default class Fader extends React.Component<Props> {
   static defaultProps = {
     threshold: 100,
   };
