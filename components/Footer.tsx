@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import EmailComponent from "./EmailComponent";
 import sponsors from "../data/sponsors";
-const SponsorLink = ({ href, name }) => (
+const SponsorLink: FunctionComponent = ({ href, name }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <img
       src={`/static/images/sponsors/${name.toLowerCase()}.svg`}
