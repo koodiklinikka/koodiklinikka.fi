@@ -19,7 +19,7 @@
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
-    "less": "^2.7.3",
+    "less": "^3.10.3",
     "lodash": "^4.17.15",
     "next": "^9.1.2",
     "next-fonts": "^0.19.0",
@@ -30,8 +30,7 @@
     "react-stripe-checkout": "^2.6.3",
     "react-time-ago": "^5.0.7",
     "stylus": "^0.54.7",
-    "twitter-text": "^3.0.0",
-    "typescript": "^3.6.4"
+    "twitter-text": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
