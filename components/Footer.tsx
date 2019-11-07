@@ -1,7 +1,14 @@
 import React from "react";
 import EmailComponent from "./EmailComponent";
 import sponsors from "../data/sponsors";
-const SponsorLink = ({ href, name }) => (
+
+type Props = {
+  href: string;
+  name: string;
+  key: string;
+};
+
+const SponsorLink = ({ href, name }: Props) => (
   <a href={href} target="_blank" rel="noopener noreferrer">
     <img
       src={`/static/images/sponsors/${name.toLowerCase()}.svg`}

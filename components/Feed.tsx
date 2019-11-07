@@ -8,7 +8,8 @@ import ReactTimeAgo from "react-time-ago";
 import JavascriptTimeAgo from "javascript-time-ago";
 import timeagoFi from "javascript-time-ago/locale/fi";
 
-JavascriptTimeAgo.locale(timeagoFi);
+// TODO: Add type definitions for javascript-time-ago
+(JavascriptTimeAgo as any).locale(timeagoFi);
 
 export default class Feed extends React.Component {
   state = {
@@ -41,7 +42,7 @@ export default class Feed extends React.Component {
             target="_blank"
             href={message.imageLink}
             rel="noopener noreferrer"
-            tabIndex="-1"
+            tabIndex={-1}
           >
             {image}
           </a>

@@ -16,7 +16,8 @@ export default {
     return items.filter(isVisibleGithubEvent).map(item => {
       const template = lodashTemplate(
         githubEvent.parse(item).text,
-        templateSettings
+        templateSettings,
+        false
       );
 
       const repository = `https://github.com/${item.repo.name}`;
