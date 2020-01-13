@@ -2,7 +2,7 @@
   "name": "koodiklinikka",
   "version": "1.0.0",
   "description": "Koodiklinikka homepage",
-  "author": "Riku Rouvila <riku.rouvila@leonidasoy.fi>",
+  "author": "Riku Rouvila <riku@rare.fi>",
   "license": "MIT",
   "scripts": {
     "start": "next",
