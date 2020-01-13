@@ -23,5 +23,9 @@ const sponsors = [
     name: "Idean",
     href: "https://www.idean.com/",
   },
+  {
+    name: "Rare",
+    href: "https://rare.fi/",
+  },
 ];
 export default sponsors;
