@@ -74,15 +74,26 @@ export default class InviteForm extends React.Component {
       if (this.state.submitted) {
         messageText = "Kutsu lähetetty antamaasi sähköpostiosoitteeseen.";
       } else if (
-        this.state.error.status === 400 &&
-        this.state.error.data === "invalid_email"
+        this.state.error.response.status === 400 &&
+        this.state.error.response.data === "invalid_email"
       ) {
         messageText = "Tarkasta syöttämäsi sähköpostiosoite";
       } else if (
-        this.state.error.status === 400 &&
-        this.state.error.data === "already_invited"
+        this.state.error.response.status === 400 &&
+        this.state.error.response.data === "already_invited"
       ) {
         messageText = "Sähköpostiosoitteeseen on jo lähetetty kutsu";
+      } else if (
+        this.state.error.response.status === 400 &&
+        this.state.error.response.data === "already_in_team"
+      ) {
+        messageText = (
+          <span>
+            Tällä sähköpostilla on jo luotu tunnus. <br /> Voit vaihtaa
+            unohtuneen salasanasi{" "}
+            <a href="https://koodiklinikka.slack.com/forgot">täältä</a>.
+          </span>
+        );
       } else {
         messageText = "Jotain meni pieleen. Yritä hetken päästä uudelleen.";
       }
