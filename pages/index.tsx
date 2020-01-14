@@ -3,6 +3,7 @@ import "../styles/style.styl";
 import "../styles/icons.less";
 import Head from "next/head";
 import InviteForm from "../components/InviteForm";
+import Channels from "../components/Channels";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
 
@@ -41,8 +42,8 @@ const IndexContent = () => (
           <h3>
             Tule mukaan{" "}
             <a
-              target="_blank"
               href="https://slack.com/"
+              target="_blank"
               rel="noopener noreferrer"
             >
               Slack
@@ -55,9 +56,9 @@ const IndexContent = () => (
           <p className="code-of-conduct">
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
             <a
+              href="https://github.com/koodiklinikka/code-of-conduct/blob/master/README.md"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://github.com/koodiklinikka/code-of-conduct/blob/master/README.md"
             >
               käyttäytymissäännöt
             </a>
@@ -97,86 +98,7 @@ const IndexContent = () => (
           <div className="bread">
             <div className="column column5-5">
               <h3>Suosituimmat keskustelunaiheet</h3>
-              <p>
-                <ul>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C03BQ3NUX"
-                      target="_blank"
-                    >
-                      #yleinen
-                    </a>{" "}
-                    – Yleistä keskustelu ohjelmistoalasta
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C66UM4J82"
-                      target="_blank"
-                    >
-                      #rekry
-                    </a>{" "}
-                    – Avoimet työpaikat
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C03PTV5LN"
-                      target="_blank"
-                    >
-                      #javascript
-                    </a>{" "}
-                    – Keskustelua JavaScriptistä, frontendistä ja paljosta
-                    muusta
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C043VSQ0S"
-                      target="_blank"
-                    >
-                      #fp
-                    </a>{" "}
-                    – Keskustelua funktionaalisesta ohjelmoinnista, oli se
-                    sitten Clojurea, Haskellia, F#:ia tai muuta herkkua
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C043VSQ0S"
-                      target="_blank"
-                    >
-                      #devops
-                    </a>{" "}
-                    – Devaavat operaattorit ja muuta hypeä
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C0432KDDN"
-                      target="_blank"
-                    >
-                      #tapahtumat
-                    </a>{" "}
-                    – Kiinnostaako alan tapahtumat? Täällä kuulet niistä
-                    ensimmäisenä
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C5K197THA/"
-                      target="_blank"
-                    >
-                      #homeautomation
-                    </a>{" "}
-                    – Taloautomaatio, KNX, Loxone, Openhab, älyvalot, Home
-                    Assistant, Hue, Trådfri, Xiaomi jne.
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C6K2UL9SQ"
-                      target="_blank"
-                    >
-                      #sijoitukset
-                    </a>{" "}
-                    – Keskustelua sijoittamisesta
-                  </li>
-                </ul>
-              </p>
+              <Channels />
             </div>
           </div>
         </div>
@@ -186,8 +108,12 @@ const IndexContent = () => (
             <p>
               Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on
               vapaasti saatavilla ja hyödynnettävissä{" "}
-              <a href="https://github.com/koodiklinikka">
-                Github-organisaatiomme sivulta
+              <a
+                href="https://github.com/koodiklinikka"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub-organisaatiomme sivulta
               </a>
               . Organisaation jäseneksi otamme kaikki Slack-yhteisömme jäsenet.
               Koodiklinikan projekteihin voi osallistua kuka tahansa ja

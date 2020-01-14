@@ -37,7 +37,7 @@ export function Footer() {
           </a>
           <a
             href="https://github.com/koodiklinikka/koodiklinikka.fi"
-            aria-label="Koodiklinikka Githubissa"
+            aria-label="Koodiklinikka GitHubissa"
           >
             <i className="fa fa-github" aria-hidden="true" />
           </a>
@@ -49,7 +49,7 @@ export function Footer() {
           </a>
           <a
             href="https://www.linkedin.com/groups/12025476"
-            aria-label="Koodiklinikka Linkedinissä"
+            aria-label="Koodiklinikka LinkedInissä"
           >
             <i className="fa fa-linkedin" aria-hidden="true" />
           </a>
