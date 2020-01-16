@@ -175,7 +175,7 @@ section:first-child
 
 .membership-form
   .input
-    margin 8px 0px
+    margin 8px 0
   .btn
     margin-top 12px
 
@@ -185,7 +185,7 @@ section:first-child
   margin auto
 
 .stripe-form
-  margin 20px 0px
+  margin 20px 0
   .name
     margin-top 20px
     text-align left
@@ -221,44 +221,46 @@ section:first-child
     background rgb(226, 33, 112)
 
 .channels
-  display: grid
-  grid-template-columns: 1fr 1fr 1fr
-  grid-gap: 1.1ex
-  justify-content: center
-  padding-inline-start: 0
+  display grid
+  grid-template-columns 1fr 1fr 1fr
+  grid-gap 1.1ex
+  justify-content center
+  padding-inline-start 0
   // NOTE: Breakpoints could be improved in the future
   @media screen and (max-width: 1000px)
-    grid-template-columns: 1fr 1fr
+    grid-template-columns 1fr 1fr
   @media screen and (max-width: 700px)
-      grid-template-columns: 1fr
+      grid-template-columns 1fr
 
 .channel
   vertical-align middle
-  border-radius 4px
+  border-top 5px solid rgba(220, 220, 220, 1)
+  border-bottom-left-radius 3px
+  border-bottom-right-radius 3px
   list-style-type: none
-  margin: 0
-  padding: 0
-  border: .15ex solid gray
-  padding: 0
-  min-height: 70px
-  background-color: #fff
-  box-shadow: 0px 2px 5px 0px rgba(220, 213, 232, 0.60), inset 0px 0px 15px 0px rgba(220, 220, 220, 0.3)
+  margin 0
+  padding 0
+  padding 0
+  min-height 70px
+  background-color rgba(240, 240, 240, 0.3)
+  box-shadow inset 0 0 15px 0 rgba(220, 220, 220, 0.3)
 
 .channel__name
-  display: block
-  border-bottom: 1px solid gray
-  padding: 1ex
-  font-weight: bold
-  border-radius 4px
-  border-bottom-left-radius: 0
-  border-bottom-right-radius: 0
-  background-color: hsla(207, 73%, 97%, 1)
-  color: #111
-  letter-spacing: .1ex
-  text-align: center
+  display block
+  border-bottom 1px solid rgba(220, 220, 220, 0.5)
+  padding 1ex
+  font-weight bold
+  letter-spacing .1ex
+
+.channel__arrow
+  margin 0
+  padding 0
+  font-size 3.5ex
+  line-height 1ex
+  font-weight bolder
 
 .channel__description
-  padding: 1ex
+  padding 1ex
 
 .members
   a

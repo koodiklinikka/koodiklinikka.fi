@@ -17,7 +17,7 @@ const ChannelLink = ({ href, name, description }: Props) => (
       className="channel__name"
       title="Link to Slack channel"
     >
-      {name}
+      {name}<span className="channel__arrow">→</span>
     </a>{" "}
     <div className="channel__description">
       {description}
