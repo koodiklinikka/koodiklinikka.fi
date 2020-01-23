@@ -232,12 +232,15 @@ section:first-child
   @media screen and (max-width: 1000px)
     grid-template-columns 1fr 1fr 1fr
   @media screen and (max-width: 700px)
-      grid-template-columns 1fr 1fr
+      grid-template-columns 1fr
 
 .channels-row
   background radial-gradient(circle, rgba(244,249,255,1) 0%, #fff 70%)
   padding 2rem 0
   margin-top 2rem
+  @media screen and (max-width: 700px)
+    background linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(244,249,255,1) 10%, rgba(244,249,255,1) 95%, rgba(255,255,255,1) 100%)
+
 
 .channel
   margin 0
