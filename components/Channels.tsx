@@ -14,14 +14,22 @@ const ChannelLink = ({ href, name, description }: Props) => (
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="channel__name"
       title="Link to Slack channel"
     >
-      {name}<span className="channel__arrow">→</span>
-    </a>{" "}
-    <div className="channel__description">
-      {description}
-    </div>
+      <div className="channel__icon"></div>
+      <span className="channel__name">{name}</span>
+      <div className="channel__description">{description}</div>
+      <div className="channel__arrow">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="16"
+          viewBox="0 0 24 16"
+        >
+          <path d="M14 1l8.5 7m0 0L14 15m8.5-7H0"></path>
+        </svg>
+      </div>
+    </a>
   </li>
 );
 

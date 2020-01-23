@@ -17,7 +17,8 @@ const channels = [
   {
     name: "#fp",
     href: "https://app.slack.com/client/T03BQ3NU9/C043VSQ0S",
-    description: "Keskustelua funktionaalisesta ohjelmoinnista, oli se sitten Clojurea, Haskellia, F#:ia tai muuta herkkua",
+    description:
+      "Keskustelua funktionaalisesta ohjelmoinnista, oli se sitten Clojurea, Haskellia, F#:ia tai muuta herkkua",
   },
   {
     name: "#devops",
@@ -27,12 +28,14 @@ const channels = [
   {
     name: "#tapahtumat",
     href: "https://app.slack.com/client/T03BQ3NU9/C0432KDDN",
-    description: "Kiinnostaako alan tapahtumat? Täällä kuulet niistä ensimmäisenä",
+    description:
+      "Kiinnostaako alan tapahtumat? Täällä kuulet niistä ensimmäisenä",
   },
   {
     name: "#homeautomation",
     href: "https://app.slack.com/client/T03BQ3NU9/C5K197THA/",
-    description: "Taloautomaatio, KNX, Loxone, Openhab, älyvalot, Home Assistant, Hue, Trådfri, Xiaomi jne.",
+    description:
+      "Taloautomaatio, KNX, Loxone, Openhab, älyvalot, Home Assistant, Hue, Trådfri, Xiaomi jne.",
   },
   {
     name: "#sijoitukset",

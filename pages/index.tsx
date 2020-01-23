@@ -94,12 +94,10 @@ const IndexContent = () => (
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="bread">
-            <div className="column column5-5">
-              <h3>Suosituimmat keskustelunaiheet</h3>
-              <Channels />
-            </div>
+        <div className="channels-row">
+          <div className="row">
+            <h3>Suosituimmat keskustelunaiheet</h3>
+            <Channels />
           </div>
         </div>
         <div className="row">
