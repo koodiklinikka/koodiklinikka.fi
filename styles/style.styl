@@ -50,7 +50,7 @@ a
 
 section
   background #fff
-  padding 2em 0
+  padding 4rem 0
 
 .content
   z-index 2
@@ -66,20 +66,17 @@ section
     padding-right feedWidth
 
 
-section:first-child
+.signup
   box-shadow -1px -1px 1px rgba(0, 0, 0, 0.05)
   border-bottom 1px solid #EEEEEE
   background #FCFCFC
+  padding 2rem 0
 
 .row
   max-width 850px
   margin auto
   overflow auto
   padding 0 2em
-  margin-top 2em
-
-  &:first-child
-    margin-top 0
 
 .column
   float left
@@ -228,19 +225,20 @@ section:first-child
   padding-inline-start 0
   z-index 4
   position relative
-  // NOTE: Breakpoints could be improved in the future
-  @media screen and (max-width: 1000px)
+  @media screen and (max-width: 1500px)
     grid-template-columns 1fr 1fr 1fr
-  @media screen and (max-width: 700px)
-      grid-template-columns 1fr
+  @media screen and (max-width: 1250px)
+    grid-template-columns 1fr 1fr
+  @media screen and (max-width: 1000px)
+    grid-template-columns 1fr
 
 .channels-row
-  background radial-gradient(circle, rgba(244,249,255,1) 0%, #fff 70%)
-  padding 2rem 0
-  margin-top 2rem
-  @media screen and (max-width: 700px)
-    background linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(244,249,255,1) 10%, rgba(244,249,255,1) 95%, rgba(255,255,255,1) 100%)
-
+  padding 3rem 0
+  background linear-gradient(120deg, #3d7393 0%, #9fd7d0 100%);
+  h3
+    color #fff
+    text-shadow 0 2px 0 rgba(0,0,0,0.1)
+    margin-bottom 2rem
 
 .channel
   margin 0
@@ -265,30 +263,44 @@ section:first-child
   display block
   letter-spacing .1ex
   font-size 1.2rem
-  color textColor
   font-weight bold
+  color textColor
 
 .channel__icon
   width 30px
   height 30px
-  background hsl(279, 85%, 95%)
+  background rgba(255, 255, 255, 0.5)
   border-radius 5px
   color hsl(276, 93%, 68%)
-  display flex
-  flex-direction column
-  justify-content center
-  font-size 1.4rem
+  text-align center
   align-items center
   margin-bottom 1rem
+  overflow hidden
+  &:before
+    font-size 2rem
+    width 30px
+    height 30px
+    transform translate(40px, 0%)
 
-.channel:nth-child(2n + 1) .channel__icon
-  background #e3f8fb
+.channel:nth-child(1n + 1)
+  .channel__icon
+    background hsl(279, 85%, 97%)
+    color hsl(279, 85%, 75%)
 
-.channel:nth-child(3n + 1) .channel__icon
-  background #fee5e1
+.channel:nth-child(2n + 1)
+  .channel__icon
+    background hsl(187, 75%, 97%)
+    color hsl(187, 75%, 74%)
 
-.channel:nth-child(4n + 1) .channel__icon
-  background #e2e7ff
+.channel:nth-child(3n + 1)
+  .channel__icon
+    background hsl(8, 94%, 97%)
+    color hsl(8, 94%, 74%)
+
+.channel:nth-child(4n + 1)
+  .channel__icon
+    background hsl(230, 100%, 97%)
+    color hsl(230, 100%, 74%)
 
 .channel__arrow
   font-size 2rem

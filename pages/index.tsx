@@ -37,7 +37,7 @@ const Hero = () => (
 const IndexContent = () => (
   <>
     <div className="content with-feed">
-      <section>
+      <section className="signup">
         <div className="row">
           <h3>
             Tule mukaan{" "}
@@ -94,12 +94,14 @@ const IndexContent = () => (
             </div>
           </div>
         </div>
-        <div className="channels-row">
-          <div className="row">
-            <h3>Suosituimmat keskustelunaiheet</h3>
-            <Channels />
-          </div>
+      </section>
+      <section className="channels-row">
+        <div className="row">
+          <h3>Suosituimmat keskustelunaiheet</h3>
+          <Channels />
         </div>
+      </section>
+      <section>
         <div className="row">
           <div className="bread">
             <h3>Avoin lähdekoodi</h3>

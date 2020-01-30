@@ -4,11 +4,12 @@ import channels from "../data/channels";
 type Props = {
   href: string;
   name: string;
+  icon: string;
   description: string;
   key: string;
 };
 
-const ChannelLink = ({ href, name, description }: Props) => (
+const ChannelLink = ({ href, name, description, icon }: Props) => (
   <li className="channel">
     <a
       href={href}
@@ -16,7 +17,7 @@ const ChannelLink = ({ href, name, description }: Props) => (
       rel="noopener noreferrer"
       title="Link to Slack channel"
     >
-      <div className="channel__icon"></div>
+      <div className={"channel__icon fa fa-" + icon}></div>
       <span className="channel__name">{name}</span>
       <div className="channel__description">{description}</div>
       <div className="channel__arrow">
