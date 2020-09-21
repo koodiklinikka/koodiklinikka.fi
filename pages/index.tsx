@@ -177,8 +177,6 @@ const IndexContent = () => (
                   </li>
                 </ul>
               </p>
-              Lisää kanavia ja keskusteluja osoitteessa{" "}
-              <a href="https://memo.koodiklinikka.fi">memo.koodiklinikka.fi</a>.
             </div>
           </div>
         </div>
