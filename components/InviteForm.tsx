@@ -104,31 +104,35 @@ export default class InviteForm extends React.Component {
     return (
       <form className={formClasses} onSubmit={this.onSubmit}>
         <div className="form__field">
-          <input
-            className={inputClasses}
-            type="text"
-            name="email"
-            id="email-field"
-            // Placeholder is not accessible way to provide information
-            // Used here for :placeholder-shown -styles
-            placeholder=" "
-            value={this.state.email}
-            onChange={this.onChange}
-          />
           <label className="label" htmlFor="email-field">
-            Email
+            Sähköpostiosoite:
           </label>
-          <button
-            className="btn btn__submit"
-            type="submit"
-            title="Lähetä"
-            disabled={this.state.error || this.state.submitted}
-          >
-            Lähetä
-          </button>
-        </div>
-        <div className="invite-form__loader">
-          <Loader />
+          <div className="controls-wrapper">
+            <span className="input-wrapper">
+              <input
+                className={inputClasses}
+                type="text"
+                name="email"
+                id="email-field"
+                // Placeholder is not accessible way to provide information
+                // Used here for :placeholder-shown -styles
+                placeholder=""
+                value={this.state.email}
+                onChange={this.onChange}
+              />
+              <div className="invite-form__loader">
+                <Loader />
+              </div>
+            </span>
+            <button
+              className="btn btn__submit"
+              type="submit"
+              title="Lähetä"
+              disabled={this.state.error || this.state.submitted}
+            >
+              Lähetä
+            </button>
+          </div>
         </div>
         {feedbackMessage}
       </form>
