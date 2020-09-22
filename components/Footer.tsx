@@ -23,7 +23,7 @@ export function Footer() {
     <footer>
       <div className="sponsors">
         <div className="sponsors__label">Yhteistyössä</div>
-        {sponsors.map(sponsor => (
+        {sponsors.map((sponsor) => (
           <SponsorLink key={sponsor.name} {...sponsor} />
         ))}
       </div>
