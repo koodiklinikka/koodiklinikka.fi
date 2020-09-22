@@ -1,12 +1,12 @@
-script: npm run build
+script: yarn build
 language: node_js
 node_js:
   - "11.6.0"
 install:
-  - npm install
+  - yarn
 test:
-  - npm run lint
-  - npm run build
+  - yarn lint
+  - yarn build
 deploy:
   local_dir: out
   provider: pages
