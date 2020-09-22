@@ -20,6 +20,7 @@
 ### Vaaditut työkalut
 
 - Asenna [Node.js](http://nodejs.org)
+- Asenna [Yarn 1.x](https://classic.yarnpkg.com/en/)
 - Asenna [Git](https://git-scm.com/) client lähdekoodin hallintaan
 
 ### Kloonaa projekti koneellesi
@@ -32,8 +33,8 @@ git clone https://github.com/koodiklinikka/koodiklinikka.fi.git
 
 ```sh
 cd koodiklinikka.fi
-npm install
-npm start
+yarn
+yarn start
 ```
 
 ### Avaa esikatselu selaimessa
@@ -43,15 +44,15 @@ Avaa selaimessasi: [`http://localhost:3000`](http://localhost:3000)
 
 ## Komennot
 
-### `npm install`
+### `yarn`
 
 Asentaa projektin riippuvuudet
 
-### `npm start`
+### `yarn`
 
 Kääntää lähdetiedostot ja palvelee sovellusta porttiin `3000`
 
-### `npm run build`
+### `yarn build`
 
 Kääntää lähdetiedostot -> `out/` -hakemistoon
 

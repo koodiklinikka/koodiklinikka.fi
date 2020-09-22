@@ -1,6 +1,7 @@
 *.log
 .DS_Store
+.history
 .next
 node_modules
 out
-.history
+package-lock.json
