@@ -76,7 +76,7 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
     }
   };
 
-  onChange = e => {
+  onChange = (e) => {
     const name = e.target.name;
     if (e.target.value === this.state[name]) {
       return;
@@ -88,7 +88,7 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
         [name]: e.target.value,
       },
       pristineFields: this.state.pristineFields.filter(
-        fieldName => fieldName !== name
+        (fieldName) => fieldName !== name
       ),
       errors: [],
     });
@@ -97,7 +97,7 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
   getDataErrors = () => {
     const foundErrors = [];
 
-    Object.keys(this.state.fields).forEach(fieldName => {
+    Object.keys(this.state.fields).forEach((fieldName) => {
       if (!this.state[fieldName]) {
         foundErrors.push({ field: fieldName, type: "missing" });
       }
@@ -123,10 +123,11 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
     function getErrorMessage(err) {
       let feedbackText;
 
+      const fieldName = fieldNameTranslations[err.field].fi;
       if (err.type === "missing") {
-        feedbackText = `${fieldNameTranslations[err.field].fi} on pakollinen.`;
+        feedbackText = `${fieldName} on pakollinen.`;
       } else if (err.type === "invalid") {
-        feedbackText = `${fieldNameTranslations[err.field].fi} on virheellinen.`;
+        feedbackText = `${fieldName} on virheellinen.`;
       }
 
       return (
@@ -138,12 +139,12 @@ export default class MembershipInfoForm extends React.Component<Props, State> {
 
     /* generate error messages */
     const visibleErrors = inputErrors.filter(
-      error => this.state.pristineFields.indexOf(error.field) === -1
+      (error) => this.state.pristineFields.indexOf(error.field) === -1
     );
 
     const fieldsWithErrors = visibleErrors.map(({ field }) => field);
 
-    const inputFields = Object.keys(this.state.fields).map(fieldName => {
+    const inputFields = Object.keys(this.state.fields).map((fieldName) => {
       const inputClasses = classSet({
         input: true,
         "has-error": fieldsWithErrors.includes(fieldName),

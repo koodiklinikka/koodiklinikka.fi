@@ -10,7 +10,7 @@
     "dev": "SERVER=http://localhost:9000/ ENV=development next",
     "prod": "ENV=production next build && next export",
     "lint": "eslint --ext .jsx --ext .js .",
-    "prettify": "prettier --write {components,pages,styles}/{*,**/*}.js*"
+    "prettify": "prettier --write components pages styles"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

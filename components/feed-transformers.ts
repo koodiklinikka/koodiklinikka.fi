@@ -13,7 +13,7 @@ const templateSettings = {
 
 export default {
   github(items) {
-    return items.filter(isVisibleGithubEvent).map(item => {
+    return items.filter(isVisibleGithubEvent).map((item) => {
       const template = lodashTemplate(
         githubEvent.parse(item).text,
         templateSettings,
@@ -49,7 +49,7 @@ export default {
     });
   },
   twitter(items) {
-    return items.map(item => {
+    return items.map((item) => {
       if (item.retweeted) {
         item = item.retweeted_status;
       }

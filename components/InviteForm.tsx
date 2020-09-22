@@ -12,7 +12,7 @@ export default class InviteForm extends React.Component {
     error: null,
   };
 
-  onSubmit = async e => {
+  onSubmit = async (e) => {
     e.preventDefault();
 
     this.setState({
@@ -35,11 +35,11 @@ export default class InviteForm extends React.Component {
     this.setState({ submitted: true, sending: false });
   };
 
-  handleError = err => {
+  handleError = (err) => {
     this.setState({ error: err, sending: false });
   };
 
-  onChange = e => {
+  onChange = (e) => {
     if (e.target.value === this.state.email) {
       return;
     }
