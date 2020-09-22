@@ -113,62 +113,61 @@ section:first-child
       margin-top 0
 
 .form
+  display flex
+  flex-direction column
   .btn
     background linkColor
-    border-bottom 2px solid #117280
     color rgba(255, 255, 255, 0.9)
+    margin-left 0.5rem
   &.sending
-    .btn
-      display none
     .invite-form__loader
       display block
-.invite-form
+
+.controls-wrapper
+  display flex
+  @media screen and (max-width: 450px)
+    flex-direction column
+    .btn
+      margin 0
+      margin-top 0.5rem
+
+.input-wrapper
   position relative
-  .form__field
-    display flex
-    flex-flow column-reverse
-    margin-bottom 1em
+  flex-grow 1
+  width 400px
+    @media screen and (max-width: 650px)
+      width auto
+
+.invite-form
+  margin-top 0.5rem
+  position relative
+  .input
+    width 100%
   .invite-form__input
-    padding-right 5em
-  .input,
+    padding-right 2em
+
   .label
-    transition all 0.2s
-  .input:placeholder-shown + .label
-    max-width 66.66%
-    white-space nowrap
-    overflow hidden
-    text-overflow ellipsis
-    transform-origin left bottom
-    transform translate(18px, 36px) scale(1.2)
-    cursor text
-    font-weight 400
+    margin-bottom 0.5rem
+    font-size 0.9rem
     opacity 0.6
-  .input:not(:placeholder-shown) + .label,
-  .input:focus + .label
-    transform translate(0, 0) scale(1)
-    cursor pointer
-    font-weight 600
-    opacity 1
-  .input::-webkit-input-placeholder
-    opacity 0
-  .input:focus::-webkit-input-placeholder
-    opacity 1
+    display block
+
   .btn
-    height 32px
-    padding 0 10px
-    position absolute
-    right 8px
-    bottom 7px
+    height 45px
+    font inherit
+    border-radius 15px
+    padding 0.5rem 3rem
     color #fff
     &:active
       border-bottom 0
   .invite-form__loader
     display none
-    width 20px
-    height 20px
+    width 10px
+    height 10px
     position absolute
-    right 14px
-    top 14px
+    right 1rem
+    top 50%
+    margin-top -5px
 
 .code-of-conduct
   margin-bottom 0
