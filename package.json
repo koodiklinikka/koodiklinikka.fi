@@ -18,6 +18,7 @@
     "@zeit/next-stylus": "^1.0.1",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "emoji-dictionary": "^1.0.11",
     "font-awesome": "^4.7.0",
     "less": "^3.10.3",
     "lodash": "^4.17.15",
@@ -27,9 +28,11 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-ga": "^3.1.2",
+    "react-markdown": "^4.3.1",
     "react-time-ago": "^6.0.1",
     "stylus": "^0.54.7",
-    "twitter-text": "^3.0.0"
+    "twitter-text": "^3.0.0",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@types/node": "14.11.2",

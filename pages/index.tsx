@@ -1,10 +1,49 @@
 import React from "react";
+import Head from "next/head";
+import { PromiseType } from "utility-types";
 import "../styles/style.styl";
 import "../styles/icons.less";
-import Head from "next/head";
 import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
+import { getChannels } from "../data/channels";
+import emoji from "emoji-dictionary";
+import ReactMarkdown from "react-markdown";
+
+const emojiSupport = (text: { value: string }) => {
+  const emojiText = text.value.replace(/:\w+:/gi, (name) =>
+    emoji.getUnicode(name)
+  );
+
+  return emojiText.split(/(<#[A-Z0-9]+\|[A-Za-z0-9]+>)/).map((str) => {
+    const matches = str.match(/<#([A-Z0-9]+)\|([A-Za-z0-9]+)>/);
+    if (matches) {
+      return (
+        <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}>
+          {matches[2]}
+        </a>
+      );
+    }
+    return str;
+  });
+};
+
+export async function getStaticProps() {
+  const allChannels = await getChannels();
+  const channels = allChannels
+    .sort((a, b) => b.num_members - a.num_members)
+    .sort((a, b) => b.unique_members_today - a.unique_members_today)
+    .slice(0, 10);
+
+  return {
+    props: {
+      channels: channels,
+    },
+    revalidate: 3600,
+  };
+}
+
+type IndexProps = PromiseType<ReturnType<typeof getStaticProps>>["props"];
 
 const Hero = () => (
   <div className="header">
@@ -33,7 +72,7 @@ const Hero = () => (
   </div>
 );
 
-const IndexContent = () => (
+const IndexContent = (props: IndexProps) => (
   <>
     <div className="content with-feed">
       <section>
@@ -50,7 +89,7 @@ const IndexContent = () => (
             -yhteisöömme
           </h3>
           <div className="form">
-            <InviteForm/>
+            <InviteForm />
           </div>
           <p className="code-of-conduct">
             Ennen liittymistä yhteisöömme varmista, että olet lukenut yhteisön{" "}
@@ -97,86 +136,39 @@ const IndexContent = () => (
         <div className="row">
           <div className="bread">
             <div className="column column5-5">
-              <h3>Suosituimmat keskustelunaiheet</h3>
+              <h3>Suosituimmat keskustelunaiheet tänään</h3>
               <p>
-                <ul>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C03BQ3NUX"
-                      target="_blank"
-                    >
-                      #yleinen
-                    </a>{" "}
-                    – Yleistä keskustelu ohjelmistoalasta
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C66UM4J82"
-                      target="_blank"
-                    >
-                      #rekry
-                    </a>{" "}
-                    – Avoimet työpaikat
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C03PTV5LN"
-                      target="_blank"
-                    >
-                      #javascript
-                    </a>{" "}
-                    – Keskustelua JavaScriptistä, frontendistä ja paljosta
-                    muusta
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C043VSQ0S"
-                      target="_blank"
-                    >
-                      #fp
-                    </a>{" "}
-                    – Keskustelua funktionaalisesta ohjelmoinnista, oli se
-                    sitten Clojurea, Haskellia, F#:ia tai muuta herkkua
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C043VSQ0S"
-                      target="_blank"
-                    >
-                      #devops
-                    </a>{" "}
-                    – Devaavat operaattorit ja muuta hypeä
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C0432KDDN"
-                      target="_blank"
-                    >
-                      #tapahtumat
-                    </a>{" "}
-                    – Kiinnostaako alan tapahtumat? Täällä kuulet niistä
-                    ensimmäisenä
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C5K197THA/"
-                      target="_blank"
-                    >
-                      #homeautomation
-                    </a>{" "}
-                    – Taloautomaatio, KNX, Loxone, Openhab, älyvalot, Home
-                    Assistant, Hue, Trådfri, Xiaomi jne.
-                  </li>
-                  <li>
-                    <a
-                      href="https://app.slack.com/client/T03BQ3NU9/C6K2UL9SQ"
-                      target="_blank"
-                    >
-                      #sijoitukset
-                    </a>{" "}
-                    – Keskustelua sijoittamisesta
-                  </li>
-                </ul>
+                <table className="channels">
+                  <tbody>
+                    {props.channels.map((channel) => (
+                      <tr key={channel.id}>
+                        <td>
+                          <div>
+                            <a
+                              href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
+                              target="_blank"
+                              className="channel"
+                            >
+                              #{channel.name}
+                            </a>
+                          </div>
+                          <span className="channel-members">
+                            {channel.num_members} jäsentä
+                          </span>
+                        </td>
+                        <td>
+                          <span>
+                            <ReactMarkdown
+                              className="channel-topic"
+                              source={channel.topic}
+                              renderers={{ text: emojiSupport }}
+                            />
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </p>
             </div>
           </div>
@@ -201,19 +193,19 @@ const IndexContent = () => (
         </div>
       </section>
       <div id="feed">
-        <Feed/>
+        <Feed />
       </div>
     </div>
   </>
 );
 
-const Index = () => (
+const Index = (props: IndexProps) => (
   <React.Fragment>
     <Head>
       <title>Koodiklinikka</title>
     </Head>
-    <Hero/>
-    <IndexContent/>
+    <Hero />
+    <IndexContent {...props} />
   </React.Fragment>
 );
 
