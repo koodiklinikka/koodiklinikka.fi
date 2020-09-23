@@ -22,7 +22,7 @@ const slackMarkdownRenderer = (text: { value: string }) => {
         if (matches) {
           return (
             <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}>
-              {matches[2]}
+              #{matches[2]}
             </a>
           );
         }
