@@ -48,11 +48,10 @@ Avaa selaimessasi: [`http://localhost:3000`](http://localhost:3000)
 
 Asentaa projektin riippuvuudet
 
-### `yarn`
+### `yarn start`
 
 Kääntää lähdetiedostot ja palvelee sovellusta porttiin `3000`
 
 ### `yarn build`
 
 Kääntää lähdetiedostot -> `out/` -hakemistoon
-
