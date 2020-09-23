@@ -10,22 +10,26 @@ import { getChannels } from "../data/channels";
 import emoji from "emoji-dictionary";
 import ReactMarkdown from "react-markdown";
 
-const emojiSupport = (text: { value: string }) => {
+const slackMarkdownRenderer = (text: { value: string }) => {
   const emojiText = text.value.replace(/:\w+:/gi, (name) =>
     emoji.getUnicode(name)
   );
 
-  return emojiText.split(/(<#[A-Z0-9]+\|[A-Za-z0-9]+>)/).map((str) => {
-    const matches = str.match(/<#([A-Z0-9]+)\|([A-Za-z0-9]+)>/);
-    if (matches) {
-      return (
-        <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}>
-          {matches[2]}
-        </a>
-      );
-    }
-    return str;
-  });
+  return (
+    <span>
+      {emojiText.split(/(<#[A-Z0-9]+\|[A-Za-z0-9]+>)/).map((str) => {
+        const matches = str.match(/<#([A-Z0-9]+)\|([A-Za-z0-9]+)>/);
+        if (matches) {
+          return (
+            <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}>
+              {matches[2]}
+            </a>
+          );
+        }
+        return str;
+      })}
+    </span>
+  );
 };
 
 export async function getStaticProps() {
@@ -161,7 +165,7 @@ const IndexContent = (props: IndexProps) => (
                             <ReactMarkdown
                               className="channel-topic"
                               source={channel.topic}
-                              renderers={{ text: emojiSupport }}
+                              renderers={{ text: slackMarkdownRenderer }}
                             />
                           </span>
                         </td>
