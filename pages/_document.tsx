@@ -3,6 +3,26 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { Footer } from "../components/Footer";
 import Fader from "../components/Fader";
 import ReactGA from "react-ga";
+import fs from "fs";
+import path from "path";
+
+class CustomNextHead extends Head {
+  // TODO: This might not be needed if Next.js implements built-in support
+  // https://github.com/zeit/next-plugins/issues/364
+  getCssLinks({ allFiles }) {
+    return allFiles
+      .filter(file => file.endsWith(".css"))
+      .map(file => (
+        <style
+          key={file}
+          nonce={this.props.nonce}
+          dangerouslySetInnerHTML={{
+            __html: fs.readFileSync(path.join(".next", file), "utf-8"),
+          }}
+        />
+      ));
+  }
+}
 
 function trackPageView() {
   if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
@@ -29,7 +49,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="fi">
-        <Head />
+        <CustomNextHead />
         <body>
           <div className="site">
             <div className="container">
