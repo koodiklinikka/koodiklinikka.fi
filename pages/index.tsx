@@ -7,38 +7,14 @@ import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
 import { getChannels } from "../data/channels";
-import emoji from "emoji-dictionary";
 import ReactMarkdown from "react-markdown";
-
-const slackMarkdownRenderer = (text: { value: string }) => {
-  const emojiText = text.value.replace(/:\w+:/gi, (name) =>
-    emoji.getUnicode(name)
-  );
-
-  return (
-    <span>
-      {emojiText.split(/(<#[A-Z0-9]+\|[A-Za-z0-9]+>)/).map((str) => {
-        const matches = str.match(/<#([A-Z0-9]+)\|([A-Za-z0-9]+)>/);
-        if (matches) {
-          return (
-            <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}>
-              #{matches[2]}
-            </a>
-          );
-        }
-        return str;
-      })}
-    </span>
-  );
-};
+import { ChannelReferenceRenderer } from "../components/ChannelReferenceRenderer";
 
 export async function getStaticProps() {
   const allChannels = await getChannels();
   const channels = allChannels
     .sort((a, b) => b.num_members - a.num_members)
-    .sort((a, b) => b.unique_members_today - a.unique_members_today)
-    .slice(0, 10);
-
+    .sort((a, b) => b.unique_members_today - a.unique_members_today);
   return {
     props: {
       channels: channels,
@@ -141,38 +117,51 @@ const IndexContent = (props: IndexProps) => (
           <div className="bread">
             <div className="column column5-5">
               <h3>Suosituimmat keskustelunaiheet tänään</h3>
+
+              <table className="channels">
+                <tbody>
+                  {props.channels.slice(0, 10).map((channel) => (
+                    <tr key={channel.id}>
+                      <td>
+                        <div>
+                          <a
+                            href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
+                            target="_blank"
+                            className="channel"
+                          >
+                            #{channel.name}
+                          </a>
+                        </div>
+                        <span className="channel-members">
+                          {channel.num_members} jäsentä
+                        </span>
+                      </td>
+                      <td>
+                        <span>
+                          <ReactMarkdown
+                            className="channel-topic"
+                            source={channel.topic}
+                            renderers={{ text: ChannelReferenceRenderer }}
+                          />
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
               <p>
-                <table className="channels">
-                  <tbody>
-                    {props.channels.map((channel) => (
-                      <tr key={channel.id}>
-                        <td>
-                          <div>
-                            <a
-                              href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
-                              target="_blank"
-                              className="channel"
-                            >
-                              #{channel.name}
-                            </a>
-                          </div>
-                          <span className="channel-members">
-                            {channel.num_members} jäsentä
-                          </span>
-                        </td>
-                        <td>
-                          <span>
-                            <ReactMarkdown
-                              className="channel-topic"
-                              source={channel.topic}
-                              renderers={{ text: slackMarkdownRenderer }}
-                            />
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <strong>Ja paljon muuta:</strong>{" "}
+                {props.channels.slice(10, 30).map((channel, i) => (
+                  <>
+                    <a
+                      href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
+                      target="_blank"
+                    >
+                      #{channel.name}
+                    </a>
+                    {i !== 19 ? ", " : "..."}
+                  </>
+                ))}
               </p>
             </div>
           </div>
