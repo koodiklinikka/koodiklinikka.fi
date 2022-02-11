@@ -4,7 +4,7 @@ type Props = {
   threshold: number;
 };
 
-function clamp(min, max, value) {
+function clamp(min: number, max: number, value: number) {
   return Math.min(Math.max(value, min), max);
 }
 

@@ -1,17 +1,28 @@
-import flatMap from "lodash/flatMap";
 import sortBy from "lodash/sortBy";
 import React from "react";
 import request from "axios";
 import api from "./api";
-import transformers from "./feed-transformers";
 import ReactTimeAgo from "react-time-ago";
 import JavascriptTimeAgo from "javascript-time-ago";
-import timeagoFi from "javascript-time-ago/locale/fi";
+import timeagoFi from "javascript-time-ago/locale/fi.json";
+import { convertTwitterItems, TwitterItem } from "./feed-transformers/twitter";
+import { GithubApi } from "parse-github-event/lib/types";
+import { convertGithubItems } from "./feed-transformers/github";
+import { KKEvent } from "../data/events";
 
 JavascriptTimeAgo.addLocale(timeagoFi);
 
+interface FeedsResult {
+  twitter?: TwitterItem[];
+  github?: GithubApi.GithubEvent[];
+}
+
+interface FeedState {
+  messages: KKEvent[];
+}
+
 export default class Feed extends React.Component {
-  state = {
+  public state: FeedState = {
     messages: [],
   };
 
@@ -20,9 +31,13 @@ export default class Feed extends React.Component {
   }
 
   async updateFeed() {
-    const res = await request.get(api("feeds"));
+    const res = await request.get<FeedsResult>(api("feeds"));
+    const { github, twitter } = res.data;
     const messages = sortBy(
-      flatMap(res.data, (messages, type) => transformers[type](messages)),
+      [
+        ...convertTwitterItems(twitter ?? []),
+        ...convertGithubItems(github ?? []),
+      ].flat(),
       "timestamp"
     );
     messages.reverse(); // In-place
@@ -68,7 +83,7 @@ export default class Feed extends React.Component {
               <span className="message__timestamp">
                 <ReactTimeAgo date={message.timestamp} locale="fi" />
               </span>
-              <span className="message__meta">{message.meta}</span>
+              {/*<span className="message__meta">{message.meta}</span>*/}
             </div>
           </div>
         </div>

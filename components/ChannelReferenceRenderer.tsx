@@ -25,8 +25,10 @@ function renderStringWithChannelRefs(value: string) {
 export const ChannelReferenceRenderer = ({
   children,
 }: React.PropsWithChildren<{}>) => {
-  // TODO: this should probably walk the tree
-  if (typeof children[0] === "string")
-    return renderStringWithChannelRefs(children[0]);
+  // TODO: this must be made sound
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const c0 = children[0];
+  if (typeof c0 === "string") return renderStringWithChannelRefs(c0);
   return <>{children}</>;
 };

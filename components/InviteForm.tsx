@@ -4,15 +4,21 @@ import classSet from "classnames";
 import api from "./api";
 import Loader from "./Loader";
 
+type InviteFormState = {
+  submitted: boolean;
+  sending: boolean;
+  error: any | null;
+  email: string;
+};
 export default class InviteForm extends React.Component {
-  state = {
+  public state: InviteFormState = {
     email: "",
     submitted: false,
     sending: false,
     error: null,
   };
 
-  onSubmit = async (e) => {
+  onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     this.setState({
@@ -35,11 +41,11 @@ export default class InviteForm extends React.Component {
     this.setState({ submitted: true, sending: false });
   };
 
-  handleError = (err) => {
-    this.setState({ error: err, sending: false });
+  handleError = (error: any) => {
+    this.setState({ error, sending: false });
   };
 
-  onChange = (e) => {
+  onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === this.state.email) {
       return;
     }

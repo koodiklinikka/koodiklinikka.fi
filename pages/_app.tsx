@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 import "../styles/style.scss";
+import { AppProps } from "next/app";
 
 const metaImage = "/static/images/meta.jpg";
 const metaDescription =
@@ -13,7 +14,7 @@ const metaKeywords =
   "ohjelmointi,frontend,open source,devaus,suomi,javascript,clojure,go,java,node.js,io.js,angular.js,web";
 const metaUrl = "https://koodiklinikka.fi/";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>

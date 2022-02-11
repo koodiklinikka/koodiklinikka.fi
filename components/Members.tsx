@@ -3,8 +3,16 @@ import request from "axios";
 import shuffle from "lodash/shuffle";
 import api from "./api";
 
+interface Member {
+  avatar_url: string;
+}
+
+interface MembersState {
+  members: Member[];
+}
+
 export default class Members extends React.Component {
-  state = {
+  public state: MembersState = {
     members: [],
   };
 
