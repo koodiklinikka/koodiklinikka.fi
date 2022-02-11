@@ -8,7 +8,10 @@ function renderStringWithChannelRefs(value: string) {
         const matches = str.match(/<#([A-Z0-9]+)\|([A-Za-z0-9]+)>/);
         if (matches) {
           return (
-            <a href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`} key={i}>
+            <a
+              href={`https://app.slack.com/client/T03BQ3NU9/${matches[1]}`}
+              key={i}
+            >
               #{matches[2]}
             </a>
           );
@@ -19,8 +22,11 @@ function renderStringWithChannelRefs(value: string) {
   );
 }
 
-export const ChannelReferenceRenderer = ({ children }: React.PropsWithChildren<{}>) => {
+export const ChannelReferenceRenderer = ({
+  children,
+}: React.PropsWithChildren<{}>) => {
   // TODO: this should probably walk the tree
-  if (typeof children[0] === "string") return renderStringWithChannelRefs(children[0]);
+  if (typeof children[0] === "string")
+    return renderStringWithChannelRefs(children[0]);
   return <>{children}</>;
 };

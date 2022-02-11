@@ -11,8 +11,8 @@ class CustomNextHead extends Head {
   // https://github.com/zeit/next-plugins/issues/364
   getCssLinks({ allFiles }) {
     return allFiles
-      .filter(file => file.endsWith(".css"))
-      .map(file => (
+      .filter((file) => file.endsWith(".css"))
+      .map((file) => (
         <style
           key={file}
           nonce={this.props.nonce}

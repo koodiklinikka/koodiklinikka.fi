@@ -1,4 +1,5 @@
 # Koodiklinikka
+
 ![Travis](https://travis-ci.org/koodiklinikka/koodiklinikka.fi.svg?branch=master)
 
 <img align="right" src="./public/static/images/logo-new-black.svg" alt="Koodiklinikka-logo" max-width="30%">
@@ -13,7 +14,7 @@
 - projektin hallintaan liittyviin asioihin
 - tai koko Koodiklinikkaan yleisesti.
 
------------------------------
+---
 
 ## Projektin asennus
 
@@ -40,7 +41,6 @@ yarn start
 ### Avaa esikatselu selaimessa
 
 Avaa selaimessasi: [`http://localhost:3000`](http://localhost:3000)
-
 
 ## Komennot
 
