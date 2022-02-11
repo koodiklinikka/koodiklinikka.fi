@@ -1,8 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import { PromiseType } from "utility-types";
-import "../styles/style.styl";
-import "../styles/icons.less";
 import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
