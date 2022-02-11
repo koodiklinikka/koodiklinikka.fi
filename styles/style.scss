@@ -5,7 +5,6 @@ $textColor: #444;
 $feedWidth: 500px;
 $footerHeight: 50px;
 
-@import "_icons";
 @import "_input";
 @import "_button";
 @import "_header";
@@ -387,6 +386,11 @@ footer {
   @media screen and (max-width: 940px) {
     margin-top: 1em;
   }
+}
+.social {
+  height: 30px;
+  margin-left: .5em;
+  margin-right: .5em;
 }
 .feed {
   width: $feedWidth;
