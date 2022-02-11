@@ -5,7 +5,7 @@ import sponsors from "../data/sponsors";
 type Props = {
   href: string;
   name: string;
-  key: string;
+  title?: string;
 };
 
 const SponsorLink = ({ href, name }: Props) => (
@@ -14,6 +14,17 @@ const SponsorLink = ({ href, name }: Props) => (
       src={`/static/images/sponsors/${name.toLowerCase()}.svg`}
       alt={name}
       className={`sponsor sponsor__${name.toLowerCase()}`}
+      loading="lazy"
+    />
+  </a>
+);
+
+const SocialLink = ({ href, name, title }: Props) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={title}>
+    <img
+      src={`/static/images/social/${name.toLowerCase()}.svg`}
+      alt={title}
+      className={`social social__${name.toLowerCase()}`}
       loading="lazy"
     />
   </a>
@@ -30,36 +41,31 @@ export function Footer() {
       </div>
       <div className="contacts">
         <div>
-          <a
+          <SocialLink
             href="https://koodiklinikka.slack.com"
-            aria-label="Koodiklinikka Slackissä"
-          >
-            <i className="fa fa-slack" aria-hidden="true" />
-          </a>
-          <a
-            href="https://github.com/koodiklinikka/koodiklinikka.fi"
-            aria-label="Koodiklinikka Githubissa"
-          >
-            <i className="fa fa-github" aria-hidden="true" />
-          </a>
-          <a
+            title="Koodiklinikka Slackissä"
+            name="slack"
+          />
+          <SocialLink
+            href="https://github.com/koodiklinikka"
+            title="Koodiklinikka Githubissa"
+            name="github"
+          />
+          <SocialLink
             href="https://twitter.com/koodiklinikka"
-            aria-label="Koodiklinikka Twitterissä"
-          >
-            <i className="fa fa-twitter" aria-hidden="true" />
-          </a>
-          <a
+            title="Koodiklinikka Twitterissä"
+            name="twitter"
+          />
+          <SocialLink
             href="https://www.linkedin.com/groups/12025476"
-            aria-label="Koodiklinikka Linkedinissä"
-          >
-            <i className="fa fa-linkedin" aria-hidden="true" />
-          </a>
-          <a
+            title="Koodiklinikka Linkedinissä"
+            name="linkedin"
+          />
+          <SocialLink
             href="https://www.facebook.com/koodiklinikka"
-            aria-label="Koodiklinikka Facebookissa"
-          >
-            <i className="fa fa-facebook" aria-hidden="true" />
-          </a>
+            title="Koodiklinikka Facebookissa"
+            name="facebook"
+          />
           <div id="email">
             <EmailComponent />
           </div>

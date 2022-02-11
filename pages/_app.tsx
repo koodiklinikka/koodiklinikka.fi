@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "next/head";
 
+import "../styles/style.scss";
+
 const metaImage = "/static/images/meta.jpg";
 const metaDescription =
   "Koodiklinikka on Suomen suurin ohjelmistoalan yhteisö, joka kokoaa työntekijät, harrastajat ja vasta-alkajat yhteen. Tarkoituksenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä, sekä tarjota apua ja uusia kontakteja ohjelmoinnista innostuneille nuorille.";

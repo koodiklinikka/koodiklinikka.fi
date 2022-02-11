@@ -1,8 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import { PromiseType } from "utility-types";
-import "../styles/style.styl";
-import "../styles/icons.less";
 import InviteForm from "../components/InviteForm";
 import Members from "../components/Members";
 import Feed from "../components/Feed";
@@ -140,9 +138,10 @@ const IndexContent = (props: IndexProps) => (
                         <span>
                           <ReactMarkdown
                             className="channel-topic"
-                            source={channel.topic}
-                            renderers={{ text: ChannelReferenceRenderer }}
-                          />
+                            components={{ p: ChannelReferenceRenderer }}
+                          >
+                            {channel.topic}
+                          </ReactMarkdown>
                         </span>
                       </td>
                     </tr>
@@ -152,7 +151,7 @@ const IndexContent = (props: IndexProps) => (
               <p>
                 <strong>Ja paljon muuta:</strong>{" "}
                 {props.channels.slice(10, 30).map((channel, i) => (
-                  <>
+                  <React.Fragment key={channel.id}>
                     <a
                       href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
                       target="_blank"
@@ -160,7 +159,7 @@ const IndexContent = (props: IndexProps) => (
                       #{channel.name}
                     </a>
                     {i !== 19 ? ", " : "..."}
-                  </>
+                  </React.Fragment>
                 ))}
               </p>
             </div>
