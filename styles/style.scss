@@ -533,7 +533,6 @@ footer {
   }
 }
 .channels {
-  width: 100%;
   list-style: none;
   padding: 0;
   td {
@@ -583,6 +582,7 @@ footer {
 }
 .channel-members {
   font-size: 12px;
+  margin-left: 1rem;
 }
 .channel-topic {
   p {

@@ -130,18 +130,10 @@ const IndexContent = (props: IndexProps) => (
                             #{channel.name}
                           </a>
                         </div>
-                        <span className="channel-members">
-                          {channel.num_members} jäsentä
-                        </span>
                       </td>
                       <td>
-                        <span>
-                          <ReactMarkdown
-                            className="channel-topic"
-                            components={{ p: ChannelReferenceRenderer }}
-                          >
-                            {channel.topic}
-                          </ReactMarkdown>
+                        <span className="channel-members">
+                          {channel.num_members} jäsentä
                         </span>
                       </td>
                     </tr>
