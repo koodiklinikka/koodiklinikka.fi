@@ -1,18 +1,41 @@
 'use client';
 
 import { FormEvent, ReactNode, useState } from 'react';
+import Confetti from 'react-confetti';
 
 const API_URL = 'https://koodiklinikka-api.fly.dev/invites';
+
+const CONFETTI_COLORS = [
+  '#9C27B0', // Purple
+  '#E91E63', // Magenta
+  '#8E24AA', // Darker Purple
+  '#BA68C8', // Lighter Purple
+  '#7B1FA2', // Darker Purple
+  '#AA00FF', // Bright Purple
+  '#6A1B9A', // Darker Purple
+  '#8E24AA', // Medium Purple
+  '#AD1457', // Dark Magenta
+  '#4A148C', // Dark Purple
+  '#AB47BC', // Light Purple
+  '#C2185B', // Dark Magenta
+  '#7C4DFF', // Light Purple
+  '#6200EA', // Bright Purple
+  '#EA80FC', // Light Purple
+  '#D500F9', // Bright Magenta
+  '#0097A7', // Cyan
+];
 
 export default function Form() {
   const [message, setMessage] = useState<ReactNode | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (isSubmitting) return;
 
     setIsSubmitting(true);
+    setIsSuccess(false);
 
     const formData = new FormData(event.currentTarget);
     const response = await fetch(API_URL, {
@@ -30,6 +53,7 @@ export default function Form() {
 
     if (response.status === 200) {
       setMessage('✅ Kutsu lähetetty antamaasi sähköpostiosoitteeseen.');
+      setIsSuccess(true);
       return;
     }
 
@@ -79,7 +103,7 @@ export default function Form() {
             <button
               tabIndex={3}
               type="submit"
-              className="text-shadow bg-button rounded border border-pink-400 px-3 py-2 text-sm font-extrabold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
+              className="text-shadow bg-button rounded border border-pink-400 border-b-pink-600 border-t-pink-300 px-3 py-2 text-sm font-extrabold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
             >
               {isSubmitting ? 'Liitytään' : 'Liity'}
             </button>
@@ -129,9 +153,22 @@ export default function Form() {
       )}
 
       {message && (
-        <div className="text-balance rounded-3xl bg-black/20 p-10 text-center font-mono text-sm backdrop-blur-sm">
-          {message}
-        </div>
+        <>
+          <div className="text-shadow text-balance rounded-2xl border-t border-t-pink-100/10 bg-gradient-to-b from-black/20 to-black/0 p-10 text-center font-mono text-sm backdrop-blur-sm">
+            {message}
+          </div>
+          {isSuccess && (
+            <Confetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              recycle={false}
+              numberOfPieces={800}
+              gravity={0.04}
+              colors={CONFETTI_COLORS}
+              tweenDuration={10000}
+            />
+          )}
+        </>
       )}
     </div>
   );

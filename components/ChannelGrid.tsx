@@ -4,7 +4,7 @@ const DELAYS = shuffle([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1
 
 export default function ChannelGrid({ channels }: { channels: Channel[] }) {
   return (
-    <div className="mt-8 grid gap-3 rounded-3xl bg-gradient-to-b from-black/10 to-black/0 p-6 backdrop-blur-sm xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 md:p-12">
+    <div className="mt-8 grid gap-3 rounded-3xl border-t border-t-pink-100/10 bg-gradient-to-b from-black/10 to-black/0 p-6 backdrop-blur-sm xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 md:p-12">
       {channels.map((channel, i) => (
         <div key={channel.id} className="relative h-[5.5rem]">
           <div
