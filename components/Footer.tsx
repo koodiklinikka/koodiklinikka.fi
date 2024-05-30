@@ -1,76 +1,49 @@
-import React from "react";
-import EmailComponent from "./EmailComponent";
-import sponsors from "../data/sponsors";
+import Image from 'next/image';
 
-type Props = {
-  href: string;
-  name: string;
-  title?: string;
-};
-
-const SponsorLink = ({ href, name }: Props) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
-    <img
-      src={`/static/images/sponsors/${name.toLowerCase()}.svg`}
-      alt={name}
-      className={`sponsor sponsor__${name.toLowerCase()}`}
-      loading="lazy"
-    />
-  </a>
-);
-
-const SocialLink = ({ href, name, title }: Props) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={title}>
-    <img
-      src={`/static/images/social/${name.toLowerCase()}.svg`}
-      alt={title}
-      className={`social social__${name.toLowerCase()}`}
-      loading="lazy"
-    />
-  </a>
-);
-
-export function Footer() {
+export default function Footer() {
   return (
-    <footer>
-      <div className="sponsors">
-        <div className="sponsors__label">Yhteistyössä</div>
-        {sponsors.map((sponsor) => (
-          <SponsorLink key={sponsor.name} {...sponsor} />
-        ))}
+    <div className="space-y-10 pt-24 text-center">
+      <div className="flex items-center justify-center gap-10 ">
+        <a
+          href="https://koodiklinikka.slack.com/"
+          className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          <Image className="size-8" width="800" height="800" src="/logos/slack.svg" alt="Koodiklinikka Slack" />
+        </a>
+        <a
+          href="https://github.com/koodiklinikka"
+          className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          <Image className="size-8" width="98" height="96" src="/logos/github.svg" alt="Koodiklinikka GitHub" />
+        </a>
+        <a
+          href="https://x.com/koodiklinikka"
+          className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          <Image className="size-8" width="300" height="300" src="/logos/x.svg" alt="Koodiklinikka X" />
+        </a>
+
+        <a
+          href="https://www.facebook.com/koodiklinikka"
+          className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          <Image className="size-8" width="40" height="40" src="/logos/facebook.svg" alt="Koodiklinikka Facebook" />
+        </a>
+        <a
+          href="https://www.linkedin.com/groups/12025476"
+          className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          <Image className="size-8" width="531" height="530" src="/logos/linkedin.svg" alt="Koodiklinikka LinkedIn" />
+        </a>
       </div>
-      <div className="contacts">
-        <div>
-          <SocialLink
-            href="https://koodiklinikka.slack.com"
-            title="Koodiklinikka Slackissä"
-            name="slack"
-          />
-          <SocialLink
-            href="https://github.com/koodiklinikka"
-            title="Koodiklinikka Githubissa"
-            name="github"
-          />
-          <SocialLink
-            href="https://twitter.com/koodiklinikka"
-            title="Koodiklinikka Twitterissä"
-            name="twitter"
-          />
-          <SocialLink
-            href="https://www.linkedin.com/groups/12025476"
-            title="Koodiklinikka Linkedinissä"
-            name="linkedin"
-          />
-          <SocialLink
-            href="https://www.facebook.com/koodiklinikka"
-            title="Koodiklinikka Facebookissa"
-            name="facebook"
-          />
-          <div id="email">
-            <EmailComponent />
-          </div>
-        </div>
+      <div>
+        <a
+          href="mailto:info@koodiklinikka.fi"
+          className="font-mono text-xs opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
+        >
+          info@koodiklinikka.fi
+        </a>
       </div>
-    </footer>
+    </div>
   );
 }
