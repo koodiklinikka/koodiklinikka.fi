@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Koodiklinikka',
   description: 'Yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille',
   metadataBase: new URL('https://koodiklinikka.fi'),
+  verification: {
+    google: 'UX5KbeTKwaeDzZKG7lL2nljricy_S3Qbr01BcuCYVxo',
+  },
 };
 
 export default function RootLayout({
