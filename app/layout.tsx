@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Koodiklinikka',
   description: 'Yhteisö kaikille ohjelmoinnista ja ohjelmistoalasta kiinnostuneille harrastajille ja ammattilaisille',
-  robots: 'noindex',
 };
 
 export default function RootLayout({
