@@ -51,9 +51,9 @@ export default function Nav() {
             >
               <NavLink href="https://github.com/koodiklinikka">GitHub</NavLink>
               <NavLink href="https://koodiklinikka.slack.com">Slack</NavLink>
-              <NavLink href="https://resources.koodiklinikka.fi">Resources</NavLink>
-              <NavLink href="https://koodiklinikka.myspreadshop.fi/">Shop</NavLink>
-              <NavLink href="https://github.com/koodiklinikka/code-of-conduct">Code of Conduct</NavLink>
+              <NavLink href="https://resources.koodiklinikka.fi">Resurssit</NavLink>
+              <NavLink href="https://koodiklinikka.myspreadshop.fi/">Kauppa</NavLink>
+              <NavLink href="https://github.com/koodiklinikka/code-of-conduct">Käytöskoodi</NavLink>
             </div>
           </div>
         </div>
