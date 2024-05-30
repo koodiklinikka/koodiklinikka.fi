@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import Wrapper from './Wrapper';
 import { useEffect, useRef, useState } from 'react';
 
@@ -47,30 +47,13 @@ export default function Nav() {
               </svg>
             </button>
             <div
-              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-6 top-16 flex-col gap-5 rounded-lg bg-black/80 p-5 text-xs uppercase tracking-widest text-pink-100 backdrop-blur-md lg:static lg:flex lg:flex-row lg:bg-transparent lg:backdrop-blur-none`}
+              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-10 top-16 flex-col divide-white/20 rounded-lg bg-black/80 p-5 text-xs uppercase tracking-widest text-pink-100 backdrop-blur-md lg:static lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
             >
-              <Link className="underline-offset-4 hover:underline" href="https://github.com/koodiklinikka">
-                GitHub
-              </Link>
-              <NavSeparator />
-              <Link className="underline-offset-4 hover:underline" href="https://koodiklinikka.slack.com">
-                Slack
-              </Link>
-              <NavSeparator />
-              <Link className="underline-offset-4 hover:underline" href="https://resources.koodiklinikka.fi">
-                Resources
-              </Link>
-              <NavSeparator />
-              <Link className="underline-offset-4 hover:underline" href="https://koodiklinikka.myspreadshop.fi/">
-                Shop
-              </Link>
-              <NavSeparator />
-              <Link
-                className="underline-offset-4 hover:underline"
-                href="https://github.com/koodiklinikka/code-of-conduct"
-              >
-                Code of Conduct
-              </Link>
+              <NavLink href="https://github.com/koodiklinikka">GitHub</NavLink>
+              <NavLink href="https://koodiklinikka.slack.com">Slack</NavLink>
+              <NavLink href="https://resources.koodiklinikka.fi">Resources</NavLink>
+              <NavLink href="https://koodiklinikka.myspreadshop.fi/">Shop</NavLink>
+              <NavLink href="https://github.com/koodiklinikka/code-of-conduct">Code of Conduct</NavLink>
             </div>
           </div>
         </div>
@@ -79,4 +62,6 @@ export default function Nav() {
   );
 }
 
-const NavSeparator = () => <div className="hidden opacity-20 lg:block">|</div>;
+const NavLink = (props: React.PropsWithChildren<LinkProps>) => (
+  <Link className="py-1 underline-offset-4 hover:underline lg:px-6" {...props} />
+);
