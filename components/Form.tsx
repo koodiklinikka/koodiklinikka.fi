@@ -85,7 +85,7 @@ export default function Form() {
             </button>
           </div>
 
-          <label className="flex flex-wrap items-center justify-center gap-2 font-mono text-xxs sm:text-xs">
+          <label className="flex select-none flex-wrap items-center justify-center gap-2 font-mono text-xxs sm:text-xs">
             <div className="relative h-5 w-5">
               <input
                 type="checkbox"
