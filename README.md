@@ -1,6 +1,6 @@
 # Koodiklinikka
 
-![Travis](https://travis-ci.org/koodiklinikka/koodiklinikka.fi.svg?branch=master)
+[![CI](https://github.com/koodiklinikka/koodiklinikka.fi/actions/workflows/ci.yml/badge.svg)](https://github.com/koodiklinikka/koodiklinikka.fi/actions/workflows/ci.yml)
 
 <img align="right" src="./logo-new-black.svg" alt="Koodiklinikka-logo" max-width="30%">
 
