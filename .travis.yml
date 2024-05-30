@@ -1,7 +1,7 @@
 script: yarn build
 language: node_js
 node_js:
-  - "12.18"
+  - '12.18'
 install:
   - yarn
 test:
@@ -12,7 +12,7 @@ deploy:
   provider: pages
   fqdn: koodiklinikka.fi
   skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
+  github_token: '$GITHUB_TOKEN'
   repo: koodiklinikka/koodiklinikka.github.io
   target_branch: master
   on:
