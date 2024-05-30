@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.title-highlight {
+  background: linear-gradient(200deg, #ff0098 20%, #0ef 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(255, 0, 234, 0.2));
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  .title-highlight {
+    background: linear-gradient(200deg, oklch(68% 0.5 340) 20%, oklch(90% 0.5 200) 100%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 20px oklch(80% 0.41 211 / 20%));
+  }
+}
+
+.bg-button {
+  background: linear-gradient(200deg, #f0f 20%, #ff00c4 100%);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  .bg-button {
+    background: linear-gradient(200deg, oklch(100% 0.5 340) 20%, oklch(86% 0.5 360) 100%);
+  }
+}
+
+html {
+  background: #070b1e url('../public/background.webp');
+  background-size: 1024px auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 1024px) {
+  html {
+    background-size: 100% auto;
+  }
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.checkbox svg {
+  display: none;
+}
+
+input[type='checkbox']:checked + .checkbox {
+  background-color: #ef008e;
+  border-color: #ff0099;
+}
+
+input[type='checkbox']:checked + .checkbox svg {
+  display: block;
+  align-items: center;
+  justify-items: center;
+  width: 80%;
+  height: auto;
+}
+
+input[type='checkbox']:focus + .checkbox {
+  outline: 2px solid var(--tw-color-red-800);
+  outline-offset: 2px;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 20%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 20%;
+  }
+}
+
+.fade-in-out {
+  opacity: 20%;
+  animation: fadeInOut 4s ease-in-out infinite;
+}

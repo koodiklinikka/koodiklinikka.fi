@@ -1,57 +1,36 @@
-# Koodiklinikka
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-![Travis](https://travis-ci.org/koodiklinikka/koodiklinikka.fi.svg?branch=master)
+## Getting Started
 
-<img align="right" src="./public/static/images/logo-new-black.svg" alt="Koodiklinikka-logo" max-width="30%">
+First, run the development server:
 
-**Koodiklinikka.fi lähdekoodi**. [Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) ja [Pull Requestejä](https://github.com/koodiklinikka/koodiklinikka.fi/pulls) otetaan lämpimästi vastaan. Yritämme pitää kynnyksen kontribuoida projektiin alhaisena, jotta mahdollisimman moni pääsisi jättämään siihen jälkensä. Kaikki koodi katselmoidaan läpi ja mergetään projektiin kun näyttää hyvälle. Muutamasta mergetystä Pull Requestista oikeudet ylläpitää projektia.
-
-[Issueita](https://github.com/koodiklinikka/koodiklinikka.fi/issues) voidaan käyttää myös sivun:
-
-- toiminnallisuuteen
-- designiin
-- [HTTP-rajapintaan](https://github.com/koodiklinikka/koodiklinikka.fi-api)
-- projektin hallintaan liittyviin asioihin
-- tai koko Koodiklinikkaan yleisesti.
-
----
-
-## Projektin asennus
-
-### Vaaditut työkalut
-
-- Asenna [Node.js](http://nodejs.org)
-- Asenna [Yarn 1.x](https://classic.yarnpkg.com/en/)
-- Asenna [Git](https://git-scm.com/) client lähdekoodin hallintaan
-
-### Kloonaa projekti koneellesi
-
-```sh
-git clone https://github.com/koodiklinikka/koodiklinikka.fi.git
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Käynnistä kehitystila
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```sh
-cd koodiklinikka.fi
-yarn
-yarn start
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Avaa esikatselu selaimessa
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Avaa selaimessasi: [`http://localhost:3000`](http://localhost:3000)
+## Learn More
 
-## Komennot
+To learn more about Next.js, take a look at the following resources:
 
-### `yarn`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Asentaa projektin riippuvuudet
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-### `yarn start`
+## Deploy on Vercel
 
-Kääntää lähdetiedostot ja palvelee sovellusta porttiin `3000`
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### `yarn build`
-
-Kääntää lähdetiedostot -> `out/` -hakemistoon
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
