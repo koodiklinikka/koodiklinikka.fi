@@ -11,17 +11,17 @@ const calculatedBrightnessValue = () => {
 export default function TopFade() {
   const [brightness, setBrightness] = useState(calculatedBrightnessValue());
 
-  const handleScroll = (event: Event) => {
-    if (window.scrollY > 200 && brightness === 0.5) return;
-    setBrightness(calculatedBrightnessValue());
-  };
-
   useEffect(() => {
+    const handleScroll = (event: Event) => {
+      if (window.scrollY > 200 && brightness === 0.5) return;
+      setBrightness(calculatedBrightnessValue());
+    };
+
     document.addEventListener('scroll', handleScroll, true);
     return () => {
       document.removeEventListener('scroll', handleScroll, true);
     };
-  }, []);
+  }, [brightness]);
 
   return (
     <div
