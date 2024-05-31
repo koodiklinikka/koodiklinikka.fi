@@ -56,7 +56,7 @@ export default function Nav() {
               </svg>
             </button>
             <div
-              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-0 top-12 flex-col divide-white/20 rounded-lg bg-black/90 py-2 text-xs uppercase tracking-widest text-pink-100  backdrop-blur-md lg:static lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
+              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-0 top-12 flex-col divide-white/20 rounded-lg bg-black/90 py-2 text-xs uppercase tracking-widest text-pink-100  backdrop-blur-md lg:static lg:-mr-6 lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
             >
               <NavLink href="https://github.com/koodiklinikka">GitHub</NavLink>
               <NavLink href="https://koodiklinikka.slack.com">Slack</NavLink>
