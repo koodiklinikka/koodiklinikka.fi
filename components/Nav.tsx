@@ -72,5 +72,5 @@ export default function Nav() {
 }
 
 const NavLink = (props: React.PropsWithChildren<LinkProps>) => (
-  <Link className="px-6 py-4 underline-offset-4 hover:underline lg:px-6" {...props} />
+  <Link className="px-6 py-4 underline-offset-4 hover:underline lg:px-6 lg:py-1" {...props} />
 );
