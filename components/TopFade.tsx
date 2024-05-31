@@ -3,16 +3,19 @@
 import { useEffect, useState } from 'react';
 
 const calculatedBrightnessValue = () => {
-  if (typeof window === 'undefined') return 1;
+  if (typeof window === 'undefined') return null;
   if (window.scrollY > 200) return 0.5;
   const amountToDecrease = (window.scrollY / 200) * 0.5;
   return 1 - amountToDecrease;
 };
 
 export default function TopFade() {
-  const [brightness, setBrightness] = useState(calculatedBrightnessValue());
+  const [brightness, setBrightness] = useState<number | null>(null);
 
   useEffect(() => {
+    // Always set correct value when first render on client side
+    setBrightness(calculatedBrightnessValue());
+
     const handleScroll = (event: Event) => {
       if (window.scrollY > 200 && brightness === 0.5) return;
       setBrightness(calculatedBrightnessValue());
@@ -27,9 +30,13 @@ export default function TopFade() {
   return (
     <div
       className="top-fade pointer-events-none"
-      style={{
-        filter: `brightness(${brightness})`,
-      }}
+      style={
+        brightness
+          ? {
+              filter: `brightness(${brightness})`,
+            }
+          : {}
+      }
     ></div>
   );
 }
