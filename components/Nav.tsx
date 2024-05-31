@@ -28,7 +28,14 @@ export default function Nav() {
         <div className="relative flex items-center justify-between px-6 py-5 md:px-12">
           <div className="shrink-0">
             <a href="/">
-              <Image src="/koodiklinikka.svg" alt="Koodiklinikka" width="179" height="34" className="w-40" priority />
+              <img
+                src="/koodiklinikka-logo.svg"
+                alt="Koodiklinikka"
+                width="600"
+                height="114"
+                className="w-40"
+                loading="eager"
+              />
             </a>
           </div>
           <div ref={navRef}>
