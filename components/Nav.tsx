@@ -25,7 +25,7 @@ export default function Nav() {
   return (
     <nav className="fixed left-0 top-0 z-50 h-32 w-full">
       <Wrapper>
-        <div className="relative flex items-center justify-between px-6 py-5 md:px-12">
+        <div className="relative flex items-center justify-between py-5 sm:px-6 md:px-12">
           <div className="shrink-0">
             <a href="/">
               <img
@@ -38,10 +38,10 @@ export default function Nav() {
               />
             </a>
           </div>
-          <div ref={navRef}>
+          <div ref={navRef} className="relative">
             <button
               type="button"
-              className="-mr-2 rounded bg-black/0 p-2 hover:bg-black/20 lg:hidden"
+              className="relative top-3 -mr-6 -mt-6 rounded-full bg-black/0 p-6 hover:bg-black/20 lg:hidden"
               onMouseDown={() => setNavOpen(!navOpen)}
             >
               <svg
@@ -56,7 +56,7 @@ export default function Nav() {
               </svg>
             </button>
             <div
-              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-6 top-16 flex-col divide-white/20 rounded-lg bg-black/80 p-5 text-xs uppercase tracking-widest text-pink-100 backdrop-blur-md md:right-12 lg:static lg:-mr-12 lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
+              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-0 top-12 flex-col divide-white/20 rounded-lg bg-black/90 py-2 text-xs uppercase tracking-widest text-pink-100  backdrop-blur-md lg:static lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
             >
               <NavLink href="https://github.com/koodiklinikka">GitHub</NavLink>
               <NavLink href="https://koodiklinikka.slack.com">Slack</NavLink>
@@ -72,5 +72,5 @@ export default function Nav() {
 }
 
 const NavLink = (props: React.PropsWithChildren<LinkProps>) => (
-  <Link className="py-1 underline-offset-4 hover:underline lg:px-6" {...props} />
+  <Link className="px-6 py-4 underline-offset-4 hover:underline lg:px-6" {...props} />
 );
