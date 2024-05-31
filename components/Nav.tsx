@@ -23,7 +23,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="fixed left-0 top-0 z-50 h-32 w-full bg-gradient-to-b from-black/40 to-fuchsia-950/0">
+    <nav className="fixed left-0 top-0 z-50 h-32 w-full">
       <Wrapper>
         <div className="relative flex items-center justify-between px-6 py-5 md:px-12">
           <div className="shrink-0">

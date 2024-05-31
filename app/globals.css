@@ -53,6 +53,27 @@ html {
   }
 }
 
+.top-fade {
+  height: 10rem;
+  background: #070b1e url('../public/background.webp');
+  background-size: 1024px auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0));
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+@media (min-width: 1024px) {
+  .top-fade {
+    background-size: 100% auto;
+  }
+}
+
 h1,
 h2,
 h3 {

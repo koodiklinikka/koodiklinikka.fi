@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import BottomFade from '@/components/BottomFade';
+import TopFade from '@/components/TopFade';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="fi">
       <body className={`${inter.className} pb-24 text-white`}>
+        <TopFade />
         {children}
         <BottomFade />
       </body>
