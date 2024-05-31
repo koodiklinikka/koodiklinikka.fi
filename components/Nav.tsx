@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link, { LinkProps } from 'next/link';
 import Wrapper from './Wrapper';
 import { useEffect, useRef, useState } from 'react';
