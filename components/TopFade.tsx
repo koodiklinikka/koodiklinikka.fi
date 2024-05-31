@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const calculatedBrightnessValue = () => {
+  if (typeof window === 'undefined') return 1;
   if (window.scrollY > 200) return 0.5;
   const amountToDecrease = (window.scrollY / 200) * 0.5;
   return 1 - amountToDecrease;
