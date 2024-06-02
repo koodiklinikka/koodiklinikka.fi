@@ -2,6 +2,7 @@
 
 import { FormEvent, ReactNode, useState } from 'react';
 import Confetti from 'react-confetti';
+import Spinner from './Spinner';
 
 const API_URL = 'https://koodiklinikka-api.fly.dev/invites';
 
@@ -91,22 +92,26 @@ export default function Form() {
             Syötä sähköpostiosoitteesi alle ja saat kutsun Slack-yhteisöömme:
           </h2>
 
-          <div className="my-5 grid grid-cols-4 gap-2">
-            <input
-              type="email"
-              name="email"
-              required
-              className="col-span-3 grow rounded px-3 py-2 text-sm text-fuchsia-950 sm:text-base md:rounded-lg md:px-4 md:py-4 lg:rounded-lg lg:px-5 lg:py-5 lg:text-lg"
-              placeholder="minna.meikalainen@example.org"
-              tabIndex={1}
-            />
-            <button
-              tabIndex={3}
-              type="submit"
-              className="text-shadow bg-button rounded border border-pink-400 border-b-pink-600 border-t-pink-300 px-3 py-2 text-sm font-extrabold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
-            >
-              {isSubmitting ? 'Liitytään' : 'Liity'}
-            </button>
+          <div className="mx-auto my-5 max-w-[300px] gap-2 space-y-2 sm:grid sm:max-w-none sm:grid-cols-4 sm:space-y-0">
+            <div className="col-span-3 flex rounded-[5px] bg-gradient-to-b from-fuchsia-50/30 to-fuchsia-800/50 md:rounded-[9px]">
+              <input
+                type="email"
+                name="email"
+                required
+                className={`m-px block grow rounded bg-gradient-to-b from-[#0b0b21] to-[#1e092e] px-3 py-2  text-fuchsia-100 placeholder:text-fuchsia-100/25 md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg ${isSubmitting ? 'opacity-75' : ''}`}
+                placeholder="minna.meikalainen@example.org"
+                tabIndex={1}
+              />
+            </div>
+            <div className="w-full p-px">
+              <button
+                tabIndex={3}
+                type="submit"
+                className="text-shadow bg-button block h-full w-full rounded border border-pink-400 border-b-pink-600 border-t-pink-300 px-3 py-2 font-bold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
+              >
+                {isSubmitting ? <Spinner /> : 'Liity'}
+              </button>
+            </div>
           </div>
 
           <label className="flex select-none flex-wrap items-center justify-center gap-2 font-mono text-xxs sm:text-xs">
