@@ -60,8 +60,8 @@ export default async function Home() {
                 <FeatureImage src="/meetup.webp" alt="" width="1792" height="1024" />
               </div>
               <div className="flex flex-col justify-center space-y-5 lg:order-1">
-                <h2 className="text-3xl font-extrabold">Yhteisö ohjelmoinnista kiinnostuneille</h2>
-                <div className="space-y-5 font-mono text-sm leading-relaxed text-pink-100">
+                <h2 className="font-mono text-2xl font-extrabold">Yhteisö ohjelmoinnista kiinnostuneille</h2>
+                <div className="space-y-5 font-mono text-sm leading-relaxed text-[#A597A1]">
                   <p>
                     Koodiklinikka on Suomen suurin ohjelmistoalan yhteisö, joka kokoaa yhteen ammattilaiset, harrastajat
                     ja vasta-alkajat. Tavoitteenamme on yhdistää ja kasvattaa suomalaista ohjelmointiyhteisöä sekä
@@ -84,8 +84,8 @@ export default async function Home() {
                 <FeatureImage src="/opensource.webp" alt="" width="1792" height="1024" />
               </div>
               <div className="flex flex-col justify-center space-y-5">
-                <h2 className="text-3xl font-extrabold">Avoin lähdekoodi &lt;3</h2>
-                <div className="space-y-5 font-mono text-sm leading-relaxed text-pink-100">
+                <h2 className="font-mono text-2xl font-extrabold">Avoin lähdekoodi &lt;3</h2>
+                <div className="space-y-5 font-mono text-sm leading-relaxed text-[#A597A1]">
                   <p>
                     Suosimme avointa lähdekoodia ja kaikki käyttämämme koodi on vapaasti saatavilla sekä
                     hyödynnettävissä Github-organisaatiomme sivulta. Organisaation jäseneksi otamme kaikki
