@@ -18,7 +18,7 @@ export default function ChannelGrid({ channels }: { channels: Channel[] }) {
             className="absolute bottom-0 left-0 right-0 top-0 z-10 m-px rounded-[8px] bg-[#2c0c33]"
             style={{ WebkitMask: 'linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,0))' }}
           ></div>
-          <div className="relative z-20 flex flex-col items-center  justify-center gap-1 px-3 py-6 font-mono">
+          <div className="relative z-20 flex flex-col items-center justify-center gap-1 px-3 py-6 font-mono">
             <a
               href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
               target="_blank"

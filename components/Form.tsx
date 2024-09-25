@@ -98,7 +98,7 @@ export default function Form() {
                 type="email"
                 name="email"
                 required
-                className={`m-px block grow rounded bg-gradient-to-b from-[#0b0b21] to-[#1e092e] px-3 py-2  text-fuchsia-100 placeholder:text-fuchsia-100/25 md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg ${isSubmitting ? 'opacity-75' : ''}`}
+                className={`m-px block grow rounded bg-gradient-to-b from-[#0b0b21] to-[#1e092e] px-3 py-2 text-fuchsia-100 placeholder:text-fuchsia-100/25 md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg ${isSubmitting ? 'opacity-75' : ''}`}
                 placeholder="minna.meikalainen@example.org"
                 tabIndex={1}
               />

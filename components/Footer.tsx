@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <div className="space-y-10 pt-24 text-center">
-      <div className="flex items-center justify-center gap-10 ">
+      <div className="flex items-center justify-center gap-10">
         <a
           href="https://koodiklinikka.slack.com/"
           className="opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100"
