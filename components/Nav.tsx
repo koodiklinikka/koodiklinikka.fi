@@ -26,7 +26,7 @@ export default function Nav() {
       <Wrapper>
         <div className="relative flex items-center justify-between py-5 sm:px-6 md:px-12">
           <div className="shrink-0">
-            <a href="/">
+            <Link href="/">
               <img
                 src="/koodiklinikka-logo.svg"
                 alt="Koodiklinikka"
@@ -35,7 +35,7 @@ export default function Nav() {
                 className="w-40"
                 loading="eager"
               />
-            </a>
+            </Link>
           </div>
           <div ref={navRef} className="relative">
             <button
