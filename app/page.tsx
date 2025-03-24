@@ -30,7 +30,7 @@ export default async function Home() {
           <Hero />
 
           <div className="text-shadow py-16 lg:my-24">
-            <h2 className="mx-auto max-w-screen-xs text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
+            <h2 className="mx-auto max-w-(--breakpoint-xs) text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
               Suosituimmat keskustelunaiheet tänään
             </h2>
 

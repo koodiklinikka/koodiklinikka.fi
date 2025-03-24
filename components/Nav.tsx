@@ -22,7 +22,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="fixed left-0 top-0 z-50 h-32 w-full">
+    <nav className="fixed top-0 left-0 z-50 h-32 w-full">
       <Wrapper>
         <div className="relative flex items-center justify-between py-5 sm:px-6 md:px-12">
           <div className="shrink-0">
@@ -40,7 +40,7 @@ export default function Nav() {
           <div ref={navRef} className="relative">
             <button
               type="button"
-              className="relative top-3 -mr-6 -mt-6 rounded-full bg-black/0 p-6 hover:bg-black/20 lg:hidden"
+              className="relative top-3 -mt-6 -mr-6 rounded-full bg-black/0 p-6 hover:bg-black/20 lg:hidden"
               onMouseDown={() => setNavOpen(!navOpen)}
             >
               <svg
@@ -55,7 +55,7 @@ export default function Nav() {
               </svg>
             </button>
             <div
-              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute right-0 top-12 flex-col divide-white/15 rounded-lg bg-black/90 py-2 text-xs uppercase tracking-widest text-pink-100 backdrop-blur-md lg:static lg:-mr-6 lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
+              className={`${navOpen ? 'flex' : 'hidden'} text-shadow absolute top-12 right-0 flex-col divide-white/15 rounded-lg bg-black/90 py-2 text-xs tracking-widest text-pink-100 uppercase backdrop-blur-md lg:static lg:-mr-6 lg:flex lg:flex-row lg:divide-x lg:bg-transparent lg:backdrop-blur-none`}
             >
               <NavLink href="https://github.com/koodiklinikka">GitHub</NavLink>
               <NavLink href="https://koodiklinikka.slack.com">Slack</NavLink>

@@ -93,12 +93,12 @@ export default function Form() {
           </h2>
 
           <div className="mx-auto my-5 max-w-[300px] gap-2 space-y-2 sm:grid sm:max-w-none sm:grid-cols-4 sm:space-y-0">
-            <div className="col-span-3 flex rounded-[5px] bg-gradient-to-b from-fuchsia-50/30 to-fuchsia-800/50 md:rounded-[9px]">
+            <div className="col-span-3 flex rounded-[5px] bg-linear-to-b from-fuchsia-50/30 to-fuchsia-800/50 md:rounded-[9px]">
               <input
                 type="email"
                 name="email"
                 required
-                className={`m-px block grow rounded bg-gradient-to-b from-[#0b0b21] to-[#1e092e] px-3 py-2 text-fuchsia-100 placeholder:text-fuchsia-100/25 md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg ${isSubmitting ? 'opacity-75' : ''}`}
+                className={`m-px block grow rounded-sm bg-linear-to-b from-[#0b0b21] to-[#1e092e] px-3 py-2 text-fuchsia-100 placeholder:text-fuchsia-100/25 md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg ${isSubmitting ? 'opacity-75' : ''}`}
                 placeholder="minna.meikalainen@example.org"
                 tabIndex={1}
               />
@@ -107,23 +107,23 @@ export default function Form() {
               <button
                 tabIndex={3}
                 type="submit"
-                className="text-shadow bg-button block h-full w-full rounded border border-pink-400 border-b-pink-600 border-t-pink-300 px-3 py-2 font-bold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
+                className="text-shadow bg-button block h-full w-full rounded-sm border border-pink-400 border-t-pink-300 border-b-pink-600 px-3 py-2 font-bold sm:text-base md:rounded-lg md:px-4 md:py-4 lg:px-5 lg:py-5 lg:text-lg"
               >
                 {isSubmitting ? <Spinner /> : 'Liity'}
               </button>
             </div>
           </div>
 
-          <label className="flex select-none flex-wrap items-center justify-center gap-2 font-mono text-xxs sm:text-xs">
+          <label className="text-xxs flex flex-wrap items-center justify-center gap-2 font-mono select-none sm:text-xs">
             <div className="relative h-5 w-5">
               <input
                 type="checkbox"
                 name="terms"
                 required
-                className="h-3 w-3 opacity-5 focus:outline-none"
+                className="h-3 w-3 opacity-5 focus:outline-hidden"
                 tabIndex={2}
               />
-              <div className="checkbox absolute left-0 top-0 flex h-full w-full items-center justify-center rounded border border-white bg-transparent transition-colors">
+              <div className="checkbox absolute top-0 left-0 flex h-full w-full items-center justify-center rounded-sm border border-white bg-transparent transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5">
                   <path
                     fillRule="evenodd"
@@ -159,7 +159,7 @@ export default function Form() {
 
       {message && (
         <>
-          <div className="text-shadow text-balance rounded-2xl border-t border-t-pink-100/10 bg-gradient-to-b from-black/20 to-black/0 p-10 text-center font-mono text-sm backdrop-blur-sm">
+          <div className="text-shadow rounded-2xl border-t border-t-pink-100/10 bg-linear-to-b from-black/20 to-black/0 p-10 text-center font-mono text-sm text-balance backdrop-blur-xs">
             {message}
           </div>
           {isSuccess && (

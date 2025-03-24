@@ -1,15 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@custom-variant dark (&:is(.dark *));
 
-  .text-shadow {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 440px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --text-xxs: 0.625rem;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .title-highlight {
@@ -117,4 +145,8 @@ input[type='checkbox']:focus + .checkbox {
 .fade-in-out {
   opacity: 20%;
   animation: fadeInOut 4s ease-in-out infinite;
+}
+
+button {
+  cursor: pointer;
 }
