@@ -136,7 +136,7 @@ export default function Form() {
             Sitoudun yhteisön
             <a
               className="inline-flex items-center gap-1 underline underline-offset-4"
-              href="https://github.com/koodiklinikka/code-of-conduct/blob/master/README.md"
+              href="https://github.com/koodiklinikka/code-of-conduct/blob/main/README.md"
               target="_blank"
             >
               <span>käyttäytymissääntöihin</span>
