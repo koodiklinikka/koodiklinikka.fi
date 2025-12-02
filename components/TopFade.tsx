@@ -1,42 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
-const calculatedBrightnessValue = () => {
-  if (typeof window === 'undefined') return null;
+const calculateBrightness = () => {
   if (window.scrollY > 200) return 0.5;
   const amountToDecrease = (window.scrollY / 200) * 0.5;
   return 1 - amountToDecrease;
 };
 
+const subscribe = (callback: () => void) => {
+  document.addEventListener('scroll', callback, true);
+  return () => document.removeEventListener('scroll', callback, true);
+};
+
+const getSnapshot = () => calculateBrightness();
+const getServerSnapshot = () => 1;
+
 export default function TopFade() {
-  const [brightness, setBrightness] = useState<number | null>(null);
+  const brightness = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    // Always set correct value when first render on client side
-    setBrightness(calculatedBrightnessValue());
-
-    const handleScroll = (event: Event) => {
-      if (window.scrollY > 200 && brightness === 0.5) return;
-      setBrightness(calculatedBrightnessValue());
-    };
-
-    document.addEventListener('scroll', handleScroll, true);
-    return () => {
-      document.removeEventListener('scroll', handleScroll, true);
-    };
-  }, [brightness]);
-
-  return (
-    <div
-      className="top-fade pointer-events-none"
-      style={
-        brightness
-          ? {
-              filter: `brightness(${brightness})`,
-            }
-          : {}
-      }
-    ></div>
-  );
+  return <div className="top-fade pointer-events-none" style={{ filter: `brightness(${brightness})` }}></div>;
 }

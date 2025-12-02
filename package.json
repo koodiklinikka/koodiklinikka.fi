@@ -6,30 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "prod": "NODE_ENV=production next build",
     "prettify": "prettier --write ."
   },
   "dependencies": {
     "lodash.shuffle": "4.2.0",
-    "next": "15.2.3",
-    "react": "19.0.0",
+    "next": "16.0.6",
+    "react": "19.2.0",
     "react-confetti": "6.4.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "4.0.15",
+    "@tailwindcss/postcss": "4.1.17",
     "@types/lodash.shuffle": "4.2.9",
-    "@types/node": "22.13.12",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
-    "eslint": "9.23.0",
-    "eslint-config-next": "15.2.3",
-    "postcss": "8.5.3",
-    "prettier": "3.5.3",
-    "prettier-plugin-tailwindcss": "0.6.11",
-    "tailwindcss": "4.0.15",
-    "typescript": "5.8.2"
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.0.6",
+    "postcss": "8.5.6",
+    "prettier": "3.7.3",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "tailwindcss": "4.1.17",
+    "typescript": "5.9.3"
   },
   "prettier": {
     "printWidth": 120,
