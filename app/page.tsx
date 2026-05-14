@@ -30,34 +30,36 @@ export default async function Home() {
         <Wrapper>
           <Hero />
 
-          {topChannels.length > 0 && (
-            <div className="text-shadow py-16 lg:my-24">
-              <h2 className="mx-auto max-w-(--breakpoint-xs) text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
-                Suosituimmat keskustelunaiheet tänään
-              </h2>
+          <div className={topChannels.length > 0 ? 'text-shadow py-16 lg:my-24' : 'mt-16 lg:mt-24'}>
+            {topChannels.length > 0 && (
+              <>
+                <h2 className="mx-auto max-w-(--breakpoint-xs) text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
+                  Suosituimmat keskustelunaiheet tänään
+                </h2>
 
-              <ChannelGrid channels={topChannels} />
+                <ChannelGrid channels={topChannels} />
 
-              {otherChannels.length > 0 && (
-                <div className="mx-auto max-w-md p-6 text-center font-mono text-sm leading-relaxed text-fuchsia-100/60 lg:max-w-3xl">
-                  Ja paljon muuta:{' '}
-                  {otherChannels
-                    .map<React.ReactNode>((channel) => (
-                      <a
-                        key={channel.id}
-                        href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
-                        target="_blank"
-                        className="underline-offset-4 hover:underline"
-                      >
-                        #{channel.name}
-                      </a>
-                    ))
-                    .reduce((prev, curr) => [prev, ', ', curr])}
-                  …
-                </div>
-              )}
-            </div>
-          )}
+                {otherChannels.length > 0 && (
+                  <div className="mx-auto max-w-md p-6 text-center font-mono text-sm leading-relaxed text-fuchsia-100/60 lg:max-w-3xl">
+                    Ja paljon muuta:{' '}
+                    {otherChannels
+                      .map<React.ReactNode>((channel) => (
+                        <a
+                          key={channel.id}
+                          href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
+                          target="_blank"
+                          className="underline-offset-4 hover:underline"
+                        >
+                          #{channel.name}
+                        </a>
+                      ))
+                      .reduce((prev, curr) => [prev, ', ', curr])}
+                    …
+                  </div>
+                )}
+              </>
+            )}
+          </div>
 
           <div className="mx-auto max-w-lg space-y-14 p-6 md:p-12 lg:max-w-none lg:space-y-28">
             <div className="text-shadow grid gap-10 lg:grid-cols-2 lg:gap-16">
