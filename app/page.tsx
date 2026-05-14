@@ -7,20 +7,21 @@ import Hero from '@/components/Hero';
 import Nav from '@/components/Nav';
 import Wrapper from '@/components/Wrapper';
 
-async function getChannels() {
-  const res = await fetch('https://stats.koodiklinikka.fi/api/channels', { next: { revalidate: 3600 } });
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+async function getChannels(): Promise<Channel[]> {
+  try {
+    const res = await fetch('https://stats.koodiklinikka.fi/api/channels', { next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
   }
-
-  return res.json();
 }
 
 export default async function Home() {
   let channels: Channel[] = await getChannels();
   channels = channels.sort((a, b) => (a.messages_today > b.messages_today ? -1 : 1));
+  const topChannels = channels.splice(0, 12);
+  const otherChannels = shuffle(channels.splice(0, 20));
 
   return (
     <>
@@ -29,30 +30,34 @@ export default async function Home() {
         <Wrapper>
           <Hero />
 
-          <div className="text-shadow py-16 lg:my-24">
-            <h2 className="mx-auto max-w-(--breakpoint-xs) text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
-              Suosituimmat keskustelunaiheet tänään
-            </h2>
+          {topChannels.length > 0 && (
+            <div className="text-shadow py-16 lg:my-24">
+              <h2 className="mx-auto max-w-(--breakpoint-xs) text-center text-2xl font-extrabold md:max-w-none md:text-3xl">
+                Suosituimmat keskustelunaiheet tänään
+              </h2>
 
-            <ChannelGrid channels={channels.splice(0, 12)} />
+              <ChannelGrid channels={topChannels} />
 
-            <div className="mx-auto max-w-md p-6 text-center font-mono text-sm leading-relaxed text-fuchsia-100/60 lg:max-w-3xl">
-              Ja paljon muuta:{' '}
-              {shuffle(channels.splice(0, 20))
-                .map<React.ReactNode>((channel) => (
-                  <a
-                    key={channel.id}
-                    href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
-                    target="_blank"
-                    className="underline-offset-4 hover:underline"
-                  >
-                    #{channel.name}
-                  </a>
-                ))
-                .reduce((prev, curr) => [prev, ', ', curr])}
-              …
+              {otherChannels.length > 0 && (
+                <div className="mx-auto max-w-md p-6 text-center font-mono text-sm leading-relaxed text-fuchsia-100/60 lg:max-w-3xl">
+                  Ja paljon muuta:{' '}
+                  {otherChannels
+                    .map<React.ReactNode>((channel) => (
+                      <a
+                        key={channel.id}
+                        href={`https://app.slack.com/client/T03BQ3NU9/${channel.id}`}
+                        target="_blank"
+                        className="underline-offset-4 hover:underline"
+                      >
+                        #{channel.name}
+                      </a>
+                    ))
+                    .reduce((prev, curr) => [prev, ', ', curr])}
+                  …
+                </div>
+              )}
             </div>
-          </div>
+          )}
 
           <div className="mx-auto max-w-lg space-y-14 p-6 md:p-12 lg:max-w-none lg:space-y-28">
             <div className="text-shadow grid gap-10 lg:grid-cols-2 lg:gap-16">
