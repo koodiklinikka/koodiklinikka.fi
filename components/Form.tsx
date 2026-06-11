@@ -81,6 +81,11 @@ export default function Form() {
       return;
     }
 
+    if (response.status === 403) {
+      setMessage(<span>Liittyminen on rajoitettu toimimaan vain suomalaisista IP-osoitteista.</span>);
+      return;
+    }
+
     setMessage('⚡ Jotain meni pieleen. Yritä hetken päästä uudelleen.');
   }
 
