@@ -4,7 +4,7 @@ import { FormEvent, ReactNode, useState } from 'react';
 import Confetti from 'react-confetti';
 import Spinner from './Spinner';
 
-const API_URL = 'https://koodiklinikka-api.fly.dev/invites';
+const API_URL = 'https://api.koodiklinikka.fi/api/invites';
 
 const CONFETTI_COLORS = [
   '#9C27B0', // Purple
