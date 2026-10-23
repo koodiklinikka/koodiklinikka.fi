@@ -26,6 +26,17 @@ const CONFETTI_COLORS = [
   '#0097A7', // Cyan
 ];
 
+// The API answers with { error: 'use_invite_link', url } when it can't send the
+// invite itself and the user should join through Slack's shared invite link.
+function parseInviteLink(data: string): string | null {
+  try {
+    const body = JSON.parse(data);
+    return body?.error === 'use_invite_link' && typeof body.url === 'string' ? body.url : null;
+  } catch {
+    return null;
+  }
+}
+
 export default function Form() {
   const [message, setMessage] = useState<ReactNode | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -78,6 +89,21 @@ export default function Form() {
           .
         </span>
       );
+      return;
+    }
+
+    const inviteLink = parseInviteLink(data);
+    if (response.status === 400 && inviteLink) {
+      setMessage(
+        <span>
+          ↪️ Ohjataan Slackiin. Syötä sähköpostiosoitteesi siellä uudelleen.{' '}
+          <a href={inviteLink} className="underline underline-offset-4">
+            Jatka Slackiin
+          </a>
+          .
+        </span>
+      );
+      window.location.assign(inviteLink);
       return;
     }
 
